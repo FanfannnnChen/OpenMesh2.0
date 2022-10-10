@@ -1,7 +1,6 @@
 #include "DrawPickingFaceShader.h"
 #include "Common.h"
 
-
 DrawPickingFaceShader::DrawPickingFaceShader()
 {
 }

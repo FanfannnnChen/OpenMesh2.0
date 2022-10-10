@@ -5,10 +5,17 @@
 #include "Mesh/GUA_OM.h"
 #include "Mesh/DP.h"
 
-#define LEFT_BUTTON 0x0000
+#define LEFT_BUTTON   0x0000
 #define MIDDLE_BUTTON 0x0001
+#define RIGHT_BUTTON  0x0002
 #define WHEEL_UP     1
 #define WHEEL_DOWN  -1
+
+#define ADD_FACE		1
+#define SELECT_POINT	2
+#define DEL_FACE		3
+
+
 Tri_Mesh *mesh;
 
 xform xf;
@@ -63,6 +70,10 @@ namespace OpenMesh_EX {
 	private: System::Windows::Forms::SaveFileDialog^  saveModelDialog;
 	private: System::Windows::Forms::ToolStripMenuItem^  saveModelToolStripMenuItem;
 	private: HKOGLPanel::HKOGLPanelControl^  hkoglPanelControl1;
+	private: System::Windows::Forms::GroupBox^ groupBox1;
+	private: System::Windows::Forms::RadioButton^ radioButton2;
+	private: System::Windows::Forms::RadioButton^ radioButton1;
+	private: System::Windows::Forms::RadioButton^ radioButton3;
 	protected:
 
 	private:
@@ -78,8 +89,8 @@ namespace OpenMesh_EX {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			HKOGLPanel::HKCOGLPanelCameraSetting^ hkcoglPanelCameraSetting1 = (gcnew HKOGLPanel::HKCOGLPanelCameraSetting());
-			HKOGLPanel::HKCOGLPanelPixelFormat^ hkcoglPanelPixelFormat1 = (gcnew HKOGLPanel::HKCOGLPanelPixelFormat());
+			HKOGLPanel::HKCOGLPanelCameraSetting^ hkcoglPanelCameraSetting2 = (gcnew HKOGLPanel::HKCOGLPanelCameraSetting());
+			HKOGLPanel::HKCOGLPanelPixelFormat^ hkcoglPanelPixelFormat2 = (gcnew HKOGLPanel::HKCOGLPanelPixelFormat());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->fileToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->loadModelToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -87,7 +98,12 @@ namespace OpenMesh_EX {
 			this->openModelDialog = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->saveModelDialog = (gcnew System::Windows::Forms::SaveFileDialog());
 			this->hkoglPanelControl1 = (gcnew HKOGLPanel::HKOGLPanelControl());
+			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->radioButton3 = (gcnew System::Windows::Forms::RadioButton());
+			this->radioButton2 = (gcnew System::Windows::Forms::RadioButton());
+			this->radioButton1 = (gcnew System::Windows::Forms::RadioButton());
 			this->menuStrip1->SuspendLayout();
+			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// menuStrip1
@@ -95,7 +111,7 @@ namespace OpenMesh_EX {
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->fileToolStripMenuItem });
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(613, 24);
+			this->menuStrip1->Size = System::Drawing::Size(641, 24);
 			this->menuStrip1->TabIndex = 1;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -134,19 +150,18 @@ namespace OpenMesh_EX {
 			// 
 			// hkoglPanelControl1
 			// 
-			hkcoglPanelCameraSetting1->Far = 1000;
-			hkcoglPanelCameraSetting1->Fov = 45;
-			hkcoglPanelCameraSetting1->Near = -1000;
-			hkcoglPanelCameraSetting1->Type = HKOGLPanel::HKCOGLPanelCameraSetting::CAMERATYPE::ORTHOGRAPHIC;
-			this->hkoglPanelControl1->Camera_Setting = hkcoglPanelCameraSetting1;
-			this->hkoglPanelControl1->Dock = System::Windows::Forms::DockStyle::Fill;
+			hkcoglPanelCameraSetting2->Far = 1000;
+			hkcoglPanelCameraSetting2->Fov = 45;
+			hkcoglPanelCameraSetting2->Near = -1000;
+			hkcoglPanelCameraSetting2->Type = HKOGLPanel::HKCOGLPanelCameraSetting::CAMERATYPE::ORTHOGRAPHIC;
+			this->hkoglPanelControl1->Camera_Setting = hkcoglPanelCameraSetting2;
 			this->hkoglPanelControl1->Location = System::Drawing::Point(0, 24);
 			this->hkoglPanelControl1->Name = L"hkoglPanelControl1";
-			hkcoglPanelPixelFormat1->Accumu_Buffer_Bits = HKOGLPanel::HKCOGLPanelPixelFormat::PIXELBITS::BITS_0;
-			hkcoglPanelPixelFormat1->Alpha_Buffer_Bits = HKOGLPanel::HKCOGLPanelPixelFormat::PIXELBITS::BITS_0;
-			hkcoglPanelPixelFormat1->Stencil_Buffer_Bits = HKOGLPanel::HKCOGLPanelPixelFormat::PIXELBITS::BITS_0;
-			this->hkoglPanelControl1->Pixel_Format = hkcoglPanelPixelFormat1;
-			this->hkoglPanelControl1->Size = System::Drawing::Size(613, 430);
+			hkcoglPanelPixelFormat2->Accumu_Buffer_Bits = HKOGLPanel::HKCOGLPanelPixelFormat::PIXELBITS::BITS_0;
+			hkcoglPanelPixelFormat2->Alpha_Buffer_Bits = HKOGLPanel::HKCOGLPanelPixelFormat::PIXELBITS::BITS_0;
+			hkcoglPanelPixelFormat2->Stencil_Buffer_Bits = HKOGLPanel::HKCOGLPanelPixelFormat::PIXELBITS::BITS_0;
+			this->hkoglPanelControl1->Pixel_Format = hkcoglPanelPixelFormat2;
+			this->hkoglPanelControl1->Size = System::Drawing::Size(509, 454);
 			this->hkoglPanelControl1->TabIndex = 2;
 			this->hkoglPanelControl1->Load += gcnew System::EventHandler(this, &MyForm::hkoglPanelControl1_Load);
 			this->hkoglPanelControl1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::hkoglPanelControl1_Paint);
@@ -156,11 +171,60 @@ namespace OpenMesh_EX {
 			this->hkoglPanelControl1->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::hkoglPanelControl1_MouseUp);
 			this->hkoglPanelControl1->MouseWheel += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::hkoglPanelControl1_MouseWheel);
 			// 
+			// groupBox1
+			// 
+			this->groupBox1->Controls->Add(this->radioButton3);
+			this->groupBox1->Controls->Add(this->radioButton2);
+			this->groupBox1->Controls->Add(this->radioButton1);
+			this->groupBox1->Location = System::Drawing::Point(515, 45);
+			this->groupBox1->Name = L"groupBox1";
+			this->groupBox1->Size = System::Drawing::Size(114, 133);
+			this->groupBox1->TabIndex = 3;
+			this->groupBox1->TabStop = false;
+			this->groupBox1->Text = L"Pick Mode";
+			// 
+			// radioButton3
+			// 
+			this->radioButton3->AutoSize = true;
+			this->radioButton3->Location = System::Drawing::Point(6, 99);
+			this->radioButton3->Name = L"radioButton3";
+			this->radioButton3->Size = System::Drawing::Size(69, 16);
+			this->radioButton3->TabIndex = 2;
+			this->radioButton3->TabStop = true;
+			this->radioButton3->Text = L"DEL Face";
+			this->radioButton3->UseVisualStyleBackColor = true;
+			this->radioButton3->Click += gcnew System::EventHandler(this, &MyForm::radioButton3_Click);
+			// 
+			// radioButton2
+			// 
+			this->radioButton2->AutoSize = true;
+			this->radioButton2->Location = System::Drawing::Point(6, 59);
+			this->radioButton2->Name = L"radioButton2";
+			this->radioButton2->Size = System::Drawing::Size(70, 16);
+			this->radioButton2->TabIndex = 1;
+			this->radioButton2->TabStop = true;
+			this->radioButton2->Text = L"Pick Point";
+			this->radioButton2->UseVisualStyleBackColor = true;
+			this->radioButton2->Click += gcnew System::EventHandler(this, &MyForm::radioButton2_Click);
+			// 
+			// radioButton1
+			// 
+			this->radioButton1->AutoSize = true;
+			this->radioButton1->Location = System::Drawing::Point(6, 21);
+			this->radioButton1->Name = L"radioButton1";
+			this->radioButton1->Size = System::Drawing::Size(67, 16);
+			this->radioButton1->TabIndex = 0;
+			this->radioButton1->TabStop = true;
+			this->radioButton1->Text = L"Pick Face";
+			this->radioButton1->UseVisualStyleBackColor = true;
+			this->radioButton1->Click += gcnew System::EventHandler(this, &MyForm::radioButton1_Click);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 12);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(613, 454);
+			this->ClientSize = System::Drawing::Size(641, 479);
+			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->hkoglPanelControl1);
 			this->Controls->Add(this->menuStrip1);
 			this->MainMenuStrip = this->menuStrip1;
@@ -168,6 +232,8 @@ namespace OpenMesh_EX {
 			this->Text = L"OpenMesh_EX";
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
+			this->groupBox1->ResumeLayout(false);
+			this->groupBox1->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -181,20 +247,13 @@ private: System::Void hkoglPanelControl1_Load(System::Object^  sender, System::E
 		std::cout << "GLEW is not initialized\n";
 		return;
 	}
+	InitOpenGL();
 	InitData();
 
 }
 private: System::Void hkoglPanelControl1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e)
 {
-	/*glEnable(GL_COLOR_MATERIAL);
-	glClearColor(1.0, 1.0, 1.0, 1.0);
-	glClear(GL_COLOR_BUFFER_BIT);*/
-
-	//point center;
-	//center[0] = 0.0;
-	//center[1] = 0.0;
-	//center[2] = 0.0;
-	//camera.setupGL(xf * center, 1.0);
+	InitOpenGL();
 	RenderMeshWindow();
 	/*glPushMatrix();
 	glMatrixMode(GL_MODELVIEW);
@@ -203,6 +262,8 @@ private: System::Void hkoglPanelControl1_Paint(System::Object^  sender, System::
 		mesh->Render_SolidWireframe();
 	glPopMatrix();*/
 }
+
+#pragma region Mouse Action (Camera Controller)
 private: System::Void hkoglPanelControl1_MouseDown(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e)
 {
 	if (e->Button == System::Windows::Forms::MouseButtons::Left )
@@ -213,6 +274,11 @@ private: System::Void hkoglPanelControl1_MouseDown(System::Object^  sender, Syst
 	else if (e->Button == System::Windows::Forms::MouseButtons::Middle)
 	{
 		Mouse_Press(MIDDLE_BUTTON, e->X, e->Y);
+		hkoglPanelControl1->Invalidate();
+	}
+	else if (e->Button == System::Windows::Forms::MouseButtons::Right)
+	{
+		Mouse_Press(RIGHT_BUTTON, e->X, e->Y);
 		hkoglPanelControl1->Invalidate();
 	}
 }
@@ -243,6 +309,48 @@ private: System::Void hkoglPanelControl1_MouseWheel(System::Object^  sender, Sys
 		hkoglPanelControl1->Invalidate();
 	}
 }
+
+private: System::Void hkoglPanelControl1_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e)
+{
+	if (e->KeyChar == (char)System::Windows::Forms::Keys::W)
+	{
+		keypress_function(Camera_Movement::FORWARD);
+	}
+	if (e->KeyChar == (char)System::Windows::Forms::Keys::A)
+	{
+
+		keypress_function(Camera_Movement::LEFT);
+	}
+	if (e->KeyChar == (char)System::Windows::Forms::Keys::S)
+	{
+		AllocConsole();
+		freopen("CONOUT$", "w", stdout);
+		std::cout << "S" << std::endl;
+		keypress_function(Camera_Movement::BACKWARD);
+	}
+	if (e->KeyChar == (char)System::Windows::Forms::Keys::D)
+	{
+		keypress_function(Camera_Movement::RIGHT);
+	}
+	hkoglPanelControl1->Invalidate();
+}
+
+private: System::Void hkoglPanelControl1_MouseUp(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e)
+{
+	if (e->Button == System::Windows::Forms::MouseButtons::Left)
+	{
+		Mouse_Release(LEFT_BUTTON, e->X, e->Y);
+		hkoglPanelControl1->Invalidate();
+	}
+	else if (e->Button == System::Windows::Forms::MouseButtons::Middle)
+	{
+		Mouse_Release(MIDDLE_BUTTON, e->X, e->Y);
+		hkoglPanelControl1->Invalidate();
+	}
+}
+#pragma endregion
+
+#pragma region Load/Save
 private: System::Void loadModelToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e)
 {
 	openModelDialog->Filter = "Model(*.obj)|*obj";
@@ -277,42 +385,28 @@ private: System::Void saveModelDialog_FileOk(System::Object^  sender, System::Co
 	if (SaveFile(filename, mesh))
 		std::cout << filename << std::endl;
 }
-private: System::Void hkoglPanelControl1_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) 
-{
-	if (e->KeyChar == (char)System::Windows::Forms::Keys::W)
-	{
-		keypress_function(Camera_Movement::FORWARD);
-	}
-	if (e->KeyChar == (char)System::Windows::Forms::Keys::A)
-	{
+#pragma endregion
 
-		keypress_function(Camera_Movement::LEFT);
-	}
-	if (e->KeyChar == (char)System::Windows::Forms::Keys::S)
-	{
-		AllocConsole();
-		freopen("CONOUT$", "w", stdout);
-		std::cout << "S" << std::endl;
-		keypress_function(Camera_Movement::BACKWARD);
-	}
-	if (e->KeyChar == (char)System::Windows::Forms::Keys::D)
-	{
-		keypress_function(Camera_Movement::RIGHT);
-	}
-	hkoglPanelControl1->Invalidate();
-}
-private: System::Void hkoglPanelControl1_MouseUp(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e)
+
+
+
+private: System::Void radioButton1_Click(System::Object^ sender, System::EventArgs^ e) 
 {
-	if (e->Button == System::Windows::Forms::MouseButtons::Left)
-	{
-		Mouse_Release(LEFT_BUTTON, e->X, e->Y);
-		hkoglPanelControl1->Invalidate();
-	}
-	else if (e->Button == System::Windows::Forms::MouseButtons::Middle)
-	{
-		Mouse_Release(MIDDLE_BUTTON, e->X, e->Y);
-		hkoglPanelControl1->Invalidate();
-	}
+	PickMode = 1;
+	//hkoglPanelControl1->Invalidate();
+	cout << PickMode << " in radioButton1" << endl;
+}
+private: System::Void radioButton2_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	PickMode = 2;
+	//hkoglPanelControl1->Invalidate();
+	cout << PickMode << " in radioButton2" << endl;
+}
+private: System::Void radioButton3_Click(System::Object^ sender, System::EventArgs^ e) 
+{	
+	PickMode = 3;
+	//hkoglPanelControl1->Invalidate();
+	cout << PickMode << " in radioButton3" << endl;
 }
 };
 }

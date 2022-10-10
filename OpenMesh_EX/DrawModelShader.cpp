@@ -17,17 +17,17 @@ bool DrawModelShader::Init()
 		return false;
 	}
 
-	if (!AddShader(GL_VERTEX_SHADER, ResourcePath::shaderPath + "drawmodel.vs.glsl"))
+	if (!AddShader(GL_VERTEX_SHADER, ResourcePath::shaderPath + "drawModel.vs.glsl"))
 	{
 		return false;
 	}
 
-	if (!AddShader(GL_GEOMETRY_SHADER, ResourcePath::shaderPath + "drawmodel.gs.glsl"))
+	if (!AddShader(GL_GEOMETRY_SHADER, ResourcePath::shaderPath + "drawModel.gs.glsl"))
 	{
 		return false;
 	}
 
-	if (!AddShader(GL_FRAGMENT_SHADER, ResourcePath::shaderPath + "drawmodel.fs.glsl"))
+	if (!AddShader(GL_FRAGMENT_SHADER, ResourcePath::shaderPath + "drawModel.fs.glsl"))
 	{
 		return false;
 	}
