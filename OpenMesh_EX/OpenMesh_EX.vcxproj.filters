@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="原始程式檔">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="標頭檔">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="資源檔">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Tools">
+      <UniqueIdentifier>{df41bd54-2712-48cc-9dbf-0ab309e57d0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Include">
+      <UniqueIdentifier>{2b7a873a-e7ca-44bd-9247-f099902cd690}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shader">
+      <UniqueIdentifier>{cef7b88c-15aa-4a1b-aa43-b4b48b2c8c8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\DrawShader">
+      <UniqueIdentifier>{3547e310-5f11-4ccc-a79a-a90f79891ec3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="原始程式檔\DrawShader">
+      <UniqueIdentifier>{1e3002cd-56ce-4bb7-8216-f260bfbc277e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="MyForm.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh\GUA_OM.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh\GLCamera.cc">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="DotNetUitilities.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshObject.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="ViewManager.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="Common.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderCtrl.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="PickingShader.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="PickingTexture.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawModelShader.cpp">
+      <Filter>原始程式檔\DrawShader</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawPickingFaceShader.cpp">
+      <Filter>原始程式檔\DrawShader</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawPointShader.cpp">
+      <Filter>原始程式檔\DrawShader</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawTextureShader.cpp">
+      <Filter>原始程式檔\DrawShader</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MyForm.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="DotNetUtilities.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh\GUA_OM.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshObject.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="Common.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="Try.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewManager.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\Common.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\ResourcePath.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\ShaderObject.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\ViewManager.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderCtrl.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="PickingShader.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="PickingTexture.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawModelShader.h">
+      <Filter>標頭檔\DrawShader</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawPickingFaceShader.h">
+      <Filter>標頭檔\DrawShader</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawPointShader.h">
+      <Filter>標頭檔\DrawShader</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawTextureShader.h">
+      <Filter>標頭檔\DrawShader</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MyForm.resx">
+      <Filter>資源檔</Filter>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shader\drawModel.fs.glsl">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shader\drawModel.gs.glsl">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shader\drawModel.vs.glsl">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shader\drawPickingFace.fs.glsl">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shader\drawPickingFace.gs.glsl">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shader\drawPickingFace.vs.glsl">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shader\drawPoint.fs.glsl">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shader\drawPoint.vs.glsl">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shader\drawTexture.fs.glsl">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shader\drawTexture.vs.glsl">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shader\picking.fs.glsl">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shader\picking.vs.glsl">
+      <Filter>Shader</Filter>
+    </None>
+  </ItemGroup>
+</Project>

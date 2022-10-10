@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{4F49422E-CEC6-4FD9-93E4-CC1B681A5FF3}</ProjectGuid>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <Keyword>ManagedCProj</Keyword>
+    <RootNamespace>OpenMesh_EX</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CLRSupport>true</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CLRSupport>true</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(SolutionDir)Include;..\OpenMesh-5.2\src;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Libs\VC;$(SolutionDir)Libs;..\OpenMesh-5.2\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>D:\OpenMesh_EX\Include;..\OpenMesh-5.2\src;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\OpenMesh_EX\Libs\VC;D:\OpenMesh_EX\Libs;..\OpenMesh-5.2\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_USE_MATH_DEFINES;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>glu32.lib;opengl32.lib;freeglut.lib;OpenMeshCored.lib</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
+      <EntryPointSymbol>main</EntryPointSymbol>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_USE_MATH_DEFINES;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>glu32.lib;opengl32.lib;freeglut.lib;OpenMeshCore.lib</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
+      <EntryPointSymbol>main</EntryPointSymbol>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Reference Include="HKOGLPanel">
+      <HintPath>..\HKOGLPanel.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Common.cpp" />
+    <ClCompile Include="DotNetUitilities.cpp" />
+    <ClCompile Include="DrawModelShader.cpp" />
+    <ClCompile Include="DrawPickingFaceShader.cpp" />
+    <ClCompile Include="DrawPointShader.cpp" />
+    <ClCompile Include="DrawTextureShader.cpp" />
+    <ClCompile Include="MeshObject.cpp" />
+    <ClCompile Include="Mesh\GLCamera.cc" />
+    <ClCompile Include="Mesh\GUA_OM.cpp" />
+    <ClCompile Include="MyForm.cpp" />
+    <ClCompile Include="PickingShader.cpp" />
+    <ClCompile Include="PickingTexture.cpp" />
+    <ClCompile Include="ShaderCtrl.cpp" />
+    <ClCompile Include="ViewManager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Include\Common.h" />
+    <ClInclude Include="..\Include\ResourcePath.h" />
+    <ClInclude Include="..\Include\ShaderObject.h" />
+    <ClInclude Include="..\Include\ViewManager.h" />
+    <ClInclude Include="Common.h" />
+    <ClInclude Include="DotNetUtilities.h" />
+    <ClInclude Include="DrawModelShader.h" />
+    <ClInclude Include="DrawPickingFaceShader.h" />
+    <ClInclude Include="DrawPointShader.h" />
+    <ClInclude Include="DrawTextureShader.h" />
+    <ClInclude Include="MeshObject.h" />
+    <ClInclude Include="Mesh\GUA_OM.h" />
+    <ClInclude Include="MyForm.h">
+      <FileType>CppForm</FileType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="PickingShader.h" />
+    <ClInclude Include="PickingTexture.h" />
+    <ClInclude Include="ShaderCtrl.h" />
+    <ClInclude Include="Try.h" />
+    <ClInclude Include="ViewManager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MyForm.resx">
+      <DependentUpon>MyForm.h</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shader\drawModel.fs.glsl" />
+    <None Include="Shader\drawModel.gs.glsl" />
+    <None Include="Shader\drawModel.vs.glsl" />
+    <None Include="Shader\drawPickingFace.fs.glsl" />
+    <None Include="Shader\drawPickingFace.gs.glsl" />
+    <None Include="Shader\drawPickingFace.vs.glsl" />
+    <None Include="Shader\drawPoint.fs.glsl" />
+    <None Include="Shader\drawPoint.vs.glsl" />
+    <None Include="Shader\drawTexture.fs.glsl" />
+    <None Include="Shader\drawTexture.vs.glsl" />
+    <None Include="Shader\picking.fs.glsl" />
+    <None Include="Shader\picking.vs.glsl" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
