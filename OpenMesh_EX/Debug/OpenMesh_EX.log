@@ -1,24 +1,688 @@
-﻿  MyForm.cpp
-C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Try.h(46,24): warning C4305: '正在初始化': 從 'double' 轉換為 'float'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Try.h(95,35): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
-C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Try.h(95,22): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
-C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Try.h(104,32): warning C4244: '引數': 將 'float' 轉換為 'GLsizei'，由於類型不同，可能導致資料遺失
-C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Try.h(104,19): warning C4244: '引數': 將 'float' 轉換為 'GLsizei'，由於類型不同，可能導致資料遺失
-C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Try.h(109,16): warning C4244: '=': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
-C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Try.h(110,17): warning C4244: '=': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
-C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Try.h(113,33): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
-C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Try.h(113,20): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
-C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Try.h(114,32): warning C4244: '引數': 將 'float' 轉換為 'GLsizei'，由於類型不同，可能導致資料遺失
-C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Try.h(114,19): warning C4244: '引數': 將 'float' 轉換為 'GLsizei'，由於類型不同，可能導致資料遺失
-C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Try.h(117,37): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
-C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Try.h(117,24): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
-C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Try.h(118,35): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
-C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Try.h(118,22): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
-C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Try.h(184,16): warning C4244: '正在初始化': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
-C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Try.h(221,65): warning C4244: '引數': 將 'float' 轉換為 'unsigned int'，由於類型不同，可能導致資料遺失
-C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Mesh\timestamp.h(14,1): warning C4005: 'WIN32_LEAN_AND_MEAN': 巨集重複定義
-C:\Users\PC14\Desktop\OpenMesh_EX\Include\FreeGLUT\freeglut_std.h(58): message : 請參閱 'WIN32_LEAN_AND_MEAN' 之前的定義
-C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\MyForm.h(345,3): warning C4996: 'freopen': This function or variable may be unsafe. Consider using freopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\MyForm.cpp(6,1): warning C4829: 函式 main 的參數可能不正確。請考慮 'int main(Platform::Array<Platform::String^>^ argv)'
+﻿  Common.cpp
+C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Common.cpp(156,25): warning C4018: '<': signed/unsigned 不相符
+C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Common.cpp(158,26): warning C4018: '<': signed/unsigned 不相符
+C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Common.cpp(174,13): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(687): warning C4793: '`anonymous namespace'::stbi__cpuid3': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2117): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2118): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2119): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2120): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2121): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2122): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2123): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2124): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2127): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2128): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2131): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2132): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2133): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2134): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2135): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2136): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2137): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2138): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2141): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2145): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2145): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2146): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2146): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2147): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2147): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2148): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2148): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2151): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2151): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2152): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2152): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2153): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2153): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2154): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2154): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2157): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2157): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2158): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2158): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2159): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2159): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2160): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2160): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2164): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2168): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2169): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2170): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2171): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2174): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2174): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2175): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2175): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2178): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2178): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2179): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2179): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2182): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2182): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2183): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2183): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2186): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2187): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2187): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2188): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2189): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2189): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2190): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2191): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2191): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2192): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2193): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2193): warning C4793: '`anonymous namespace'::stbi__idct_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(3138): warning C4793: '`anonymous namespace'::stbi__YCbCr_to_RGB_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(3139): warning C4793: '`anonymous namespace'::stbi__YCbCr_to_RGB_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(3140): warning C4793: '`anonymous namespace'::stbi__YCbCr_to_RGB_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(3141): warning C4793: '`anonymous namespace'::stbi__YCbCr_to_RGB_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(3142): warning C4793: '`anonymous namespace'::stbi__YCbCr_to_RGB_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(3143): warning C4793: '`anonymous namespace'::stbi__YCbCr_to_RGB_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(3144): warning C4793: '`anonymous namespace'::stbi__YCbCr_to_RGB_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(3148): warning C4793: '`anonymous namespace'::stbi__YCbCr_to_RGB_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(3149): warning C4793: '`anonymous namespace'::stbi__YCbCr_to_RGB_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(3150): warning C4793: '`anonymous namespace'::stbi__YCbCr_to_RGB_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(3151): warning C4793: '`anonymous namespace'::stbi__YCbCr_to_RGB_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(3152): warning C4793: '`anonymous namespace'::stbi__YCbCr_to_RGB_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(3155): warning C4793: '`anonymous namespace'::stbi__YCbCr_to_RGB_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(3156): warning C4793: '`anonymous namespace'::stbi__YCbCr_to_RGB_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(3156): warning C4793: '`anonymous namespace'::stbi__YCbCr_to_RGB_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(3157): warning C4793: '`anonymous namespace'::stbi__YCbCr_to_RGB_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(3157): warning C4793: '`anonymous namespace'::stbi__YCbCr_to_RGB_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(3160): warning C4793: '`anonymous namespace'::stbi__YCbCr_to_RGB_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(3161): warning C4793: '`anonymous namespace'::stbi__YCbCr_to_RGB_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(3162): warning C4793: '`anonymous namespace'::stbi__YCbCr_to_RGB_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(3163): warning C4793: '`anonymous namespace'::stbi__YCbCr_to_RGB_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(3164): warning C4793: '`anonymous namespace'::stbi__YCbCr_to_RGB_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(3165): warning C4793: '`anonymous namespace'::stbi__YCbCr_to_RGB_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(3166): warning C4793: '`anonymous namespace'::stbi__YCbCr_to_RGB_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(3167): warning C4793: '`anonymous namespace'::stbi__YCbCr_to_RGB_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(3168): warning C4793: '`anonymous namespace'::stbi__YCbCr_to_RGB_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(3171): warning C4793: '`anonymous namespace'::stbi__YCbCr_to_RGB_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(3172): warning C4793: '`anonymous namespace'::stbi__YCbCr_to_RGB_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(3173): warning C4793: '`anonymous namespace'::stbi__YCbCr_to_RGB_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(3176): warning C4793: '`anonymous namespace'::stbi__YCbCr_to_RGB_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(3177): warning C4793: '`anonymous namespace'::stbi__YCbCr_to_RGB_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(3180): warning C4793: '`anonymous namespace'::stbi__YCbCr_to_RGB_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(3181): warning C4793: '`anonymous namespace'::stbi__YCbCr_to_RGB_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(3182): warning C4793: '`anonymous namespace'::stbi__YCbCr_to_RGB_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(3183): warning C4793: '`anonymous namespace'::stbi__YCbCr_to_RGB_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(3186): warning C4793: '`anonymous namespace'::stbi__YCbCr_to_RGB_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(3187): warning C4793: '`anonymous namespace'::stbi__YCbCr_to_RGB_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2960): warning C4793: '`anonymous namespace'::stbi__resample_row_hv_2_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2961): warning C4793: '`anonymous namespace'::stbi__resample_row_hv_2_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2962): warning C4793: '`anonymous namespace'::stbi__resample_row_hv_2_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2963): warning C4793: '`anonymous namespace'::stbi__resample_row_hv_2_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2964): warning C4793: '`anonymous namespace'::stbi__resample_row_hv_2_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2965): warning C4793: '`anonymous namespace'::stbi__resample_row_hv_2_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2966): warning C4793: '`anonymous namespace'::stbi__resample_row_hv_2_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2967): warning C4793: '`anonymous namespace'::stbi__resample_row_hv_2_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2974): warning C4793: '`anonymous namespace'::stbi__resample_row_hv_2_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2975): warning C4793: '`anonymous namespace'::stbi__resample_row_hv_2_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2976): warning C4793: '`anonymous namespace'::stbi__resample_row_hv_2_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2977): warning C4793: '`anonymous namespace'::stbi__resample_row_hv_2_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2983): warning C4793: '`anonymous namespace'::stbi__resample_row_hv_2_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2984): warning C4793: '`anonymous namespace'::stbi__resample_row_hv_2_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2985): warning C4793: '`anonymous namespace'::stbi__resample_row_hv_2_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2986): warning C4793: '`anonymous namespace'::stbi__resample_row_hv_2_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2987): warning C4793: '`anonymous namespace'::stbi__resample_row_hv_2_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2988): warning C4793: '`anonymous namespace'::stbi__resample_row_hv_2_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2989): warning C4793: '`anonymous namespace'::stbi__resample_row_hv_2_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2992): warning C4793: '`anonymous namespace'::stbi__resample_row_hv_2_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2993): warning C4793: '`anonymous namespace'::stbi__resample_row_hv_2_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2994): warning C4793: '`anonymous namespace'::stbi__resample_row_hv_2_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2995): warning C4793: '`anonymous namespace'::stbi__resample_row_hv_2_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2998): warning C4793: '`anonymous namespace'::stbi__resample_row_hv_2_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\STB\stb_image.h(2999): warning C4793: '`anonymous namespace'::stbi__resample_row_hv_2_simd': 函式會編譯成機器碼:
+  	找到受控碼中不支援的內建
   Common.obj : 發現 MSIL 模組。MSIL 的累加連結已停用。正在執行完整連結
   OpenMesh_EX.vcxproj -> C:\Users\PC14\Desktop\OpenMesh_EX\Debug\OpenMesh_EX.exe

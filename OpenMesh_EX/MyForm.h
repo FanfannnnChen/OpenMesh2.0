@@ -390,6 +390,7 @@ private: System::Void saveModelDialog_FileOk(System::Object^  sender, System::Co
 	std::string filename;
 	MarshalString(saveModelDialog->FileName, filename);
 
+	// TODO mesh -> MeshObject.moede
 	if (SaveFile(filename, mesh))
 		std::cout << filename << std::endl;
 }

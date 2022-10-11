@@ -88,20 +88,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Common.cpp" />
+    <ClCompile Include="Common.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
+    </ClCompile>
     <ClCompile Include="DotNetUitilities.cpp" />
     <ClCompile Include="DrawModelShader.cpp" />
     <ClCompile Include="DrawPickingFaceShader.cpp" />
     <ClCompile Include="DrawPointShader.cpp" />
     <ClCompile Include="DrawTextureShader.cpp" />
-    <ClCompile Include="MeshObject.cpp" />
+    <ClCompile Include="MeshObject.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
+    </ClCompile>
     <ClCompile Include="Mesh\GLCamera.cc" />
     <ClCompile Include="Mesh\GUA_OM.cpp" />
     <ClCompile Include="MyForm.cpp" />
-    <ClCompile Include="PickingShader.cpp" />
-    <ClCompile Include="PickingTexture.cpp" />
-    <ClCompile Include="ShaderCtrl.cpp" />
-    <ClCompile Include="ViewManager.cpp" />
+    <ClCompile Include="PickingShader.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
+    </ClCompile>
+    <ClCompile Include="PickingTexture.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
+    </ClCompile>
+    <ClCompile Include="ShaderCtrl.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
+    </ClCompile>
+    <ClCompile Include="ViewManager.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Include\Common.h" />
