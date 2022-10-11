@@ -108,7 +108,7 @@ bool DrawModelShader::Init()
 		return false;
 	}
 
-
+	puts("drawModelShader Success");
 	return true;
 }
 

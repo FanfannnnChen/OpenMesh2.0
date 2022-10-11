@@ -43,6 +43,7 @@ bool PickingTexture::Init(int width, int height)
 	glBindRenderbuffer(GL_RENDERBUFFER, 0);
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
+	puts("pickingTexture Success");
 	return Common::CheckGLError();
 }
 

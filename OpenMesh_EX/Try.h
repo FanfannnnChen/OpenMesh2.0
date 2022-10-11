@@ -78,54 +78,11 @@ void InitData()
 	ResourcePath::modelPath = "./resource/3DModel/UnionSphere.obj";
 
 	//Initialize shaders
-	if (drawModelShader.Init())
-	{
-		puts("drawModelShader Success");
-	}
-	else
-	{
-		puts("drawModelShader Failed");
-	}
-
-	if (pickingShader.Init())
-	{
-		puts("pickingShader Success");
-	}
-	else
-	{
-		puts("pickingShader Failed");
-	}
-	
-	if (drawPickingFaceShader.Init())
-	{
-		puts("drawPickingFaceShader Success");
-	}
-	else
-	{
-		puts("drawPickingFaceShader Failed");
-	}
-	
-	if (drawPointShader.Init())
-	{
-		puts("drawPointShader Success");
-	}
-	else
-	{
-		puts("drawPointShader Failed");
-	}
-	if (pickingTexture.Init(windowWidth, windowHeight))
-	{
-		puts("pickingTexture Success");
-	}
-	else
-	{
-		puts("pickingTexture Failed");
-	}
-	
-	/*drawModelShader.Init();
+	drawModelShader.Init();
 	pickingShader.Init();
 	drawPickingFaceShader.Init();
-	drawPointShader.Init();*/
+	drawPointShader.Init();
+	pickingTexture.Init(windowWidth, windowHeight);
 
 	glGenBuffers(1, &vboPoint);
 
@@ -287,6 +244,7 @@ void Mouse_Press(int button, int x, int y)
 	{
 		isRightButtonPress = true;
 		SelectionHandler(x, y);
+		cout << "RIGHT_BUTTON true " << isRightButtonPress << endl;
 	}
 }
 
@@ -298,6 +256,7 @@ void Mouse_Release(int button, int x, int y)
 	if (button == RIGHT_BUTTON)
 	{
 		isRightButtonPress = false;
+		cout << "RIGHT_BUTTON false " << isRightButtonPress << endl;
 	}
 }
 

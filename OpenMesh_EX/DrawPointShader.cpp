@@ -52,7 +52,7 @@ bool DrawPointShader::Init()
 		return false;
 	}
 
-
+	puts("drawPointShader Success");
 	return true;
 }
 

@@ -253,7 +253,7 @@ private: System::Void hkoglPanelControl1_Load(System::Object^  sender, System::E
 }
 private: System::Void hkoglPanelControl1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e)
 {
-	InitOpenGL();
+	//InitOpenGL();
 	RenderMeshWindow();
 	/*glPushMatrix();
 	glMatrixMode(GL_MODELVIEW);
@@ -315,6 +315,24 @@ private: System::Void hkoglPanelControl1_MouseWheel(System::Object^  sender, Sys
 	}
 }
 
+private: System::Void hkoglPanelControl1_MouseUp(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e)
+{
+	if (e->Button == System::Windows::Forms::MouseButtons::Left)
+	{
+		Mouse_Release(LEFT_BUTTON, e->X, e->Y);
+		hkoglPanelControl1->Invalidate();
+	}
+	else if (e->Button == System::Windows::Forms::MouseButtons::Middle)
+	{
+		Mouse_Release(MIDDLE_BUTTON, e->X, e->Y);
+		hkoglPanelControl1->Invalidate();
+	}
+	if (e->Button == System::Windows::Forms::MouseButtons::Right)
+	{
+		Mouse_Release(RIGHT_BUTTON, e->X, e->Y);
+		hkoglPanelControl1->Invalidate();
+	}
+}
 private: System::Void hkoglPanelControl1_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e)
 {
 	if (e->KeyChar == (char)System::Windows::Forms::Keys::W)
@@ -340,19 +358,7 @@ private: System::Void hkoglPanelControl1_KeyPress(System::Object^ sender, System
 	hkoglPanelControl1->Invalidate();
 }
 
-private: System::Void hkoglPanelControl1_MouseUp(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e)
-{
-	if (e->Button == System::Windows::Forms::MouseButtons::Left)
-	{
-		Mouse_Release(LEFT_BUTTON, e->X, e->Y);
-		hkoglPanelControl1->Invalidate();
-	}
-	else if (e->Button == System::Windows::Forms::MouseButtons::Middle)
-	{
-		Mouse_Release(MIDDLE_BUTTON, e->X, e->Y);
-		hkoglPanelControl1->Invalidate();
-	}
-}
+
 #pragma endregion
 
 #pragma region Load/Save

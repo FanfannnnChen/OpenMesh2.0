@@ -53,6 +53,7 @@ bool DrawPickingFaceShader::Init()
 		return false;
 	}
 
+	puts("drawPickingFaceShader Success");
 	return true;
 }
 

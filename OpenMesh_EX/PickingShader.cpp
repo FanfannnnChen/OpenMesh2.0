@@ -47,6 +47,7 @@ bool PickingShader::Init()
 		return false;
 	}
 	
+	puts("pickingShader Success");
 	return true;
 }
 
