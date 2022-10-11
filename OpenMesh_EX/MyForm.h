@@ -294,6 +294,11 @@ private: System::Void hkoglPanelControl1_MouseMove(System::Object^  sender, Syst
 		Mouse_Moving(e->X, e->Y);
 		hkoglPanelControl1->Invalidate();
 	}
+	else if (e->Button == System::Windows::Forms::MouseButtons::Right)
+	{
+		Mouse_Moving(e->X, e->Y);
+		hkoglPanelControl1->Invalidate();
+	}
 
 }
 private: System::Void hkoglPanelControl1_MouseWheel(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e)
@@ -362,13 +367,15 @@ private: System::Void openModelDialog_FileOk(System::Object^  sender, System::Co
 	std::string filename;
 	MarshalString(openModelDialog->FileName, filename);
 
-	if (mesh != NULL)
+	// My_LoadModel(filename);
+
+	/*if (mesh != NULL)
 		delete mesh;
 
 	mesh = new Tri_Mesh;
 
 	if (ReadFile(filename, mesh))
-		std::cout << filename << std::endl;
+		std::cout << filename << std::endl;*/
 
 	hkoglPanelControl1->Invalidate();
 }
@@ -393,19 +400,19 @@ private: System::Void saveModelDialog_FileOk(System::Object^  sender, System::Co
 private: System::Void radioButton1_Click(System::Object^ sender, System::EventArgs^ e) 
 {
 	PickMode = 1;
-	//hkoglPanelControl1->Invalidate();
+	hkoglPanelControl1->Invalidate();
 	cout << PickMode << " in radioButton1" << endl;
 }
 private: System::Void radioButton2_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	PickMode = 2;
-	//hkoglPanelControl1->Invalidate();
+	hkoglPanelControl1->Invalidate();
 	cout << PickMode << " in radioButton2" << endl;
 }
 private: System::Void radioButton3_Click(System::Object^ sender, System::EventArgs^ e) 
 {	
 	PickMode = 3;
-	//hkoglPanelControl1->Invalidate();
+	hkoglPanelControl1->Invalidate();
 	cout << PickMode << " in radioButton3" << endl;
 }
 };
