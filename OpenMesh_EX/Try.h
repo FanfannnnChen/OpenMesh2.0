@@ -14,10 +14,19 @@
 #define WHEEL_UP     1
 #define WHEEL_DOWN  -1
 
-#define ADD_FACE		1
-#define SELECT_POINT	2
-#define DEL_FACE		3
-extern int PickMode = 0;
+//#define ADD_FACE		1
+//#define SELECT_POINT	2
+//#define DEL_FACE		3
+//extern int PickMode = 0;
+
+enum PickMode
+{
+	None,
+	ADD_FACE,
+	SELECT_POINT,
+	DEL_FACE,
+};
+PickMode pickMode = None;
 
 using namespace std;
 
@@ -72,10 +81,11 @@ void InitOpenGL()
 }
 
 
-void InitData()
+void InitData(string filename)
 {
 	ResourcePath::shaderPath = "./Shader/";
-	ResourcePath::modelPath = "./resource/3DModel/UnionSphere.obj";
+	// ResourcePath::modelPath = "./resource/3DModel/UnionSphere.obj";
+	ResourcePath::modelPath = filename;
 
 	//Initialize shaders
 	drawModelShader.Init();
@@ -91,6 +101,7 @@ void InitData()
 	cout << "end of InitData" << endl;
 
 	aspect = windowWidth * 1.0f / windowHeight;
+	glViewport(0, 0, windowWidth, windowHeight);
 }
 
 void Reshape(int width, int height)
@@ -150,9 +161,9 @@ void RenderMeshWindow()
 	drawModelShader.Disable();
 
 	// render selected face
-	if ( PickMode == ADD_FACE || PickMode == DEL_FACE)
+	if (pickMode == ADD_FACE || pickMode == DEL_FACE)
 	{
-		cout << PickMode << " in render selected face" << endl;
+		cout << pickMode << " in render selected face" << endl;
 		drawPickingFaceShader.Enable();
 		drawPickingFaceShader.SetMVMat(value_ptr(mvMat));
 		drawPickingFaceShader.SetPMat(value_ptr(pMat));
@@ -163,9 +174,9 @@ void RenderMeshWindow()
 	glUseProgram(0);
 
 	// render closest point
-	if (PickMode == SELECT_POINT)
+	if (pickMode == SELECT_POINT)
 	{
-		cout << PickMode << " in render closest point" << endl;
+		cout << pickMode << " in render closest point" << endl;
 		if (updateFlag)
 		{
 			float depthValue = 0;
@@ -213,21 +224,21 @@ void SelectionHandler(unsigned int x, unsigned int y)
 		currentFaceID = faceID;
 	}
 
-	if (PickMode == ADD_FACE)
+	if (pickMode == ADD_FACE)
 	{
 		if (faceID != 0)
 		{
 			model.AddSelectedFace(faceID - 1);
 		}
 	}
-	else if (PickMode == DEL_FACE)
+	else if (pickMode == DEL_FACE)
 	{
 		if (faceID != 0)
 		{
 			model.DeleteSelectedFace(faceID - 1);
 		}
 	}
-	else if (PickMode == SELECT_POINT)
+	else if (pickMode == SELECT_POINT)
 	{
 		currentMouseX = x;
 		currentMouseY = y;

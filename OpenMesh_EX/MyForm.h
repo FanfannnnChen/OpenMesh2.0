@@ -11,9 +11,9 @@
 #define WHEEL_UP     1
 #define WHEEL_DOWN  -1
 
-#define ADD_FACE		1
-#define SELECT_POINT	2
-#define DEL_FACE		3
+//#define ADD_FACE		1
+//#define SELECT_POINT	2
+//#define DEL_FACE		3
 
 
 Tri_Mesh *mesh;
@@ -21,6 +21,7 @@ Tri_Mesh *mesh;
 xform xf;
 GLCamera camera;
 float fov = 0.7f;
+std::string filename = "./resource/3DModel/UnionSphere.obj";	// load model
 
 static const Mouse::button physical_to_logical_map[] = {
 	Mouse::NONE, Mouse::ROTATE, Mouse::MOVEXY, Mouse::MOVEZ,
@@ -248,19 +249,13 @@ private: System::Void hkoglPanelControl1_Load(System::Object^  sender, System::E
 		return;
 	}
 	InitOpenGL();
-	InitData();
+	InitData(filename);
 
 }
 private: System::Void hkoglPanelControl1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e)
 {
 	//InitOpenGL();
 	RenderMeshWindow();
-	/*glPushMatrix();
-	glMatrixMode(GL_MODELVIEW);
-	glMultMatrixd((double *)xf);
-	if (mesh != NULL)
-		mesh->Render_SolidWireframe();
-	glPopMatrix();*/
 }
 
 #pragma region Mouse Action (Camera Controller)
@@ -370,10 +365,10 @@ private: System::Void loadModelToolStripMenuItem_Click(System::Object^  sender, 
 }
 private: System::Void openModelDialog_FileOk(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e)
 {
-	std::string filename;
+	// std::string filename;
 	MarshalString(openModelDialog->FileName, filename);
 
-	// My_LoadModel(filename);
+	InitData(filename);
 
 	/*if (mesh != NULL)
 		delete mesh;
@@ -402,24 +397,26 @@ private: System::Void saveModelDialog_FileOk(System::Object^  sender, System::Co
 
 
 
-
+#pragma region Radio Button Control
 private: System::Void radioButton1_Click(System::Object^ sender, System::EventArgs^ e) 
 {
-	PickMode = 1;
+	pickMode = PickMode::ADD_FACE;
 	hkoglPanelControl1->Invalidate();
-	cout << PickMode << " in radioButton1" << endl;
+	cout << pickMode << " in radioButton1 - ADD_FACE" << endl;
 }
 private: System::Void radioButton2_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	PickMode = 2;
+	pickMode = PickMode::SELECT_POINT;
 	hkoglPanelControl1->Invalidate();
-	cout << PickMode << " in radioButton2" << endl;
+	cout << pickMode << " in radioButton2 - SELECT_POINT" << endl;
 }
 private: System::Void radioButton3_Click(System::Object^ sender, System::EventArgs^ e) 
 {	
-	PickMode = 3;
+	pickMode = PickMode::DEL_FACE;
 	hkoglPanelControl1->Invalidate();
-	cout << PickMode << " in radioButton3" << endl;
+	cout << pickMode << " in radioButton3 - DEL_FACE" << endl;
 }
+#pragma endregion
+
 };
 }
