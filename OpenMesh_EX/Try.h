@@ -200,7 +200,7 @@ void RenderMeshWindow()
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
 		glEnableVertexAttribArray(0);
 
-		glm::vec4 pointColor(1.0, 1.0, 0.0, 1.0);
+		glm::vec4 pointColor(0.0, 0.85, 0.0, 1.0);
 		drawPointShader.Enable();
 		drawPointShader.SetMVMat(mvMat);
 		drawPointShader.SetPMat(pMat);

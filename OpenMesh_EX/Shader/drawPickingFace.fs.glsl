@@ -18,7 +18,7 @@ float edgeFactor()
 void main(void)
 {
 	float ef = edgeFactor();
-	vec4 faceColor = vec4(1.0, 0.0, 0.0, 1.0);
+	vec4 faceColor = vec4(0.792, 1.0, 0.439, 1.0);
 	vec4 edgeColor = vec4(0.0, 0.0, 0.0, 1.0);
 	vec4 color = mix(edgeColor, faceColor, ef);
 
