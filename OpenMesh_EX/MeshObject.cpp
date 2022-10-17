@@ -244,3 +244,20 @@ bool MeshObject::FindClosestPoint(unsigned int faceID, glm::vec3 worldPos, glm::
 	closestPos.z = closestPoint[2];
 	return true;
 }
+
+void MeshObject::SelectOneRing(int faceID)
+{
+	MyMesh::FaceHandle fh;
+	fh = model.mesh.face_handle(faceID);
+
+	std::vector< MyMesh::FaceHandle > OneRing;
+
+	for (MyMesh::FaceFaceIter ff_it = model.mesh.ff_iter(fh); ff_it.is_valid(); ++ff_it)
+	{
+		OneRing.push_back(*ff_it);
+	}
+	for (int i = 0; i < OneRing.size(); i++)
+	{
+		AddSelectedFace(OneRing[i].idx());
+	}
+}

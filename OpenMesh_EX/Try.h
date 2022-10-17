@@ -42,6 +42,7 @@ bool isRightButtonPress = false;
 GLuint currentFaceID = 0;
 int currentMouseX = 0;
 int currentMouseY = 0;
+bool OneRingCheck = false;
 
 float deltaTime = 0.015;
 float aspect;
@@ -229,6 +230,10 @@ void SelectionHandler(unsigned int x, unsigned int y)
 		if (faceID != 0)
 		{
 			model.AddSelectedFace(faceID - 1);
+			if (OneRingCheck)
+			{
+				model.SelectOneRing(faceID - 1);
+			}
 		}
 	}
 	else if (pickMode == DEL_FACE)

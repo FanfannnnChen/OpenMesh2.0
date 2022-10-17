@@ -75,6 +75,7 @@ namespace OpenMesh_EX {
 	private: System::Windows::Forms::RadioButton^ radioButton2;
 	private: System::Windows::Forms::RadioButton^ radioButton1;
 	private: System::Windows::Forms::RadioButton^ radioButton3;
+	private: System::Windows::Forms::CheckBox^ OneRing_checkBox1;
 	protected:
 
 	private:
@@ -103,6 +104,7 @@ namespace OpenMesh_EX {
 			this->radioButton3 = (gcnew System::Windows::Forms::RadioButton());
 			this->radioButton2 = (gcnew System::Windows::Forms::RadioButton());
 			this->radioButton1 = (gcnew System::Windows::Forms::RadioButton());
+			this->OneRing_checkBox1 = (gcnew System::Windows::Forms::CheckBox());
 			this->menuStrip1->SuspendLayout();
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
@@ -220,11 +222,23 @@ namespace OpenMesh_EX {
 			this->radioButton1->UseVisualStyleBackColor = true;
 			this->radioButton1->Click += gcnew System::EventHandler(this, &MyForm::radioButton1_Click);
 			// 
+			// OneRing_checkBox1
+			// 
+			this->OneRing_checkBox1->AutoSize = true;
+			this->OneRing_checkBox1->Location = System::Drawing::Point(522, 211);
+			this->OneRing_checkBox1->Name = L"OneRing_checkBox1";
+			this->OneRing_checkBox1->Size = System::Drawing::Size(69, 16);
+			this->OneRing_checkBox1->TabIndex = 4;
+			this->OneRing_checkBox1->Text = L"One Ring";
+			this->OneRing_checkBox1->UseVisualStyleBackColor = true;
+			this->OneRing_checkBox1->CheckedChanged += gcnew System::EventHandler(this, &MyForm::OneRing_checkBox1_CheckedChanged);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 12);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(641, 479);
+			this->Controls->Add(this->OneRing_checkBox1);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->hkoglPanelControl1);
 			this->Controls->Add(this->menuStrip1);
@@ -419,5 +433,16 @@ private: System::Void radioButton3_Click(System::Object^ sender, System::EventAr
 }
 #pragma endregion
 
+private: System::Void OneRing_checkBox1_CheckedChanged(System::Object^ sender, System::EventArgs^ e) 
+{
+	if (OneRing_checkBox1->Checked)
+	{
+		OneRingCheck = true;
+	}
+	else
+	{
+		OneRingCheck = false;
+	}
+}
 };
 }
