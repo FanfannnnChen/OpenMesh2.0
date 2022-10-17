@@ -76,6 +76,8 @@ namespace OpenMesh_EX {
 	private: System::Windows::Forms::RadioButton^ radioButton1;
 	private: System::Windows::Forms::RadioButton^ radioButton3;
 	private: System::Windows::Forms::CheckBox^ OneRing_checkBox1;
+	private: System::Windows::Forms::CheckBox^ NewMwsh_checkBox;
+	private: System::Windows::Forms::Button^ NewM_Button;
 	protected:
 
 	private:
@@ -105,6 +107,8 @@ namespace OpenMesh_EX {
 			this->radioButton2 = (gcnew System::Windows::Forms::RadioButton());
 			this->radioButton1 = (gcnew System::Windows::Forms::RadioButton());
 			this->OneRing_checkBox1 = (gcnew System::Windows::Forms::CheckBox());
+			this->NewMwsh_checkBox = (gcnew System::Windows::Forms::CheckBox());
+			this->NewM_Button = (gcnew System::Windows::Forms::Button());
 			this->menuStrip1->SuspendLayout();
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
@@ -233,11 +237,34 @@ namespace OpenMesh_EX {
 			this->OneRing_checkBox1->UseVisualStyleBackColor = true;
 			this->OneRing_checkBox1->CheckedChanged += gcnew System::EventHandler(this, &MyForm::OneRing_checkBox1_CheckedChanged);
 			// 
+			// NewMwsh_checkBox
+			// 
+			this->NewMwsh_checkBox->AutoSize = true;
+			this->NewMwsh_checkBox->Location = System::Drawing::Point(521, 243);
+			this->NewMwsh_checkBox->Name = L"NewMwsh_checkBox";
+			this->NewMwsh_checkBox->Size = System::Drawing::Size(73, 16);
+			this->NewMwsh_checkBox->TabIndex = 5;
+			this->NewMwsh_checkBox->Text = L"New Mesh";
+			this->NewMwsh_checkBox->UseVisualStyleBackColor = true;
+			this->NewMwsh_checkBox->CheckedChanged += gcnew System::EventHandler(this, &MyForm::NewMwsh_checkBox_CheckedChanged);
+			// 
+			// NewM_Button
+			// 
+			this->NewM_Button->Location = System::Drawing::Point(526, 295);
+			this->NewM_Button->Name = L"NewM_Button";
+			this->NewM_Button->Size = System::Drawing::Size(75, 23);
+			this->NewM_Button->TabIndex = 6;
+			this->NewM_Button->Text = L"New Mesh";
+			this->NewM_Button->UseVisualStyleBackColor = true;
+			this->NewM_Button->Click += gcnew System::EventHandler(this, &MyForm::NewM_Button_Click);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 12);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(641, 479);
+			this->Controls->Add(this->NewM_Button);
+			this->Controls->Add(this->NewMwsh_checkBox);
 			this->Controls->Add(this->OneRing_checkBox1);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->hkoglPanelControl1);
@@ -350,14 +377,10 @@ private: System::Void hkoglPanelControl1_KeyPress(System::Object^ sender, System
 	}
 	if (e->KeyChar == (char)System::Windows::Forms::Keys::A)
 	{
-
 		keypress_function(Camera_Movement::LEFT);
 	}
 	if (e->KeyChar == (char)System::Windows::Forms::Keys::S)
 	{
-		AllocConsole();
-		freopen("CONOUT$", "w", stdout);
-		std::cout << "S" << std::endl;
 		keypress_function(Camera_Movement::BACKWARD);
 	}
 	if (e->KeyChar == (char)System::Windows::Forms::Keys::D)
@@ -417,19 +440,16 @@ private: System::Void radioButton1_Click(System::Object^ sender, System::EventAr
 {
 	pickMode = PickMode::ADD_FACE;
 	hkoglPanelControl1->Invalidate();
-	cout << pickMode << " in radioButton1 - ADD_FACE" << endl;
 }
 private: System::Void radioButton2_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	pickMode = PickMode::SELECT_POINT;
 	hkoglPanelControl1->Invalidate();
-	cout << pickMode << " in radioButton2 - SELECT_POINT" << endl;
 }
 private: System::Void radioButton3_Click(System::Object^ sender, System::EventArgs^ e) 
 {	
 	pickMode = PickMode::DEL_FACE;
 	hkoglPanelControl1->Invalidate();
-	cout << pickMode << " in radioButton3 - DEL_FACE" << endl;
 }
 #pragma endregion
 
@@ -443,6 +463,22 @@ private: System::Void OneRing_checkBox1_CheckedChanged(System::Object^ sender, S
 	{
 		OneRingCheck = false;
 	}
+	hkoglPanelControl1->Invalidate();
 }
+private: System::Void NewMwsh_checkBox_CheckedChanged(System::Object^ sender, System::EventArgs^ e) 
+{
+	if (NewMwsh_checkBox->Checked)
+	{
+		NewMesh = true;
+	}
+	else NewMesh = false;
+	hkoglPanelControl1->Invalidate();
+}
+
+private: System::Void NewM_Button_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+	model.CreateSubMesh();
+}
+
 };
 }

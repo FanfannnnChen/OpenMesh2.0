@@ -227,7 +227,6 @@ void ViewManager::mouseMoveEvent(int x, int y)
 {
 	if (lmbDown)
 	{
-		std::cout << "----------lmbDown---------" << lmbDown << std::endl;
 		/*
 		* 當滑鼠左鍵按住,進行拖曳時的時候
 		* 計算移動的向量,進行相機的旋轉
@@ -241,7 +240,6 @@ void ViewManager::mouseMoveEvent(int x, int y)
 	}
 	else if (midDown)
 	{
-		std::cout << "----------midmove---------"  << midDown << std::endl;
 		vec2 coord = vec2(x, y);
 		vec2 diff = coord - midDownCoord;
 
@@ -276,7 +274,7 @@ void ViewManager::ProcessKeyboard(Camera_Movement direction, float deltaTime)
 */
 void ViewManager::wheelEvent(int direction)
 {
-	wheel_val = direction * 15.0f;
+	wheel_val = direction * 40.0f;
 	Zoom(wheel_val / 120.0f);
 }
 

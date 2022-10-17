@@ -42,7 +42,10 @@ bool isRightButtonPress = false;
 GLuint currentFaceID = 0;
 int currentMouseX = 0;
 int currentMouseY = 0;
+
+// checked box 
 bool OneRingCheck = false;
+bool NewMesh = false;
 
 float deltaTime = 0.015;
 float aspect;
@@ -123,6 +126,14 @@ void Reshape(int width, int height)
 
 void RenderMeshWindow()
 {
+
+	if (NewMesh)
+	{
+		
+		model.CreateSubMesh();
+		cout << "outttttttttttttttttt" << endl;
+	}
+	
 	//Update shaders' input variable	 
 	glm::mat4 mvMat = camera1.GetViewMatrix() * camera1.GetModelMatrix();
 	glm::mat4 pMat = camera1.GetProjectionMatrix(aspect);
@@ -164,7 +175,6 @@ void RenderMeshWindow()
 	// render selected face
 	if (pickMode == ADD_FACE || pickMode == DEL_FACE)
 	{
-		cout << pickMode << " in render selected face" << endl;
 		drawPickingFaceShader.Enable();
 		drawPickingFaceShader.SetMVMat(value_ptr(mvMat));
 		drawPickingFaceShader.SetPMat(value_ptr(pMat));
@@ -177,7 +187,6 @@ void RenderMeshWindow()
 	// render closest point
 	if (pickMode == SELECT_POINT)
 	{
-		cout << pickMode << " in render closest point" << endl;
 		if (updateFlag)
 		{
 			float depthValue = 0;
@@ -260,7 +269,6 @@ void Mouse_Press(int button, int x, int y)
 	{
 		isRightButtonPress = true;
 		SelectionHandler(x, y);
-		cout << "RIGHT_BUTTON true " << isRightButtonPress << endl;
 	}
 }
 
@@ -272,7 +280,6 @@ void Mouse_Release(int button, int x, int y)
 	if (button == RIGHT_BUTTON)
 	{
 		isRightButtonPress = false;
-		cout << "RIGHT_BUTTON false " << isRightButtonPress << endl;
 	}
 }
 

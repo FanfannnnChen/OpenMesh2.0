@@ -27,6 +27,7 @@ public:
 	void Render();
 
 	MyMesh mesh;
+	MyMesh subMesh;
 	GLuint vao;
 	GLuint ebo;
 	GLuint vboVertices, vboNormal;
@@ -49,7 +50,9 @@ public:
 	bool AddSelectedFace(unsigned int faceID);
 	void DeleteSelectedFace(unsigned int faceID);
 	bool FindClosestPoint(unsigned int faceID, glm::vec3 worldPos, glm::vec3& closestPos);
+
 	void SelectOneRing(int faceID);
+	void CreateSubMesh();
 
 private:
 	GLMesh model;
