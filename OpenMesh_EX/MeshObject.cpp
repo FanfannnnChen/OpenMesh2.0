@@ -245,7 +245,7 @@ bool MeshObject::FindClosestPoint(unsigned int faceID, glm::vec3 worldPos, glm::
 	return true;
 }
 
-void MeshObject::SelectOneRingFace(int faceID, int time)
+void MeshObject::SelectOneRingFace(int faceID, int time, std::string pickMode)
 {
 	std::vector< MyMesh::FaceHandle > OneRing;
 	int last_size;
@@ -275,7 +275,7 @@ void MeshObject::SelectOneRingFace(int faceID, int time)
 	}
 }
 
-void MeshObject::SelectOneRingVertex(int faceID, int time)
+void MeshObject::SelectOneRingVertex(int faceID, int time, std::string pickMode)
 {
 	std::vector< MyMesh::FaceHandle > OneRing;
 	std::vector< MyMesh::VertexHandle > allPoint;
@@ -315,11 +315,21 @@ void MeshObject::SelectOneRingVertex(int faceID, int time)
 		}
 	}
 	
-
-	for (int i = 0; i < OneRing.size(); i++)
+	if (pickMode == "ADD_FACE")
 	{
-		AddSelectedFace(OneRing[i].idx());
+		for (int i = 0; i < OneRing.size(); i++)
+		{
+			AddSelectedFace(OneRing[i].idx());
+		}
 	}
+	else if (pickMode == "DEL_FACE")
+	{
+		for (int i = 0; i < OneRing.size(); i++)
+		{
+			DeleteSelectedFace(OneRing[i].idx());
+		}
+	}
+	
 }
 
 void MeshObject::CreateSubMesh()

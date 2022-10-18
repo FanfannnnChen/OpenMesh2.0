@@ -1,1 +1,28 @@
-﻿  OpenMesh_EX.vcxproj -> C:\Users\PC14\Desktop\OpenMesh_EX\Debug\OpenMesh_EX.exe
+﻿  MyForm.cpp
+C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Try.h(51,24): warning C4305: '正在初始化': 從 'double' 轉換為 'float'，是由較大的類型轉換為較小的類型，可能導致資料遺失
+C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Try.h(100,35): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Try.h(100,22): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Try.h(109,32): warning C4244: '引數': 將 'float' 轉換為 'GLsizei'，由於類型不同，可能導致資料遺失
+C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Try.h(109,19): warning C4244: '引數': 將 'float' 轉換為 'GLsizei'，由於類型不同，可能導致資料遺失
+C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Try.h(114,16): warning C4244: '=': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
+C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Try.h(115,17): warning C4244: '=': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
+C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Try.h(118,33): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Try.h(118,20): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Try.h(119,32): warning C4244: '引數': 將 'float' 轉換為 'GLsizei'，由於類型不同，可能導致資料遺失
+C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Try.h(119,19): warning C4244: '引數': 將 'float' 轉換為 'GLsizei'，由於類型不同，可能導致資料遺失
+C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Try.h(122,37): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Try.h(122,24): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Try.h(123,35): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Try.h(123,22): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Try.h(195,16): warning C4244: '正在初始化': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Try.h(232,65): warning C4244: '引數': 將 'float' 轉換為 'unsigned int'，由於類型不同，可能導致資料遺失
+C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Mesh\timestamp.h(14,1): warning C4005: 'WIN32_LEAN_AND_MEAN': 巨集重複定義
+C:\Users\PC14\Desktop\OpenMesh_EX\Include\FreeGLUT\freeglut_std.h(58): message : 請參閱 'WIN32_LEAN_AND_MEAN' 之前的定義
+C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\MyForm.cpp(6,1): warning C4829: 函式 main 的參數可能不正確。請考慮 'int main(Platform::Array<Platform::String^>^ argv)'
+  MeshObject.cpp
+C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\MeshObject.cpp(186,21): warning C4018: '<': signed/unsigned 不相符
+C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\MeshObject.cpp(272,20): warning C4018: '<': signed/unsigned 不相符
+C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\MeshObject.cpp(320,21): warning C4018: '<': signed/unsigned 不相符
+C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\MeshObject.cpp(327,21): warning C4018: '<': signed/unsigned 不相符
+  Common.obj : 發現 MSIL 模組。MSIL 的累加連結已停用。正在執行完整連結
+  OpenMesh_EX.vcxproj -> C:\Users\PC14\Desktop\OpenMesh_EX\Debug\OpenMesh_EX.exe

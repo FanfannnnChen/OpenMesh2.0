@@ -243,7 +243,7 @@ void SelectionHandler(unsigned int x, unsigned int y)
 			if (OneRingCheck)
 			{
 				// model.SelectOneRingFace(faceID - 1, OneRingTime);
-				model.SelectOneRingVertex(faceID - 1, OneRingTime);
+				model.SelectOneRingVertex(faceID - 1, OneRingTime, "ADD_FACE");
 			}
 		}
 	}
@@ -252,6 +252,11 @@ void SelectionHandler(unsigned int x, unsigned int y)
 		if (faceID != 0)
 		{
 			model.DeleteSelectedFace(faceID - 1);
+			if (OneRingCheck)
+			{
+				// model.SelectOneRingFace(faceID - 1, OneRingTime);
+				model.SelectOneRingVertex(faceID - 1, OneRingTime, "DEL_FACE");
+			}
 		}
 	}
 	else if (pickMode == SELECT_POINT)
