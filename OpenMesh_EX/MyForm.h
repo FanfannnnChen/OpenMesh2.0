@@ -75,8 +75,10 @@ namespace OpenMesh_EX {
 	private: System::Windows::Forms::RadioButton^ radioButton2;
 	private: System::Windows::Forms::RadioButton^ radioButton1;
 	private: System::Windows::Forms::RadioButton^ radioButton3;
-	private: System::Windows::Forms::CheckBox^ OneRing_checkBox1;
-	private: System::Windows::Forms::CheckBox^ NewMwsh_checkBox;
+	private: System::Windows::Forms::CheckBox^ OneRing_Face_checkBox1;
+	private: System::Windows::Forms::CheckBox^ OneRing_Vertex_checkBox2;
+
+
 	private: System::Windows::Forms::Button^ NewM_Button;
 	private: System::Windows::Forms::TrackBar^ trackBar1;
 	protected:
@@ -94,8 +96,8 @@ namespace OpenMesh_EX {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			HKOGLPanel::HKCOGLPanelCameraSetting^ hkcoglPanelCameraSetting1 = (gcnew HKOGLPanel::HKCOGLPanelCameraSetting());
-			HKOGLPanel::HKCOGLPanelPixelFormat^ hkcoglPanelPixelFormat1 = (gcnew HKOGLPanel::HKCOGLPanelPixelFormat());
+			HKOGLPanel::HKCOGLPanelCameraSetting^ hkcoglPanelCameraSetting2 = (gcnew HKOGLPanel::HKCOGLPanelCameraSetting());
+			HKOGLPanel::HKCOGLPanelPixelFormat^ hkcoglPanelPixelFormat2 = (gcnew HKOGLPanel::HKCOGLPanelPixelFormat());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->fileToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->loadModelToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -108,8 +110,8 @@ namespace OpenMesh_EX {
 			this->radioButton2 = (gcnew System::Windows::Forms::RadioButton());
 			this->radioButton1 = (gcnew System::Windows::Forms::RadioButton());
 			this->trackBar1 = (gcnew System::Windows::Forms::TrackBar());
-			this->OneRing_checkBox1 = (gcnew System::Windows::Forms::CheckBox());
-			this->NewMwsh_checkBox = (gcnew System::Windows::Forms::CheckBox());
+			this->OneRing_Face_checkBox1 = (gcnew System::Windows::Forms::CheckBox());
+			this->OneRing_Vertex_checkBox2 = (gcnew System::Windows::Forms::CheckBox());
 			this->NewM_Button = (gcnew System::Windows::Forms::Button());
 			this->menuStrip1->SuspendLayout();
 			this->groupBox1->SuspendLayout();
@@ -160,17 +162,17 @@ namespace OpenMesh_EX {
 			// 
 			// hkoglPanelControl1
 			// 
-			hkcoglPanelCameraSetting1->Far = 1000;
-			hkcoglPanelCameraSetting1->Fov = 45;
-			hkcoglPanelCameraSetting1->Near = -1000;
-			hkcoglPanelCameraSetting1->Type = HKOGLPanel::HKCOGLPanelCameraSetting::CAMERATYPE::ORTHOGRAPHIC;
-			this->hkoglPanelControl1->Camera_Setting = hkcoglPanelCameraSetting1;
+			hkcoglPanelCameraSetting2->Far = 1000;
+			hkcoglPanelCameraSetting2->Fov = 45;
+			hkcoglPanelCameraSetting2->Near = -1000;
+			hkcoglPanelCameraSetting2->Type = HKOGLPanel::HKCOGLPanelCameraSetting::CAMERATYPE::ORTHOGRAPHIC;
+			this->hkoglPanelControl1->Camera_Setting = hkcoglPanelCameraSetting2;
 			this->hkoglPanelControl1->Location = System::Drawing::Point(0, 24);
 			this->hkoglPanelControl1->Name = L"hkoglPanelControl1";
-			hkcoglPanelPixelFormat1->Accumu_Buffer_Bits = HKOGLPanel::HKCOGLPanelPixelFormat::PIXELBITS::BITS_0;
-			hkcoglPanelPixelFormat1->Alpha_Buffer_Bits = HKOGLPanel::HKCOGLPanelPixelFormat::PIXELBITS::BITS_0;
-			hkcoglPanelPixelFormat1->Stencil_Buffer_Bits = HKOGLPanel::HKCOGLPanelPixelFormat::PIXELBITS::BITS_0;
-			this->hkoglPanelControl1->Pixel_Format = hkcoglPanelPixelFormat1;
+			hkcoglPanelPixelFormat2->Accumu_Buffer_Bits = HKOGLPanel::HKCOGLPanelPixelFormat::PIXELBITS::BITS_0;
+			hkcoglPanelPixelFormat2->Alpha_Buffer_Bits = HKOGLPanel::HKCOGLPanelPixelFormat::PIXELBITS::BITS_0;
+			hkcoglPanelPixelFormat2->Stencil_Buffer_Bits = HKOGLPanel::HKCOGLPanelPixelFormat::PIXELBITS::BITS_0;
+			this->hkoglPanelControl1->Pixel_Format = hkcoglPanelPixelFormat2;
 			this->hkoglPanelControl1->Size = System::Drawing::Size(509, 454);
 			this->hkoglPanelControl1->TabIndex = 2;
 			this->hkoglPanelControl1->Load += gcnew System::EventHandler(this, &MyForm::hkoglPanelControl1_Load);
@@ -241,27 +243,27 @@ namespace OpenMesh_EX {
 			this->trackBar1->Visible = false;
 			this->trackBar1->Scroll += gcnew System::EventHandler(this, &MyForm::trackBar1_Scroll);
 			// 
-			// OneRing_checkBox1
+			// OneRing_Face_checkBox1
 			// 
-			this->OneRing_checkBox1->AutoSize = true;
-			this->OneRing_checkBox1->Location = System::Drawing::Point(515, 263);
-			this->OneRing_checkBox1->Name = L"OneRing_checkBox1";
-			this->OneRing_checkBox1->Size = System::Drawing::Size(69, 16);
-			this->OneRing_checkBox1->TabIndex = 4;
-			this->OneRing_checkBox1->Text = L"One Ring";
-			this->OneRing_checkBox1->UseVisualStyleBackColor = true;
-			this->OneRing_checkBox1->CheckedChanged += gcnew System::EventHandler(this, &MyForm::OneRing_checkBox1_CheckedChanged);
+			this->OneRing_Face_checkBox1->AutoSize = true;
+			this->OneRing_Face_checkBox1->Location = System::Drawing::Point(515, 263);
+			this->OneRing_Face_checkBox1->Name = L"OneRing_Face_checkBox1";
+			this->OneRing_Face_checkBox1->Size = System::Drawing::Size(100, 16);
+			this->OneRing_Face_checkBox1->TabIndex = 4;
+			this->OneRing_Face_checkBox1->Text = L"One Ring - Face";
+			this->OneRing_Face_checkBox1->UseVisualStyleBackColor = true;
+			this->OneRing_Face_checkBox1->CheckedChanged += gcnew System::EventHandler(this, &MyForm::OneRing_Face_checkBox1_CheckedChanged);
 			// 
-			// NewMwsh_checkBox
+			// OneRing_Vertex_checkBox2
 			// 
-			this->NewMwsh_checkBox->AutoSize = true;
-			this->NewMwsh_checkBox->Location = System::Drawing::Point(521, 425);
-			this->NewMwsh_checkBox->Name = L"NewMwsh_checkBox";
-			this->NewMwsh_checkBox->Size = System::Drawing::Size(73, 16);
-			this->NewMwsh_checkBox->TabIndex = 5;
-			this->NewMwsh_checkBox->Text = L"New Mesh";
-			this->NewMwsh_checkBox->UseVisualStyleBackColor = true;
-			this->NewMwsh_checkBox->CheckedChanged += gcnew System::EventHandler(this, &MyForm::NewMwsh_checkBox_CheckedChanged);
+			this->OneRing_Vertex_checkBox2->AutoSize = true;
+			this->OneRing_Vertex_checkBox2->Location = System::Drawing::Point(515, 336);
+			this->OneRing_Vertex_checkBox2->Name = L"OneRing_Vertex_checkBox2";
+			this->OneRing_Vertex_checkBox2->Size = System::Drawing::Size(110, 16);
+			this->OneRing_Vertex_checkBox2->TabIndex = 5;
+			this->OneRing_Vertex_checkBox2->Text = L"One Ring - Vertex";
+			this->OneRing_Vertex_checkBox2->UseVisualStyleBackColor = true;
+			this->OneRing_Vertex_checkBox2->CheckedChanged += gcnew System::EventHandler(this, &MyForm::OneRing_Vertex_checkBox2_CheckedChanged);
 			// 
 			// NewM_Button
 			// 
@@ -280,8 +282,8 @@ namespace OpenMesh_EX {
 			this->ClientSize = System::Drawing::Size(641, 479);
 			this->Controls->Add(this->trackBar1);
 			this->Controls->Add(this->NewM_Button);
-			this->Controls->Add(this->NewMwsh_checkBox);
-			this->Controls->Add(this->OneRing_checkBox1);
+			this->Controls->Add(this->OneRing_Vertex_checkBox2);
+			this->Controls->Add(this->OneRing_Face_checkBox1);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->hkoglPanelControl1);
 			this->Controls->Add(this->menuStrip1);
@@ -470,27 +472,50 @@ private: System::Void radioButton3_Click(System::Object^ sender, System::EventAr
 }
 #pragma endregion
 
-private: System::Void OneRing_checkBox1_CheckedChanged(System::Object^ sender, System::EventArgs^ e) 
+private: System::Void OneRing_Face_checkBox1_CheckedChanged(System::Object^ sender, System::EventArgs^ e)
 {
-	if (OneRing_checkBox1->Checked)
+	// oneRing face
+	if (OneRing_Face_checkBox1->Checked)
 	{
-		OneRingCheck = true;
-		trackBar1->Visible = true;
+		OneRingCheckFace = true;
+
+		if (OneRing_Vertex_checkBox2->Checked)
+			OneRing_Vertex_checkBox2->Checked = false;
 	}
 	else
 	{
-		OneRingCheck = false;
-		trackBar1->Visible = false;
+		OneRingCheckFace = false;
 	}
+
+	if (OneRing_Vertex_checkBox2->Checked || OneRing_Face_checkBox1->Checked)
+	{
+		trackBar1->Visible = true;
+	}
+	else trackBar1->Visible = false;
+
 	hkoglPanelControl1->Invalidate();
 }
-private: System::Void NewMwsh_checkBox_CheckedChanged(System::Object^ sender, System::EventArgs^ e) 
+private: System::Void OneRing_Vertex_checkBox2_CheckedChanged(System::Object^ sender, System::EventArgs^ e)
 {
-	if (NewMwsh_checkBox->Checked)
+	// oneRing vertex
+	if (OneRing_Vertex_checkBox2->Checked)
 	{
-		NewMesh = true;
+		OneRingCheckVertex = true;
+
+		if (OneRing_Face_checkBox1->Checked)
+			OneRing_Face_checkBox1->Checked = false;
 	}
-	else NewMesh = false;
+	else
+	{
+		OneRingCheckVertex = false;
+	}
+
+	if (OneRing_Vertex_checkBox2->Checked || OneRing_Face_checkBox1->Checked)
+	{
+		trackBar1->Visible = true;
+	}
+	else trackBar1->Visible = false;
+
 	hkoglPanelControl1->Invalidate();
 }
 

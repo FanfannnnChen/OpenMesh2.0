@@ -45,8 +45,8 @@ int currentMouseY = 0;
 int OneRingTime = 1;
 
 // checked box 
-bool OneRingCheck = false;
-bool NewMesh = false;
+bool OneRingCheckFace = false;
+bool OneRingCheckVertex = false;
 
 float deltaTime = 0.015;
 float aspect;
@@ -127,14 +127,6 @@ void Reshape(int width, int height)
 
 void RenderMeshWindow()
 {
-
-	if (NewMesh)
-	{
-		
-		model.CreateSubMesh();
-		cout << "outttttttttttttttttt" << endl;
-	}
-	
 	//Update shaders' input variable	 
 	glm::mat4 mvMat = camera1.GetViewMatrix() * camera1.GetModelMatrix();
 	glm::mat4 pMat = camera1.GetProjectionMatrix(aspect);
@@ -240,11 +232,13 @@ void SelectionHandler(unsigned int x, unsigned int y)
 		if (faceID != 0)
 		{
 			model.AddSelectedFace(faceID - 1);
-			if (OneRingCheck)
+
+			if (OneRingCheckFace)
 			{
-				// model.SelectOneRingFace(faceID - 1, OneRingTime);
-				model.SelectOneRingVertex(faceID - 1, OneRingTime, "ADD_FACE");
+				model.SelectOneRing_Face(faceID - 1, OneRingTime, "ADD_FACE");
 			}
+			else if (OneRingCheckVertex)
+				model.SelectOneRing_Vertex(faceID - 1, OneRingTime, "ADD_FACE");
 		}
 	}
 	else if (pickMode == DEL_FACE)
@@ -252,11 +246,13 @@ void SelectionHandler(unsigned int x, unsigned int y)
 		if (faceID != 0)
 		{
 			model.DeleteSelectedFace(faceID - 1);
-			if (OneRingCheck)
+
+			if (OneRingCheckFace)
 			{
-				// model.SelectOneRingFace(faceID - 1, OneRingTime);
-				model.SelectOneRingVertex(faceID - 1, OneRingTime, "DEL_FACE");
+				model.SelectOneRing_Face(faceID - 1, OneRingTime, "DEL_FACE");
 			}
+			else if (OneRingCheckVertex)
+				model.SelectOneRing_Vertex(faceID - 1, OneRingTime, "DEL_FACE");
 		}
 	}
 	else if (pickMode == SELECT_POINT)

@@ -91,16 +91,30 @@
     <ClCompile Include="Common.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
     </ClCompile>
-    <ClCompile Include="DotNetUitilities.cpp" />
-    <ClCompile Include="DrawModelShader.cpp" />
-    <ClCompile Include="DrawPickingFaceShader.cpp" />
-    <ClCompile Include="DrawPointShader.cpp" />
-    <ClCompile Include="DrawTextureShader.cpp" />
+    <ClCompile Include="DotNetUitilities.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
+    </ClCompile>
+    <ClCompile Include="DrawModelShader.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
+    </ClCompile>
+    <ClCompile Include="DrawPickingFaceShader.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
+    </ClCompile>
+    <ClCompile Include="DrawPointShader.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
+    </ClCompile>
+    <ClCompile Include="DrawTextureShader.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
+    </ClCompile>
     <ClCompile Include="MeshObject.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
     </ClCompile>
-    <ClCompile Include="Mesh\GLCamera.cc" />
-    <ClCompile Include="Mesh\GUA_OM.cpp" />
+    <ClCompile Include="Mesh\GLCamera.cc">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
+    </ClCompile>
+    <ClCompile Include="Mesh\GUA_OM.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
+    </ClCompile>
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="PickingShader.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
