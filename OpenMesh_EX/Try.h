@@ -42,6 +42,7 @@ bool isRightButtonPress = false;
 GLuint currentFaceID = 0;
 int currentMouseX = 0;
 int currentMouseY = 0;
+int OneRingTime = 1;
 
 // checked box 
 bool OneRingCheck = false;
@@ -241,7 +242,8 @@ void SelectionHandler(unsigned int x, unsigned int y)
 			model.AddSelectedFace(faceID - 1);
 			if (OneRingCheck)
 			{
-				model.SelectOneRing(faceID - 1);
+				// model.SelectOneRingFace(faceID - 1, OneRingTime);
+				model.SelectOneRingVertex(faceID - 1, OneRingTime);
 			}
 		}
 	}

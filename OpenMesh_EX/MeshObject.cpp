@@ -219,7 +219,7 @@ bool MeshObject::FindClosestPoint(unsigned int faceID, glm::vec3 worldPos, glm::
 	{
 		return false;
 	}
-
+	
 	double minDistance = 0.0;
 	MyMesh::Point p(worldPos.x, worldPos.y, worldPos.z);
 	MyMesh::FVIter fv_it = model.mesh.fv_iter(fh);
@@ -245,17 +245,77 @@ bool MeshObject::FindClosestPoint(unsigned int faceID, glm::vec3 worldPos, glm::
 	return true;
 }
 
-void MeshObject::SelectOneRing(int faceID)
+void MeshObject::SelectOneRingFace(int faceID, int time)
 {
-	MyMesh::FaceHandle fh;
-	fh = model.mesh.face_handle(faceID);
-
 	std::vector< MyMesh::FaceHandle > OneRing;
+	int last_size;
+	int current_size = 0;
 
-	for (MyMesh::FaceFaceIter ff_it = model.mesh.ff_iter(fh); ff_it.is_valid(); ++ff_it)
+	OneRing.push_back(model.mesh.face_handle(faceID));
+	for (int i = 0; i < time; i++)
 	{
-		OneRing.push_back(*ff_it);
+		last_size = current_size;
+		current_size = OneRing.size();
+
+		for (int j = last_size; j < current_size; j++)
+		{
+			for (MyMesh::FaceFaceIter ff_it = model.mesh.ff_iter(OneRing[j]); ff_it.is_valid(); ++ff_it)
+			{
+				if (find(OneRing.begin(), OneRing.end(), *ff_it) == OneRing.end())
+				{
+					OneRing.push_back(*ff_it);
+				}
+			}
+		}
 	}
+	
+	for (int i = 0; i < OneRing.size(); i++)
+	{
+		AddSelectedFace(OneRing[i].idx());
+	}
+}
+
+void MeshObject::SelectOneRingVertex(int faceID, int time)
+{
+	std::vector< MyMesh::FaceHandle > OneRing;
+	std::vector< MyMesh::VertexHandle > allPoint;
+	int last_size;
+	int current_size = 0;
+	
+	OneRing.push_back(model.mesh.face_handle(faceID));
+	// face -> vertex ==> vertext -> face 
+	
+	for (int i = 0; i < time; i++)
+	{
+		last_size = current_size;
+		current_size = OneRing.size();
+
+		for (int j = last_size; j < current_size; j++)
+		{
+			for (MyMesh::FaceVertexIter fv_it = model.mesh.fv_iter(OneRing[j]); fv_it.is_valid(); ++fv_it)	// 面找到點
+			{	
+				if (find(allPoint.begin(), allPoint.end(), *fv_it) == allPoint.end())
+				{
+					//allPoint.push_back(model.mesh.vertex_handle(fv_it));	// 點都加進去了
+					allPoint.push_back(*fv_it);
+				}
+			}
+		}
+		
+
+		for (std::vector<MyMesh::VertexHandle>::iterator v_it = allPoint.begin(); v_it != allPoint.end(); v_it++)
+		{
+			for (MyMesh::VertexFaceIter vf_it = model.mesh.vf_iter(*v_it); vf_it.is_valid(); ++vf_it)
+			{
+				if (find(OneRing.begin(), OneRing.end(), *vf_it) == OneRing.end())
+				{
+					OneRing.push_back(*vf_it);
+				}
+			}
+		}
+	}
+	
+
 	for (int i = 0; i < OneRing.size(); i++)
 	{
 		AddSelectedFace(OneRing[i].idx());
@@ -324,5 +384,15 @@ void MeshObject::CreateSubMesh()
 	for (MyMesh::FaceIter fit = model.subMesh.faces_begin(); fit != model.subMesh.faces_end(); fit++)
 	{
 		std::cout << fit->idx() << std::endl;
+	}
+
+	// debug
+	OpenMesh::IO::Options wopt;
+	wopt += OpenMesh::IO::Options::VertexTexCoord;
+	wopt += OpenMesh::IO::Options::VertexNormal;
+
+	if (!OpenMesh::IO::write_mesh(model.subMesh, "debug.obj", wopt))
+	{
+		printf("Write Mesh Error\n");
 	}
 }

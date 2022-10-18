@@ -78,6 +78,7 @@ namespace OpenMesh_EX {
 	private: System::Windows::Forms::CheckBox^ OneRing_checkBox1;
 	private: System::Windows::Forms::CheckBox^ NewMwsh_checkBox;
 	private: System::Windows::Forms::Button^ NewM_Button;
+	private: System::Windows::Forms::TrackBar^ trackBar1;
 	protected:
 
 	private:
@@ -106,11 +107,13 @@ namespace OpenMesh_EX {
 			this->radioButton3 = (gcnew System::Windows::Forms::RadioButton());
 			this->radioButton2 = (gcnew System::Windows::Forms::RadioButton());
 			this->radioButton1 = (gcnew System::Windows::Forms::RadioButton());
+			this->trackBar1 = (gcnew System::Windows::Forms::TrackBar());
 			this->OneRing_checkBox1 = (gcnew System::Windows::Forms::CheckBox());
 			this->NewMwsh_checkBox = (gcnew System::Windows::Forms::CheckBox());
 			this->NewM_Button = (gcnew System::Windows::Forms::Button());
 			this->menuStrip1->SuspendLayout();
 			this->groupBox1->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// menuStrip1
@@ -193,7 +196,7 @@ namespace OpenMesh_EX {
 			// radioButton3
 			// 
 			this->radioButton3->AutoSize = true;
-			this->radioButton3->Location = System::Drawing::Point(6, 99);
+			this->radioButton3->Location = System::Drawing::Point(6, 97);
 			this->radioButton3->Name = L"radioButton3";
 			this->radioButton3->Size = System::Drawing::Size(69, 16);
 			this->radioButton3->TabIndex = 2;
@@ -205,7 +208,7 @@ namespace OpenMesh_EX {
 			// radioButton2
 			// 
 			this->radioButton2->AutoSize = true;
-			this->radioButton2->Location = System::Drawing::Point(6, 59);
+			this->radioButton2->Location = System::Drawing::Point(6, 58);
 			this->radioButton2->Name = L"radioButton2";
 			this->radioButton2->Size = System::Drawing::Size(70, 16);
 			this->radioButton2->TabIndex = 1;
@@ -226,10 +229,22 @@ namespace OpenMesh_EX {
 			this->radioButton1->UseVisualStyleBackColor = true;
 			this->radioButton1->Click += gcnew System::EventHandler(this, &MyForm::radioButton1_Click);
 			// 
+			// trackBar1
+			// 
+			this->trackBar1->LargeChange = 1;
+			this->trackBar1->Location = System::Drawing::Point(515, 285);
+			this->trackBar1->Minimum = 1;
+			this->trackBar1->Name = L"trackBar1";
+			this->trackBar1->Size = System::Drawing::Size(126, 45);
+			this->trackBar1->TabIndex = 1;
+			this->trackBar1->Value = 1;
+			this->trackBar1->Visible = false;
+			this->trackBar1->Scroll += gcnew System::EventHandler(this, &MyForm::trackBar1_Scroll);
+			// 
 			// OneRing_checkBox1
 			// 
 			this->OneRing_checkBox1->AutoSize = true;
-			this->OneRing_checkBox1->Location = System::Drawing::Point(522, 211);
+			this->OneRing_checkBox1->Location = System::Drawing::Point(515, 263);
 			this->OneRing_checkBox1->Name = L"OneRing_checkBox1";
 			this->OneRing_checkBox1->Size = System::Drawing::Size(69, 16);
 			this->OneRing_checkBox1->TabIndex = 4;
@@ -240,7 +255,7 @@ namespace OpenMesh_EX {
 			// NewMwsh_checkBox
 			// 
 			this->NewMwsh_checkBox->AutoSize = true;
-			this->NewMwsh_checkBox->Location = System::Drawing::Point(521, 243);
+			this->NewMwsh_checkBox->Location = System::Drawing::Point(521, 425);
 			this->NewMwsh_checkBox->Name = L"NewMwsh_checkBox";
 			this->NewMwsh_checkBox->Size = System::Drawing::Size(73, 16);
 			this->NewMwsh_checkBox->TabIndex = 5;
@@ -250,7 +265,7 @@ namespace OpenMesh_EX {
 			// 
 			// NewM_Button
 			// 
-			this->NewM_Button->Location = System::Drawing::Point(526, 295);
+			this->NewM_Button->Location = System::Drawing::Point(521, 201);
 			this->NewM_Button->Name = L"NewM_Button";
 			this->NewM_Button->Size = System::Drawing::Size(75, 23);
 			this->NewM_Button->TabIndex = 6;
@@ -263,6 +278,7 @@ namespace OpenMesh_EX {
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 12);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(641, 479);
+			this->Controls->Add(this->trackBar1);
 			this->Controls->Add(this->NewM_Button);
 			this->Controls->Add(this->NewMwsh_checkBox);
 			this->Controls->Add(this->OneRing_checkBox1);
@@ -276,6 +292,7 @@ namespace OpenMesh_EX {
 			this->menuStrip1->PerformLayout();
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -458,10 +475,12 @@ private: System::Void OneRing_checkBox1_CheckedChanged(System::Object^ sender, S
 	if (OneRing_checkBox1->Checked)
 	{
 		OneRingCheck = true;
+		trackBar1->Visible = true;
 	}
 	else
 	{
 		OneRingCheck = false;
+		trackBar1->Visible = false;
 	}
 	hkoglPanelControl1->Invalidate();
 }
@@ -478,6 +497,13 @@ private: System::Void NewMwsh_checkBox_CheckedChanged(System::Object^ sender, Sy
 private: System::Void NewM_Button_Click(System::Object^ sender, System::EventArgs^ e) 
 {
 	model.CreateSubMesh();
+}
+
+
+private: System::Void trackBar1_Scroll(System::Object^ sender, System::EventArgs^ e)
+{
+	OneRingTime = trackBar1->Value;
+	cout << OneRingTime << endl;
 }
 
 };

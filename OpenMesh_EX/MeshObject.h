@@ -51,7 +51,8 @@ public:
 	void DeleteSelectedFace(unsigned int faceID);
 	bool FindClosestPoint(unsigned int faceID, glm::vec3 worldPos, glm::vec3& closestPos);
 
-	void SelectOneRing(int faceID);
+	void SelectOneRingFace(int faceID, int time);
+	void SelectOneRingVertex(int faceID, int time);
 	void CreateSubMesh();
 
 private:
