@@ -39,6 +39,9 @@ public:
 	void Translate(glm::vec2 vec);
 	void ProcessKeyboard(Camera_Movement direction, float deltaTime);
 
+	void SetEyePos(float x, float y, float z);
+	void SetEyeLookPos(float x, float y, float z);
+
 	glm::mat4 GetModelMatrix();
 	glm::mat4 GetViewMatrix();
 	glm::mat4 GetProjectionMatrix();

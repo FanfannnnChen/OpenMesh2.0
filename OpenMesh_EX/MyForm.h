@@ -81,6 +81,7 @@ namespace OpenMesh_EX {
 
 	private: System::Windows::Forms::Button^ NewM_Button;
 	private: System::Windows::Forms::TrackBar^ trackBar1;
+	private: HKOGLPanel::HKOGLPanelControl^ hkoglPanelControl2;
 	protected:
 
 	private:
@@ -96,6 +97,8 @@ namespace OpenMesh_EX {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			HKOGLPanel::HKCOGLPanelCameraSetting^ hkcoglPanelCameraSetting1 = (gcnew HKOGLPanel::HKCOGLPanelCameraSetting());
+			HKOGLPanel::HKCOGLPanelPixelFormat^ hkcoglPanelPixelFormat1 = (gcnew HKOGLPanel::HKCOGLPanelPixelFormat());
 			HKOGLPanel::HKCOGLPanelCameraSetting^ hkcoglPanelCameraSetting2 = (gcnew HKOGLPanel::HKCOGLPanelCameraSetting());
 			HKOGLPanel::HKCOGLPanelPixelFormat^ hkcoglPanelPixelFormat2 = (gcnew HKOGLPanel::HKCOGLPanelPixelFormat());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
@@ -113,6 +116,7 @@ namespace OpenMesh_EX {
 			this->OneRing_Face_checkBox1 = (gcnew System::Windows::Forms::CheckBox());
 			this->OneRing_Vertex_checkBox2 = (gcnew System::Windows::Forms::CheckBox());
 			this->NewM_Button = (gcnew System::Windows::Forms::Button());
+			this->hkoglPanelControl2 = (gcnew HKOGLPanel::HKOGLPanelControl());
 			this->menuStrip1->SuspendLayout();
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar1))->BeginInit();
@@ -123,7 +127,7 @@ namespace OpenMesh_EX {
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->fileToolStripMenuItem });
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(641, 24);
+			this->menuStrip1->Size = System::Drawing::Size(926, 24);
 			this->menuStrip1->TabIndex = 1;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -162,17 +166,17 @@ namespace OpenMesh_EX {
 			// 
 			// hkoglPanelControl1
 			// 
-			hkcoglPanelCameraSetting2->Far = 1000;
-			hkcoglPanelCameraSetting2->Fov = 45;
-			hkcoglPanelCameraSetting2->Near = -1000;
-			hkcoglPanelCameraSetting2->Type = HKOGLPanel::HKCOGLPanelCameraSetting::CAMERATYPE::ORTHOGRAPHIC;
-			this->hkoglPanelControl1->Camera_Setting = hkcoglPanelCameraSetting2;
+			hkcoglPanelCameraSetting1->Far = 1000;
+			hkcoglPanelCameraSetting1->Fov = 45;
+			hkcoglPanelCameraSetting1->Near = -1000;
+			hkcoglPanelCameraSetting1->Type = HKOGLPanel::HKCOGLPanelCameraSetting::CAMERATYPE::ORTHOGRAPHIC;
+			this->hkoglPanelControl1->Camera_Setting = hkcoglPanelCameraSetting1;
 			this->hkoglPanelControl1->Location = System::Drawing::Point(0, 24);
 			this->hkoglPanelControl1->Name = L"hkoglPanelControl1";
-			hkcoglPanelPixelFormat2->Accumu_Buffer_Bits = HKOGLPanel::HKCOGLPanelPixelFormat::PIXELBITS::BITS_0;
-			hkcoglPanelPixelFormat2->Alpha_Buffer_Bits = HKOGLPanel::HKCOGLPanelPixelFormat::PIXELBITS::BITS_0;
-			hkcoglPanelPixelFormat2->Stencil_Buffer_Bits = HKOGLPanel::HKCOGLPanelPixelFormat::PIXELBITS::BITS_0;
-			this->hkoglPanelControl1->Pixel_Format = hkcoglPanelPixelFormat2;
+			hkcoglPanelPixelFormat1->Accumu_Buffer_Bits = HKOGLPanel::HKCOGLPanelPixelFormat::PIXELBITS::BITS_0;
+			hkcoglPanelPixelFormat1->Alpha_Buffer_Bits = HKOGLPanel::HKCOGLPanelPixelFormat::PIXELBITS::BITS_0;
+			hkcoglPanelPixelFormat1->Stencil_Buffer_Bits = HKOGLPanel::HKCOGLPanelPixelFormat::PIXELBITS::BITS_0;
+			this->hkoglPanelControl1->Pixel_Format = hkcoglPanelPixelFormat1;
 			this->hkoglPanelControl1->Size = System::Drawing::Size(509, 454);
 			this->hkoglPanelControl1->TabIndex = 2;
 			this->hkoglPanelControl1->Load += gcnew System::EventHandler(this, &MyForm::hkoglPanelControl1_Load);
@@ -275,11 +279,30 @@ namespace OpenMesh_EX {
 			this->NewM_Button->UseVisualStyleBackColor = true;
 			this->NewM_Button->Click += gcnew System::EventHandler(this, &MyForm::NewM_Button_Click);
 			// 
+			// hkoglPanelControl2
+			// 
+			hkcoglPanelCameraSetting2->Far = 1000;
+			hkcoglPanelCameraSetting2->Fov = 45;
+			hkcoglPanelCameraSetting2->Near = -1000;
+			hkcoglPanelCameraSetting2->Type = HKOGLPanel::HKCOGLPanelCameraSetting::CAMERATYPE::ORTHOGRAPHIC;
+			this->hkoglPanelControl2->Camera_Setting = hkcoglPanelCameraSetting2;
+			this->hkoglPanelControl2->Location = System::Drawing::Point(671, 142);
+			this->hkoglPanelControl2->Name = L"hkoglPanelControl2";
+			hkcoglPanelPixelFormat2->Accumu_Buffer_Bits = HKOGLPanel::HKCOGLPanelPixelFormat::PIXELBITS::BITS_0;
+			hkcoglPanelPixelFormat2->Alpha_Buffer_Bits = HKOGLPanel::HKCOGLPanelPixelFormat::PIXELBITS::BITS_0;
+			hkcoglPanelPixelFormat2->Stencil_Buffer_Bits = HKOGLPanel::HKCOGLPanelPixelFormat::PIXELBITS::BITS_0;
+			this->hkoglPanelControl2->Pixel_Format = hkcoglPanelPixelFormat2;
+			this->hkoglPanelControl2->Size = System::Drawing::Size(220, 220);
+			this->hkoglPanelControl2->TabIndex = 7;
+			this->hkoglPanelControl2->Load += gcnew System::EventHandler(this, &MyForm::hkoglPanelControl2_Load);
+			this->hkoglPanelControl2->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::hkoglPanelControl2_Paint);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 12);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(641, 479);
+			this->ClientSize = System::Drawing::Size(926, 479);
+			this->Controls->Add(this->hkoglPanelControl2);
 			this->Controls->Add(this->trackBar1);
 			this->Controls->Add(this->NewM_Button);
 			this->Controls->Add(this->OneRing_Vertex_checkBox2);
@@ -314,9 +337,28 @@ private: System::Void hkoglPanelControl1_Load(System::Object^  sender, System::E
 }
 private: System::Void hkoglPanelControl1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e)
 {
-	//InitOpenGL();
 	RenderMeshWindow();
 }
+
+#pragma region Parameteriztion
+private: System::Void hkoglPanelControl2_Load(System::Object^ sender, System::EventArgs^ e)
+{
+	GLenum err = glewInit();
+	if (GLEW_OK != err)
+	{
+		std::cout << "GLEW is not initialized\n";
+		return;
+	}
+	InitOpenGL();
+	InitData(filename);
+	InitCamera2();
+}
+private: System::Void hkoglPanelControl2_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e)
+{
+	RenderTexCoordWindow();
+}
+#pragma endregion
+
 
 #pragma region Mouse Action (Camera Controller)
 private: System::Void hkoglPanelControl1_MouseDown(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e)
@@ -452,8 +494,6 @@ private: System::Void saveModelDialog_FileOk(System::Object^  sender, System::Co
 }
 #pragma endregion
 
-
-
 #pragma region Radio Button Control
 private: System::Void radioButton1_Click(System::Object^ sender, System::EventArgs^ e) 
 {
@@ -472,6 +512,7 @@ private: System::Void radioButton3_Click(System::Object^ sender, System::EventAr
 }
 #pragma endregion
 
+#pragma region One Ring
 private: System::Void OneRing_Face_checkBox1_CheckedChanged(System::Object^ sender, System::EventArgs^ e)
 {
 	// oneRing face
@@ -519,17 +560,22 @@ private: System::Void OneRing_Vertex_checkBox2_CheckedChanged(System::Object^ se
 	hkoglPanelControl1->Invalidate();
 }
 
-private: System::Void NewM_Button_Click(System::Object^ sender, System::EventArgs^ e) 
-{
-	model.CreateSubMesh();
-}
-
-
 private: System::Void trackBar1_Scroll(System::Object^ sender, System::EventArgs^ e)
 {
 	OneRingTime = trackBar1->Value;
 	cout << OneRingTime << endl;
 }
+#pragma endregion
+
+private: System::Void NewM_Button_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+	model.Parameterization();
+	cout << "------Parameterization finished------" << endl;
+	hkoglPanelControl2->Invalidate();
+}
+
+
+
 
 };
 }

@@ -33,7 +33,7 @@ using namespace std;
 GLuint			program;			// shader program
 glm::mat4		proj_matrix;		// projection matrix
 MeshObject		model;
-ViewManager		camera1;
+ViewManager		camera1, camera2;
 GLuint vboPoint;					// vbo for drawing point
 
 glm::vec3 worldPos;
@@ -53,12 +53,29 @@ float aspect;
 float windowWidth = 509.0;
 float windowHeight = 454.0;
 
+// para panel
+float aspect2 = 1;
+float windowWidth2 = 220.0;
+float windowHeight2 = 220.0;
+bool drawTexture = false;
+float uvRotateAngle = 0.0;
+float prevUVRotateAngle = 0.0;
+
 // ****** SHADER ******
 DrawModelShader drawModelShader;
 DrawPickingFaceShader drawPickingFaceShader;
 PickingShader pickingShader;
 DrawPointShader drawPointShader;
 PickingTexture pickingTexture;
+
+
+void InitCamera2()
+{
+	camera2.SetWindowSize(windowWidth2, windowHeight2);
+	camera2.ToggleOrtho();
+	camera2.SetEyePos(0.0f, 0.0f, -0.10f);
+	//camera2.SetEyeLookPos(0.0f, 0.0f, -0.1f);
+}
 
 void My_LoadModel()
 {
@@ -106,24 +123,7 @@ void InitData(string filename)
 	cout << "end of InitData" << endl;
 
 	aspect = windowWidth * 1.0f / windowHeight;
-	glViewport(0, 0, windowWidth, windowHeight);
 }
-
-void Reshape(int width, int height)
-{
-	windowWidth = width;
-	windowHeight = height;
-
-
-	glutReshapeWindow(windowWidth, windowHeight);
-	glViewport(0, 0, windowWidth, windowHeight);
-
-	aspect = windowWidth * 1.0f / windowHeight;
-	camera1.SetWindowSize(windowWidth, windowHeight);
-	pickingTexture.Init(windowWidth, windowHeight);
-}
-
-
 
 void RenderMeshWindow()
 {
@@ -217,6 +217,49 @@ void RenderMeshWindow()
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 	}
+}
+
+void RenderTexCoordWindow()
+{
+	float radian = (uvRotateAngle - prevUVRotateAngle) * M_PI / 180.0f;
+	glm::mat4 uvRotMat = glm::rotate(radian, glm::vec3(0.0, 0.0, 1.0));
+	glm::mat4 mvMat = camera2.GetViewMatrix() * camera2.GetModelMatrix();
+	glm::mat4 pMat = camera2.GetProjectionMatrix(aspect2);
+
+	glClearColor(0.3f, 0.3f, 0.3f, 0.0f);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	// 跑了右邊會有圖片
+	/*if (drawTexture)
+	{
+		drawTextureShader.Enable();
+		drawTextureShader.SetMVMat(mvMat);
+		drawTextureShader.SetPMat(pMat);
+
+		glBindTexture(GL_TEXTURE_2D, textureID);
+		glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+		glBindTexture(GL_TEXTURE_2D, 0);
+
+		drawTextureShader.Disable();
+	}*/
+
+	///////////////////////////////////
+
+	drawModelShader.Enable();
+
+	drawModelShader.SetFaceColor(glm::vec4(0.0f, 0.0f, 0.0f, 0.0f));
+	drawModelShader.SetWireColor(glm::vec4(1.0f, 1.0f, 0.0f, 1.0f));
+	drawModelShader.UseLighting(false);
+	drawModelShader.DrawWireframe(true);
+	drawModelShader.DrawTexCoord(true);
+	drawModelShader.DrawTexture(false);
+	drawModelShader.SetMVMat(mvMat);
+	drawModelShader.SetPMat(pMat);
+	drawModelShader.SetUVRotMat(uvRotMat);
+
+	model.RenderParameterized();
+
+	drawModelShader.Disable();
 }
 
 void SelectionHandler(unsigned int x, unsigned int y)

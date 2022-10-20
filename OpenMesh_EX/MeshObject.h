@@ -25,12 +25,13 @@ public:
 
 	bool Init(std::string fileName);
 	void Render();
+	void LoadTexCoordToShader();
 
 	MyMesh mesh;
 	MyMesh subMesh;
-	GLuint vao;
-	GLuint ebo;
-	GLuint vboVertices, vboNormal;
+	GLuint vao, sub_vao;
+	GLuint ebo, sub_ebo;
+	GLuint vboVertices, vboNormal, vboTexCoord;
 
 private:
 
@@ -53,7 +54,9 @@ public:
 
 	void SelectOneRing_Face(int faceID, int time, std::string pickMode);
 	void SelectOneRing_Vertex(int faceID, int time, std::string pickMode);
-	void CreateSubMesh();
+	void CreateSubMesh(MyMesh& mesh);
+	void Parameterization(float uvRotateAngle = 0);
+	void RenderParameterized();
 
 private:
 	GLMesh model;

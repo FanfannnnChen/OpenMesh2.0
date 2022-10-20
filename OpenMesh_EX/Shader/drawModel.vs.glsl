@@ -23,7 +23,7 @@ void main()
 	if (drawTexCoord)
 	{
 		vec2 offset = vec2(-0.5, -0.5);
-		pos = um4u * vec4(texCoord + offset, 0.0, 1.0);
+		pos = um4u * vec4(2*(texCoord + offset), 0.0, 1.0);
 	}
 	else
 	{

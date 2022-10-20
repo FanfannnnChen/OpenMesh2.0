@@ -268,6 +268,25 @@ void ViewManager::ProcessKeyboard(Camera_Movement direction, float deltaTime)
 	if (direction == RIGHT)
 		translationMatrix = glm::translate(translationMatrix, right.xyz() * zoom * 0.5f);
 }
+void ViewManager::SetEyePos(float x, float y, float z)
+{
+	eyePosition = vec3(x, y, z);
+
+	vec3 up = vec3(0, 1, 0);
+	viewMatrix = lookAt(eyePosition, eyeLookPosition, up);
+	viewVector = eyePosition - eyeLookPosition;
+	viewVector = normalize(viewVector);
+}
+
+void ViewManager::SetEyeLookPos(float x, float y, float z)
+{
+	eyeLookPosition = vec3(x, y, z);
+
+	vec3 up = vec3(0, 1, 0);
+	viewMatrix = lookAt(eyePosition, eyeLookPosition, up);
+	viewVector = eyePosition - eyeLookPosition;
+	viewVector = normalize(viewVector);
+}
 /**
 * 根據中鍵的滾動方向處理事件。
 * @param direction 前滾,後滾。

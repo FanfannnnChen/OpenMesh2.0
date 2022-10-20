@@ -153,6 +153,31 @@ void GLMesh::LoadToShader()
 	glBindVertexArray(0);
 }
 
+void GLMesh::LoadTexCoordToShader()
+{
+	if (mesh.has_vertex_texcoords2D())
+	{
+		std::vector<MyMesh::TexCoord2D> texCoords;
+		for (MyMesh::VertexIter v_it = mesh.vertices_begin(); v_it != mesh.vertices_end(); ++v_it)
+		{
+			MyMesh::TexCoord2D texCoord = mesh.texcoord2D(*v_it);
+			texCoords.push_back(texCoord);
+		}
+
+		glBindVertexArray(vao);
+
+		glGenBuffers(1, &vboTexCoord);
+		glBindBuffer(GL_ARRAY_BUFFER, vboTexCoord);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(MyMesh::TexCoord2D) * texCoords.size(), &texCoords[0], GL_STATIC_DRAW);
+		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, 0);
+		glEnableVertexAttribArray(2);
+
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
+		glBindVertexArray(0);
+	}
+}
+
+
 #pragma endregion
 
 MeshObject::MeshObject()
@@ -342,77 +367,364 @@ void MeshObject::SelectOneRing_Vertex(int faceID, int time, std::string pickMode
 	
 }
 
-void MeshObject::CreateSubMesh()
+void MeshObject::CreateSubMesh(MyMesh& mesh)
+{
+	mesh.request_vertex_normals();
+	mesh.request_face_normals();
+
+	std::vector<MyMesh::VertexHandle> VertexHs;
+	VertexHs.reserve(3);		// vextor 預留 3 個元素的位置，沒有初始化
+
+	std::map<int, int> usedVertex;
+
+	// 一個mesh 有很多個面
+	for (std::vector<unsigned int>::iterator f_it = selectedFace.begin(); f_it != selectedFace.end(); ++f_it)
+	{
+		MyMesh::FaceHandle fh = model.mesh.face_handle(*f_it);
+
+		// 一個面 下去找他的點
+		for (MyMesh::FaceVertexIter fv_it = model.mesh.fv_iter(fh); fv_it.is_valid(); ++fv_it)
+		{
+			MyMesh::VertexHandle vh;
+			MyMesh::Point p = model.mesh.point(*fv_it);		// iterator 抓到這個 face 下的點
+
+			// 避免重複儲存點		先去比對used 中有沒有出現過現在當下的點
+			std::map<int, int>::iterator usedVertex_it = usedVertex.find(fv_it->idx());
+
+			if (usedVertex_it == usedVertex.end())		// vertex 未被儲存過
+			{
+				vh = mesh.add_vertex(p);				// 存點 並回傳此點的handle
+				usedVertex[fv_it->idx()] = vh.idx();	// 更新map 此新點已加入過在這個mesh 並存入此點的handle的編號 ( UsedVertex_it->second )
+			}
+			else
+			{
+				vh = mesh.vertex_handle(usedVertex_it->second);
+			}
+
+			VertexHs.push_back(vh);		// 把這些vertex handle 存起來
+		}
+
+		mesh.add_face(VertexHs);		// 建成 Face
+		VertexHs.clear();
+	}
+
+	mesh.update_normals();
+}
+
+void MeshObject::Parameterization(float uvRotateAngle)
 {
 	if (selectedFace.size() <= 0)
 	{
 		return;
 	}
-	
-	model.subMesh.ClearMesh();
 
 	std::sort(selectedFace.begin(), selectedFace.end());
+	
+	OpenMesh::HPropHandleT<double> heWeight;		// Half Edge Weight
+	OpenMesh::VPropHandleT<int> row;
+	MyMesh mesh;
+	mesh.add_property(heWeight, "heWeight");
+	mesh.add_property(row, "row");
 
-	OpenMesh::HPropHandleT<double> heWeight;	// HalfEdge
-	OpenMesh::VPropHandleT<int>	row;
-	model.subMesh.add_property(heWeight, "heWeight");
-	model.subMesh.add_property(row, "row");
+	mesh.request_vertex_texcoords2D();
 
-	model.subMesh.request_vertex_texcoords2D();
-	model.subMesh.request_vertex_normals();
-	model.subMesh.request_face_normals();
+	CreateSubMesh(mesh);
 
-	std::vector<MyMesh::VertexHandle> VertexHs;
-	VertexHs.reserve(3);		// vextor 預留 3 個元素的位置，沒有初始化
-
-	std::map<int, int> UsedVertex;
-
-	// 一個mesh 有很多個面
-	for (std::vector< unsigned int >::iterator face_it = selectedFace.begin(); face_it != selectedFace.end(); face_it++)
+	//calculate weight
+	MyMesh::HalfedgeHandle half_edge_h;
+	for (MyMesh::EdgeIter e_it = mesh.edges_begin(); e_it != mesh.edges_end(); ++e_it)
 	{
-		MyMesh::FaceHandle Face_h = model.mesh.face_handle(*face_it);
-
-		// 一個面 下去找他的點
-		for (MyMesh::FaceVertexIter FV_it = model.mesh.fv_iter(Face_h); FV_it.is_valid(); FV_it++)
+		if (!mesh.is_boundary(*e_it))	// 若這個邊不是邊界才進入
 		{
-			MyMesh::VertexHandle VertexH;
-			MyMesh::Point point = model.mesh.point(*FV_it);	// iterator 抓到這個 face 下的點
+			GLdouble angle1, angle2, w;
+			MyMesh::HalfedgeHandle _heh = mesh.halfedge_handle(*e_it, 0);	// 默認這個
+			MyMesh::Point pFrom = mesh.point(mesh.from_vertex_handle(_heh));
+			MyMesh::Point pTo = mesh.point(mesh.to_vertex_handle(_heh));
+			MyMesh::Point p1 = mesh.point(mesh.opposite_vh(_heh));
+			MyMesh::Point p2 = mesh.point(mesh.opposite_he_opposite_vh(_heh));
 
-			// 避免重複儲存點		先去比對used 中有沒有出現過現在當下的點
-			std::map<int, int>::iterator UsedVertex_it = UsedVertex.find(FV_it->idx());		// 找vH 
 
-			if (UsedVertex_it == UsedVertex.end())		// vertex 未被儲存過
-			{
-				VertexH = model.subMesh.add_vertex(point);	// 存點 並回傳此點的handle
-				UsedVertex[FV_it->idx()] = VertexH.idx();	// 更新map 此新點已加入過在這個mesh 並存入此點的handle的編號 ( UsedVertex_it->second )
+			double edgeLen = (pFrom - pTo).length();
 
-			}
-			else
-			{
-				VertexH = model.subMesh.vertex_handle(UsedVertex_it->second);
-			}
+			// weight from to
+			OpenMesh::Vec3d v1 = (OpenMesh::Vec3d)(pTo - pFrom);
+			v1.normalize();
 
-			VertexHs.push_back(VertexH);	// 把這些vertex handle 存起來
+			OpenMesh::Vec3d v2 = (OpenMesh::Vec3d)(p1 - pFrom);
+			v2.normalize();
+
+			angle1 = std::acos(OpenMesh::dot(v1, v2));
+
+			v2 = (OpenMesh::Vec3d)(p2 - pFrom);
+			v2.normalize();
+
+			angle2 = std::acos(OpenMesh::dot(v1, v2));
+
+			w = (std::tan(angle1 / 2.0f) + std::tan(angle2 / 2.0f)) / edgeLen;
+
+			mesh.property(heWeight, _heh) = w;
+
+			// weight to from
+			v1 = -v1;
+
+			v2 = (OpenMesh::Vec3d)(p1 - pTo);
+			v2.normalize();
+
+			angle1 = std::acos(OpenMesh::dot(v1, v2));
+
+			v2 = (OpenMesh::Vec3d)(p2 - pTo);
+			v2.normalize();
+
+			angle2 = std::acos(OpenMesh::dot(v1, v2));
+
+			w = (std::tan(angle1 / 2.0f) + std::tan(angle2 / 2.0f)) / edgeLen;
+
+			mesh.property(heWeight, mesh.opposite_halfedge_handle(_heh)) = w;
+
 		}
-		model.subMesh.add_face(VertexHs);	// 建成 Face
-		VertexHs.clear();
-
+		else
+		{
+			if (!half_edge_h.is_valid())
+			{
+				half_edge_h = mesh.halfedge_handle(*e_it, 1);
+			}
+		}
 	}
-	model.subMesh.update_normals();
 
-	// output
-	for (MyMesh::FaceIter fit = model.subMesh.faces_begin(); fit != model.subMesh.faces_end(); fit++)
+	// calculate matrix size
+	int count = 0;
+	for (MyMesh::VertexIter v_it = mesh.vertices_begin(); v_it != mesh.vertices_end(); ++v_it)
 	{
-		std::cout << fit->idx() << std::endl;
+		if (mesh.is_boundary(*v_it))
+		{
+			mesh.property(row, *v_it) = -1;
+		}
+		else
+		{
+			mesh.property(row, *v_it) = count++;
+		}
 	}
+
+	// calculate perimeter
+	double perimeter = 0;
+	std::vector<double> segLength;
+	std::vector<MyMesh::VertexHandle> vhs;
+	MyMesh::HalfedgeHandle half_edge_h_Next = half_edge_h;
+	do
+	{
+		MyMesh::Point from = mesh.point(mesh.from_vertex_handle(half_edge_h_Next));
+		MyMesh::Point to = mesh.point(mesh.to_vertex_handle(half_edge_h_Next));
+		perimeter += (from - to).length();
+
+		segLength.push_back(perimeter);
+		vhs.push_back(mesh.from_vertex_handle(half_edge_h_Next));
+
+		half_edge_h_Next = mesh.next_halfedge_handle(half_edge_h_Next);
+	} while (half_edge_h != half_edge_h_Next);
+
+
+	float rd = (225 + uvRotateAngle) * M_PI / 180.0;
+	float initDist = 0;
+	MyMesh::TexCoord2D st(0, 0);
+	float R = std::sqrt(2) / 2.0;
+	st[0] = R * cos(rd) + 0.5;
+	st[1] = R * sin(rd) + 0.5;
+
+	if (st[0] > 1)
+	{
+		st[0] = 1;
+		st[1] = tan(rd) / 2 + 0.5;
+	}
+
+	if (st[0] < 0)
+	{
+		st[0] = 0;
+		st[1] = 0.5 - tan(rd) / 2;
+	}
+
+	if (st[1] > 1)
+	{
+		st[0] = tan(M_PI_2 - rd) / 2 + 0.5;
+		st[1] = 1;
+	}
+
+	if (st[1] < 0)
+	{
+		st[0] = 0.5 - tan(M_PI_2 - rd) / 2;
+		st[1] = 0;
+	}
+
+
+	if (uvRotateAngle <= 90)
+	{
+		initDist = st.length();
+	}
+
+	else if (uvRotateAngle <= 180)
+	{
+		initDist = 1 + st[1];
+	}
+
+	else if (uvRotateAngle <= 270)
+	{
+		initDist = 3 - st[0];
+	}
+
+	else
+	{
+		initDist = 4 - st[1];
+	}
+
+	mesh.set_texcoord2D(vhs[0], st);
+	perimeter /= 4.0;
+	for (int i = 1; i < vhs.size(); ++i)
+	{
+		double curLen = segLength[i - 1] / perimeter + initDist;
+		if (curLen > 4)
+		{
+			curLen -= 4;
+		}
+
+		if (curLen <= 1)
+		{
+			st[0] = curLen;
+			st[1] = 0;
+		}
+		else if (curLen <= 2)
+		{
+			st[0] = 1;
+			st[1] = curLen - 1;
+		}
+		else if (curLen <= 3)
+		{
+			st[0] = 3 - curLen;
+			st[1] = 1;
+		}
+		else
+		{
+			st[0] = 0;
+			st[1] = 4 - curLen;
+		}
+
+		mesh.set_texcoord2D(vhs[i], st);
+	}
+
+	typedef Eigen::SparseMatrix<double> SpMat;
+
+	SpMat A(count, count);
+	Eigen::VectorXd BX(count);
+	Eigen::VectorXd BY(count);
+	Eigen::SimplicialLDLT<Eigen::SparseMatrix<double> > linearSolver;
+
+	BX.setZero();
+	BY.setZero();
+
+	// fiil matrix
+	for (MyMesh::VertexIter v_it = mesh.vertices_begin(); v_it != mesh.vertices_end(); ++v_it)
+	{
+		if (!mesh.is_boundary(*v_it))
+		{
+			int i = mesh.property(row, *v_it);
+			double totalWeight = 0;
+
+			for (MyMesh::VertexVertexIter vv_it = mesh.vv_iter(*v_it); vv_it.is_valid(); ++vv_it)
+			{
+				MyMesh::HalfedgeHandle _heh = mesh.find_halfedge(*v_it, *vv_it);
+				double w = mesh.property(heWeight, _heh);
+
+				if (mesh.is_boundary(*vv_it))
+				{
+					MyMesh::TexCoord2D texCoord = mesh.texcoord2D(*vv_it);
+					BX[i] += w * texCoord[0];
+					BY[i] += w * texCoord[1];
+				}
+				else
+				{
+					int j = mesh.property(row, *vv_it);
+					A.insert(i, j) = -w;
+				}
+				totalWeight += w;
+			}
+
+
+			A.insert(i, i) = totalWeight;
+		}
+	}
+
+	A.makeCompressed();
+
+	// solve linear system
+	SpMat At = A.transpose();
+	linearSolver.compute(At * A);
+
+	Eigen::VectorXd TX = linearSolver.solve(At * BX);
+	Eigen::VectorXd TY = linearSolver.solve(At * BY);
+
+	// set texcoord
+	for (MyMesh::VertexIter v_it = mesh.vertices_begin(); v_it != mesh.vertices_end(); ++v_it)
+	{
+		if (!mesh.is_boundary(*v_it))
+		{
+			int i = mesh.property(row, *v_it);
+			mesh.set_texcoord2D(*v_it, MyMesh::TexCoord2D(TX[i], TY[i]));
+		}
+	}
+
+	// request vertex texcoord, if not exist 
+	if (!model.mesh.has_vertex_texcoords2D())
+	{
+		model.mesh.request_vertex_texcoords2D();
+		for (MyMesh::VertexIter v_it = model.mesh.vertices_begin(); v_it != model.mesh.vertices_end(); ++v_it)
+		{
+			model.mesh.set_texcoord2D(*v_it, MyMesh::TexCoord2D(-1, -1));
+		}
+	}
+
+	// map texcoord back to origin mesh
+	int index = 0;
+	for (MyMesh::FaceIter f_it = mesh.faces_begin(); f_it != mesh.faces_end(); ++f_it)
+	{
+		MyMesh::FaceHandle fh = *f_it;
+		MyMesh::FaceHandle selectedFace_h = model.mesh.face_handle(selectedFace[index++]);
+
+		MyMesh::FaceVertexIter fv_it = mesh.fv_iter(fh);
+		MyMesh::FaceVertexIter selectedfv_it = model.mesh.fv_iter(selectedFace_h);
+		for (; fv_it.is_valid() && selectedfv_it.is_valid(); ++fv_it, ++selectedfv_it)
+		{
+			MyMesh::TexCoord2D texCoord = mesh.texcoord2D(*fv_it);
+			model.mesh.set_texcoord2D(*selectedfv_it, texCoord);
+		}
+	}
+
+	model.LoadTexCoordToShader();
+
+	fvIDsPtr.swap(std::vector<unsigned int*>(selectedFace.size()));
+	for (int i = 0; i < fvIDsPtr.size(); ++i)
+	{
+		fvIDsPtr[i] = (GLuint*)(selectedFace[i] * 3 * sizeof(GLuint));
+	}
+	elemCount.swap(std::vector<int>(selectedFace.size(), 3));
+
 
 	// debug
 	OpenMesh::IO::Options wopt;
 	wopt += OpenMesh::IO::Options::VertexTexCoord;
 	wopt += OpenMesh::IO::Options::VertexNormal;
 
-	if (!OpenMesh::IO::write_mesh(model.subMesh, "debug.obj", wopt))
+	if (!OpenMesh::IO::write_mesh(model.mesh, "debug.obj", wopt))
 	{
 		printf("Write Mesh Error\n");
 	}
 }
+
+void MeshObject::RenderParameterized()
+{
+	if (model.mesh.has_vertex_texcoords2D())
+	{
+		glBindVertexArray(model.vao);
+		glMultiDrawElements(GL_TRIANGLES, &elemCount[0], GL_UNSIGNED_INT, (const GLvoid**)&fvIDsPtr[0], elemCount.size());
+		glBindVertexArray(0);
+	}
+}
+
+
