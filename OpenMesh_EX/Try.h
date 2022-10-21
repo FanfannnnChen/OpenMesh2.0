@@ -48,25 +48,29 @@ int OneRingTime = 1;
 bool OneRingCheckFace = false;
 bool OneRingCheckVertex = false;
 
+// model panel
 float deltaTime = 0.015;
-float aspect;
 float windowWidth = 509.0;
 float windowHeight = 454.0;
+float aspect = windowWidth * 1.0f / windowHeight;	// aspect = windowWidth * 1.0f / windowHeight;
 
 // para panel
-float aspect2 = 1;
-float windowWidth2 = 220.0;
-float windowHeight2 = 220.0;
+float windowWidth2			 = 220.0;
+float windowHeight2			 = 220.0;
+float aspect2				 = windowWidth2 * 1.0f / windowHeight2;
+float uvRotateAngle			 = 0.0;
+float prevUVRotateAngle		 = 0.0;
+
+// texture
+GLuint textureID;
 bool drawTexture = false;
-float uvRotateAngle = 0.0;
-float prevUVRotateAngle = 0.0;
 
 // ****** SHADER ******
-DrawModelShader drawModelShader;
-DrawPickingFaceShader drawPickingFaceShader;
-PickingShader pickingShader;
-DrawPointShader drawPointShader;
-PickingTexture pickingTexture;
+DrawModelShader			drawModelShader;
+DrawPickingFaceShader	drawPickingFaceShader;
+PickingShader			pickingShader;
+DrawPointShader			drawPointShader;
+PickingTexture			pickingTexture;
 
 
 void InitCamera2()
@@ -89,6 +93,27 @@ void My_LoadModel()
 	}
 }
 
+void My_LoadTextures()
+{
+	//Texture setting
+	///////////////////////////	
+	//Load texture data from file
+	TextureData texture_data = Common::Load_png((ResourcePath::imagePath + "checkerboard4.jpg").c_str());
+
+	//Generate empty texture
+	glGenTextures(1, &textureID);
+	glBindTexture(GL_TEXTURE_2D, textureID);
+
+	//Do texture setting
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA32F, texture_data.width, texture_data.height, 0, GL_RGBA, GL_UNSIGNED_BYTE, texture_data.data);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glBindTexture(GL_TEXTURE_2D, 0);
+	///////////////////////////	
+}
+
 void InitOpenGL()
 {
 	glEnable(GL_TEXTURE_2D);
@@ -106,8 +131,8 @@ void InitOpenGL()
 void InitData(string filename)
 {
 	ResourcePath::shaderPath = "./Shader/";
-	// ResourcePath::modelPath = "./resource/3DModel/UnionSphere.obj";
-	ResourcePath::modelPath = filename;
+	ResourcePath::modelPath = filename;				// modelPath = "./resource/3DModel/UnionSphere.obj";
+	ResourcePath::imagePath = "./resource/Imgs/";
 
 	//Initialize shaders
 	drawModelShader.Init();
@@ -120,9 +145,9 @@ void InitData(string filename)
 
 	//Load model to shader program
 	My_LoadModel();
+	My_LoadTextures();
 	cout << "end of InitData" << endl;
 
-	aspect = windowWidth * 1.0f / windowHeight;
 }
 
 void RenderMeshWindow()
@@ -131,43 +156,53 @@ void RenderMeshWindow()
 	glm::mat4 mvMat = camera1.GetViewMatrix() * camera1.GetModelMatrix();
 	glm::mat4 pMat = camera1.GetProjectionMatrix(aspect);
 
-	// write faceID+1 to framebuffer
-	pickingTexture.Enable();
+	// 不畫貼圖 => 跑pick mode
+	if (!drawTexture)
+	{
+		// 取得 faceID 才能畫
+		// write faceID+1 to framebuffer
+		pickingTexture.Enable();
 
-	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	pickingShader.Enable();
-	pickingShader.SetMVMat(value_ptr(mvMat));
-	pickingShader.SetPMat(value_ptr(pMat));
+		pickingShader.Enable();
+		pickingShader.SetMVMat(value_ptr(mvMat));
+		pickingShader.SetPMat(value_ptr(pMat));
 
-	model.Render();
+		model.Render();
 
-	pickingShader.Disable();
-	pickingTexture.Disable();
+		pickingShader.Disable();
+		pickingTexture.Disable();
+	}
 
-	// draw model
+	// draw wire model 都要跑的部分
 	glClearColor(0.5f, 0.5f, 0.5f, 0.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	drawModelShader.Enable();
 	glm::mat3 normalMat = glm::transpose(glm::inverse(glm::mat3(mvMat)));
 
+	float radian = uvRotateAngle * M_PI / 180.0f;
+	glm::mat4 uvRotMat = glm::rotate(radian, glm::vec3(0.0, 0.0, 1.0));
+
 	drawModelShader.SetWireColor(glm::vec4(0.0f, 0.0f, 0.0f, 1.0f));
 	drawModelShader.SetFaceColor(glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
 	drawModelShader.UseLighting(true);
-	drawModelShader.DrawWireframe(true);
+	drawModelShader.DrawWireframe(!drawTexture);
 	drawModelShader.SetNormalMat(normalMat);
 	drawModelShader.SetMVMat(mvMat);
 	drawModelShader.SetPMat(pMat);
+	drawModelShader.SetUVRotMat(uvRotMat);
 
 	model.Render();
-
-	drawModelShader.Disable();
-
+	
+#pragma region Pick Mode
 	// render selected face
 	if (pickMode == ADD_FACE || pickMode == DEL_FACE)
 	{
+		drawModelShader.Disable();
+
 		drawPickingFaceShader.Enable();
 		drawPickingFaceShader.SetMVMat(value_ptr(mvMat));
 		drawPickingFaceShader.SetPMat(value_ptr(pMat));
@@ -175,11 +210,10 @@ void RenderMeshWindow()
 		drawPickingFaceShader.Disable();
 	}
 
-	glUseProgram(0);
-
 	// render closest point
 	if (pickMode == SELECT_POINT)
 	{
+		drawModelShader.Disable();
 		if (updateFlag)
 		{
 			float depthValue = 0;
@@ -215,8 +249,21 @@ void RenderMeshWindow()
 		drawPointShader.Disable();
 
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
-
 	}
+#pragma endregion
+
+	if (drawTexture)
+	{
+		drawModelShader.DrawTexture(true);
+
+		glBindTexture(GL_TEXTURE_2D, textureID);
+		model.RenderParameterized();
+		glBindTexture(GL_TEXTURE_2D, 0);
+		
+		drawModelShader.Disable();
+	}
+
+	glUseProgram(0);
 }
 
 void RenderTexCoordWindow()

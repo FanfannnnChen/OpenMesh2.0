@@ -82,6 +82,11 @@ namespace OpenMesh_EX {
 	private: System::Windows::Forms::Button^ NewM_Button;
 	private: System::Windows::Forms::TrackBar^ trackBar1;
 	private: HKOGLPanel::HKOGLPanelControl^ hkoglPanelControl2;
+	private: System::Windows::Forms::GroupBox^ groupBox2;
+	private: System::Windows::Forms::RadioButton^ TextureMode;
+
+	private: System::Windows::Forms::RadioButton^ PickMode;
+
 	protected:
 
 	private:
@@ -117,9 +122,13 @@ namespace OpenMesh_EX {
 			this->OneRing_Vertex_checkBox2 = (gcnew System::Windows::Forms::CheckBox());
 			this->NewM_Button = (gcnew System::Windows::Forms::Button());
 			this->hkoglPanelControl2 = (gcnew HKOGLPanel::HKOGLPanelControl());
+			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
+			this->TextureMode = (gcnew System::Windows::Forms::RadioButton());
+			this->PickMode = (gcnew System::Windows::Forms::RadioButton());
 			this->menuStrip1->SuspendLayout();
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar1))->BeginInit();
+			this->groupBox2->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// menuStrip1
@@ -198,6 +207,7 @@ namespace OpenMesh_EX {
 			this->groupBox1->TabIndex = 3;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Pick Mode";
+			this->groupBox1->Visible = false;
 			// 
 			// radioButton3
 			// 
@@ -238,10 +248,10 @@ namespace OpenMesh_EX {
 			// trackBar1
 			// 
 			this->trackBar1->LargeChange = 1;
-			this->trackBar1->Location = System::Drawing::Point(515, 285);
+			this->trackBar1->Location = System::Drawing::Point(515, 307);
 			this->trackBar1->Minimum = 1;
 			this->trackBar1->Name = L"trackBar1";
-			this->trackBar1->Size = System::Drawing::Size(126, 45);
+			this->trackBar1->Size = System::Drawing::Size(114, 45);
 			this->trackBar1->TabIndex = 1;
 			this->trackBar1->Value = 1;
 			this->trackBar1->Visible = false;
@@ -261,7 +271,7 @@ namespace OpenMesh_EX {
 			// OneRing_Vertex_checkBox2
 			// 
 			this->OneRing_Vertex_checkBox2->AutoSize = true;
-			this->OneRing_Vertex_checkBox2->Location = System::Drawing::Point(515, 336);
+			this->OneRing_Vertex_checkBox2->Location = System::Drawing::Point(515, 285);
 			this->OneRing_Vertex_checkBox2->Name = L"OneRing_Vertex_checkBox2";
 			this->OneRing_Vertex_checkBox2->Size = System::Drawing::Size(110, 16);
 			this->OneRing_Vertex_checkBox2->TabIndex = 5;
@@ -286,7 +296,7 @@ namespace OpenMesh_EX {
 			hkcoglPanelCameraSetting2->Near = -1000;
 			hkcoglPanelCameraSetting2->Type = HKOGLPanel::HKCOGLPanelCameraSetting::CAMERATYPE::ORTHOGRAPHIC;
 			this->hkoglPanelControl2->Camera_Setting = hkcoglPanelCameraSetting2;
-			this->hkoglPanelControl2->Location = System::Drawing::Point(671, 142);
+			this->hkoglPanelControl2->Location = System::Drawing::Point(676, 110);
 			this->hkoglPanelControl2->Name = L"hkoglPanelControl2";
 			hkcoglPanelPixelFormat2->Accumu_Buffer_Bits = HKOGLPanel::HKCOGLPanelPixelFormat::PIXELBITS::BITS_0;
 			hkcoglPanelPixelFormat2->Alpha_Buffer_Bits = HKOGLPanel::HKCOGLPanelPixelFormat::PIXELBITS::BITS_0;
@@ -297,11 +307,47 @@ namespace OpenMesh_EX {
 			this->hkoglPanelControl2->Load += gcnew System::EventHandler(this, &MyForm::hkoglPanelControl2_Load);
 			this->hkoglPanelControl2->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::hkoglPanelControl2_Paint);
 			// 
+			// groupBox2
+			// 
+			this->groupBox2->Controls->Add(this->TextureMode);
+			this->groupBox2->Controls->Add(this->PickMode);
+			this->groupBox2->Location = System::Drawing::Point(515, 367);
+			this->groupBox2->Name = L"groupBox2";
+			this->groupBox2->Size = System::Drawing::Size(114, 89);
+			this->groupBox2->TabIndex = 8;
+			this->groupBox2->TabStop = false;
+			this->groupBox2->Text = L"Mode";
+			// 
+			// TextureMode
+			// 
+			this->TextureMode->AutoSize = true;
+			this->TextureMode->Location = System::Drawing::Point(6, 56);
+			this->TextureMode->Name = L"TextureMode";
+			this->TextureMode->Size = System::Drawing::Size(59, 16);
+			this->TextureMode->TabIndex = 1;
+			this->TextureMode->TabStop = true;
+			this->TextureMode->Text = L"Texture";
+			this->TextureMode->UseVisualStyleBackColor = true;
+			this->TextureMode->Click += gcnew System::EventHandler(this, &MyForm::TextureMode_Click);
+			// 
+			// PickMode
+			// 
+			this->PickMode->AutoSize = true;
+			this->PickMode->Location = System::Drawing::Point(6, 21);
+			this->PickMode->Name = L"PickMode";
+			this->PickMode->Size = System::Drawing::Size(73, 16);
+			this->PickMode->TabIndex = 0;
+			this->PickMode->TabStop = true;
+			this->PickMode->Text = L"Pick Mode";
+			this->PickMode->UseVisualStyleBackColor = true;
+			this->PickMode->Click += gcnew System::EventHandler(this, &MyForm::PickMode_Click);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 12);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(926, 479);
+			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->hkoglPanelControl2);
 			this->Controls->Add(this->trackBar1);
 			this->Controls->Add(this->NewM_Button);
@@ -318,6 +364,8 @@ namespace OpenMesh_EX {
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar1))->EndInit();
+			this->groupBox2->ResumeLayout(false);
+			this->groupBox2->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -574,8 +622,27 @@ private: System::Void NewM_Button_Click(System::Object^ sender, System::EventArg
 	hkoglPanelControl2->Invalidate();
 }
 
+#pragma region Pick / Texcture Mode
+private: System::Void PickMode_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+	groupBox1->Visible = true;
+	pickMode = PickMode::None;
+	radioButton1->Checked = false;
+	radioButton2->Checked = false;
+	radioButton3->Checked = false;
 
+	drawTexture = false;
+	hkoglPanelControl1->Invalidate();
+}
+private: System::Void TextureMode_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	groupBox1->Visible = false;
+	pickMode = PickMode::None;
 
+	drawTexture = true;
+	hkoglPanelControl1->Invalidate();
+}
+#pragma endregion
 
 };
 }
