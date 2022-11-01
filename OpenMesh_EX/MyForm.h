@@ -21,7 +21,7 @@ Tri_Mesh *mesh;
 xform xf;
 GLCamera camera;
 float fov = 0.7f;
-std::string filename = "./resource/3DModel/UnionSphere.obj";	// load model
+std::string filename = "./resource/3DModel/Simpson.obj";	// load model
 
 static const Mouse::button physical_to_logical_map[] = {
 	Mouse::NONE, Mouse::ROTATE, Mouse::MOVEXY, Mouse::MOVEZ,
