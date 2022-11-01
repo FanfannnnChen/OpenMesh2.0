@@ -201,7 +201,7 @@ namespace OpenMesh_EX {
 			this->groupBox1->Controls->Add(this->radioButton3);
 			this->groupBox1->Controls->Add(this->radioButton2);
 			this->groupBox1->Controls->Add(this->radioButton1);
-			this->groupBox1->Location = System::Drawing::Point(515, 45);
+			this->groupBox1->Location = System::Drawing::Point(521, 136);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Size = System::Drawing::Size(114, 133);
 			this->groupBox1->TabIndex = 3;
@@ -248,7 +248,7 @@ namespace OpenMesh_EX {
 			// trackBar1
 			// 
 			this->trackBar1->LargeChange = 1;
-			this->trackBar1->Location = System::Drawing::Point(515, 307);
+			this->trackBar1->Location = System::Drawing::Point(521, 336);
 			this->trackBar1->Minimum = 1;
 			this->trackBar1->Name = L"trackBar1";
 			this->trackBar1->Size = System::Drawing::Size(114, 45);
@@ -260,7 +260,7 @@ namespace OpenMesh_EX {
 			// OneRing_Face_checkBox1
 			// 
 			this->OneRing_Face_checkBox1->AutoSize = true;
-			this->OneRing_Face_checkBox1->Location = System::Drawing::Point(515, 263);
+			this->OneRing_Face_checkBox1->Location = System::Drawing::Point(521, 292);
 			this->OneRing_Face_checkBox1->Name = L"OneRing_Face_checkBox1";
 			this->OneRing_Face_checkBox1->Size = System::Drawing::Size(100, 16);
 			this->OneRing_Face_checkBox1->TabIndex = 4;
@@ -271,7 +271,7 @@ namespace OpenMesh_EX {
 			// OneRing_Vertex_checkBox2
 			// 
 			this->OneRing_Vertex_checkBox2->AutoSize = true;
-			this->OneRing_Vertex_checkBox2->Location = System::Drawing::Point(515, 285);
+			this->OneRing_Vertex_checkBox2->Location = System::Drawing::Point(521, 314);
 			this->OneRing_Vertex_checkBox2->Name = L"OneRing_Vertex_checkBox2";
 			this->OneRing_Vertex_checkBox2->Size = System::Drawing::Size(110, 16);
 			this->OneRing_Vertex_checkBox2->TabIndex = 5;
@@ -281,7 +281,7 @@ namespace OpenMesh_EX {
 			// 
 			// NewM_Button
 			// 
-			this->NewM_Button->Location = System::Drawing::Point(521, 201);
+			this->NewM_Button->Location = System::Drawing::Point(527, 410);
 			this->NewM_Button->Name = L"NewM_Button";
 			this->NewM_Button->Size = System::Drawing::Size(75, 23);
 			this->NewM_Button->TabIndex = 6;
@@ -311,7 +311,7 @@ namespace OpenMesh_EX {
 			// 
 			this->groupBox2->Controls->Add(this->TextureMode);
 			this->groupBox2->Controls->Add(this->PickMode);
-			this->groupBox2->Location = System::Drawing::Point(515, 367);
+			this->groupBox2->Location = System::Drawing::Point(521, 36);
 			this->groupBox2->Name = L"groupBox2";
 			this->groupBox2->Size = System::Drawing::Size(114, 89);
 			this->groupBox2->TabIndex = 8;

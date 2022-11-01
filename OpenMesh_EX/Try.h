@@ -157,26 +157,40 @@ void RenderMeshWindow()
 	glm::mat4 pMat = camera1.GetProjectionMatrix(aspect);
 
 	// 不畫貼圖 => 跑pick mode
-	if (!drawTexture)
-	{
-		// 取得 faceID 才能畫
-		// write faceID+1 to framebuffer
-		pickingTexture.Enable();
+	//if (!drawTexture)
+	//{
+	//	// 取得 faceID 才能畫
+	//	// write faceID+1 to framebuffer
+	//	pickingTexture.Enable();
+	//
+	//	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+	//	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	//
+	//	pickingShader.Enable();
+	//	pickingShader.SetMVMat(value_ptr(mvMat));
+	//	pickingShader.SetPMat(value_ptr(pMat));
+	//
+	//	model.Render();
+	//
+	//	pickingShader.Disable();
+	//	pickingTexture.Disable();
+	//}
 
-		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-		pickingShader.Enable();
-		pickingShader.SetMVMat(value_ptr(mvMat));
-		pickingShader.SetPMat(value_ptr(pMat));
-
-		model.Render();
-
-		pickingShader.Disable();
-		pickingTexture.Disable();
-	}
+	pickingTexture.Enable();
 
 	// draw wire model 都要跑的部分
+	glClearColor(0.5f, 0.5f, 0.5f, 0.0f);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	pickingShader.Enable();
+	pickingShader.SetMVMat(value_ptr(mvMat));
+	pickingShader.SetPMat(value_ptr(pMat));
+
+	model.Render();
+
+	pickingShader.Disable();
+	pickingTexture.Disable();
+
 	glClearColor(0.5f, 0.5f, 0.5f, 0.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -189,6 +203,8 @@ void RenderMeshWindow()
 	drawModelShader.SetWireColor(glm::vec4(0.0f, 0.0f, 0.0f, 1.0f));
 	drawModelShader.SetFaceColor(glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
 	drawModelShader.UseLighting(true);
+	drawModelShader.DrawTexCoord(false);		// 影響texture開關 黑色底
+	drawModelShader.DrawTexture(false);			// 影響texture開關 黑色底
 	drawModelShader.DrawWireframe(!drawTexture);
 	drawModelShader.SetNormalMat(normalMat);
 	drawModelShader.SetMVMat(mvMat);
@@ -198,22 +214,25 @@ void RenderMeshWindow()
 	model.Render();
 	
 #pragma region Pick Mode
+
 	// render selected face
 	if (pickMode == ADD_FACE || pickMode == DEL_FACE)
 	{
-		drawModelShader.Disable();
+		//drawModelShader.Disable();
 
 		drawPickingFaceShader.Enable();
 		drawPickingFaceShader.SetMVMat(value_ptr(mvMat));
 		drawPickingFaceShader.SetPMat(value_ptr(pMat));
 		model.RenderSelectedFace();
 		drawPickingFaceShader.Disable();
+
+		drawModelShader.Disable();
 	}
 
 	// render closest point
 	if (pickMode == SELECT_POINT)
 	{
-		drawModelShader.Disable();
+		//drawModelShader.Disable();
 		if (updateFlag)
 		{
 			float depthValue = 0;
@@ -230,7 +249,6 @@ void RenderMeshWindow()
 
 			updateFlag = false;
 		}
-
 
 		glBindBuffer(GL_ARRAY_BUFFER, vboPoint);
 		glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec3), glm::value_ptr(worldPos), GL_STATIC_DRAW);
@@ -249,9 +267,10 @@ void RenderMeshWindow()
 		drawPointShader.Disable();
 
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+		drawModelShader.Disable();
 	}
 #pragma endregion
-
 	if (drawTexture)
 	{
 		drawModelShader.DrawTexture(true);
@@ -262,7 +281,6 @@ void RenderMeshWindow()
 		
 		drawModelShader.Disable();
 	}
-
 	glUseProgram(0);
 }
 
@@ -295,7 +313,7 @@ void RenderTexCoordWindow()
 	drawModelShader.Enable();
 
 	drawModelShader.SetFaceColor(glm::vec4(0.0f, 0.0f, 0.0f, 0.0f));
-	drawModelShader.SetWireColor(glm::vec4(1.0f, 1.0f, 0.0f, 1.0f));
+	drawModelShader.SetWireColor(glm::vec4(0.8f, 1.0f, 0.3f, 1.0f));
 	drawModelShader.UseLighting(false);
 	drawModelShader.DrawWireframe(true);
 	drawModelShader.DrawTexCoord(true);
