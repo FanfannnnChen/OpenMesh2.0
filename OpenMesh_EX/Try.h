@@ -55,14 +55,19 @@ float windowHeight = 454.0;
 float aspect = windowWidth * 1.0f / windowHeight;	// aspect = windowWidth * 1.0f / windowHeight;
 
 // para panel
-float windowWidth2			 = 220.0;
-float windowHeight2			 = 220.0;
+float windowWidth2			 = 120.0;
+float windowHeight2			 = 120.0;
 float aspect2				 = windowWidth2 * 1.0f / windowHeight2;
 float uvRotateAngle			 = 0.0;
 float prevUVRotateAngle		 = 0.0;
 
+// new mesh/ texture
+vector<MeshObject> ObjTemp;
+vector<int>	ObjTexture;
+int PickTextureNum;
+
 // texture
-GLuint textureID;
+vector<GLuint> textureID(4, -1);
 bool drawTexture = false;
 
 // ****** SHADER ******
@@ -79,6 +84,26 @@ void InitCamera2()
 	camera2.ToggleOrtho();
 	camera2.SetEyePos(0.0f, 0.0f, -0.10f);
 	//camera2.SetEyeLookPos(0.0f, 0.0f, -0.1f);
+}
+
+void Para()
+{
+	model.Parameterization();
+	cout << "------Parameterization finished------" << endl;
+
+	MeshObject tempMesh;
+	ObjTemp.push_back(tempMesh);
+	ObjTemp.back().Init("newMesh.obj");
+	// tempMesh.CreateLoadNewMesh(tempMesh);
+
+	int id = 0;
+	while (ObjTemp.back().AddSelectedFace(id))
+	{
+		id++;
+	}
+	ObjTemp.back().Parameterization();
+
+	ObjTexture.push_back(PickTextureNum);
 }
 
 void My_LoadModel()
@@ -98,20 +123,27 @@ void My_LoadTextures()
 	//Texture setting
 	///////////////////////////	
 	//Load texture data from file
-	TextureData texture_data = Common::Load_png((ResourcePath::imagePath + "checkerboard4.jpg").c_str());
+	vector<TextureData> texture_data;
+	texture_data.push_back(Common::Load_png((ResourcePath::imagePath + "checkerboard4.jpg").c_str()));
+	texture_data.push_back(Common::Load_png((ResourcePath::imagePath + "cloud.jpg").c_str()));
+	texture_data.push_back(Common::Load_png((ResourcePath::imagePath + "pattern.jpg").c_str()));
+	texture_data.push_back(Common::Load_png((ResourcePath::imagePath + "wood.jpg").c_str()));
 
-	//Generate empty texture
-	glGenTextures(1, &textureID);
-	glBindTexture(GL_TEXTURE_2D, textureID);
+	for (int i = 0; i < 4; i++)
+	{
+		//Generate empty texture
+		glGenTextures(1, &textureID[i]);
+		glBindTexture(GL_TEXTURE_2D, textureID[i]);
 
-	//Do texture setting
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA32F, texture_data.width, texture_data.height, 0, GL_RGBA, GL_UNSIGNED_BYTE, texture_data.data);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glBindTexture(GL_TEXTURE_2D, 0);
-	///////////////////////////	
+		//Do texture setting
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA32F, texture_data[i].width, texture_data[i].height, 0, GL_RGBA, GL_UNSIGNED_BYTE, texture_data[i].data);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glBindTexture(GL_TEXTURE_2D, 0);
+	}
+
 }
 
 void InitOpenGL()
@@ -186,6 +218,8 @@ void RenderMeshWindow()
 	pickingShader.SetMVMat(value_ptr(mvMat));
 	pickingShader.SetPMat(value_ptr(pMat));
 
+	glEnable(GL_POLYGON_OFFSET_FILL);
+	glPolygonOffset(1.0f, 1.0f);
 	model.Render();
 
 	pickingShader.Disable();
@@ -223,6 +257,8 @@ void RenderMeshWindow()
 		drawPickingFaceShader.Enable();
 		drawPickingFaceShader.SetMVMat(value_ptr(mvMat));
 		drawPickingFaceShader.SetPMat(value_ptr(pMat));
+		glEnable(GL_POLYGON_OFFSET_FILL);
+		glPolygonOffset(1.0f, 1.0f);
 		model.RenderSelectedFace();
 		drawPickingFaceShader.Disable();
 
@@ -275,10 +311,33 @@ void RenderMeshWindow()
 	{
 		drawModelShader.DrawTexture(true);
 
-		glBindTexture(GL_TEXTURE_2D, textureID);
-		model.RenderParameterized();
-		glBindTexture(GL_TEXTURE_2D, 0);
+		//glBindTexture(GL_TEXTURE_2D, textureID);
+		//model.RenderParameterized();
 		
+		for (int i = 0; i < ObjTemp.size(); i++)
+		{
+			// check textureID initial
+			if (textureID[ObjTexture[i]] == -1)
+			{
+				std::cout << "Bind Texture ERROR¡I¡I¡I¡I" << std::endl;
+			}
+
+			glBindTexture(GL_TEXTURE_2D, textureID[ObjTexture[i]]);
+			glEnable(GL_POLYGON_OFFSET_FILL);
+			glPolygonOffset(-1.0f, -1.0f);
+			ObjTemp[i].RenderParameterized();
+
+			glBindTexture(GL_TEXTURE_2D, 0);
+		}
+
+		// °ÊºA
+		glBindTexture(GL_TEXTURE_2D, textureID[PickTextureNum]);
+		glEnable(GL_POLYGON_OFFSET_FILL);
+		glPolygonOffset(-1.0f, -1.0f);
+		ObjTemp.back().RenderParameterized();
+		glBindTexture(GL_TEXTURE_2D, 0);
+
+		//glBindTexture(GL_TEXTURE_2D, 0);
 		drawModelShader.Disable();
 	}
 	glUseProgram(0);

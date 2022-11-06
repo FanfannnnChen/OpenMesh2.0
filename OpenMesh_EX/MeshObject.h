@@ -29,8 +29,8 @@ public:
 
 	MyMesh mesh;
 	MyMesh subMesh;
-	GLuint vao, sub_vao;
-	GLuint ebo, sub_ebo;
+	GLuint vao;
+	GLuint ebo;
 	GLuint vboVertices, vboNormal, vboTexCoord;
 
 private:
@@ -55,10 +55,12 @@ public:
 	void SelectOneRing_Face(int faceID, int time, std::string pickMode);
 	void SelectOneRing_Vertex(int faceID, int time, std::string pickMode);
 
-	void CreateSubMesh(MyMesh& mesh);
+	void CreateNewMesh(MyMesh& mesh);
 	void Parameterization(float uvRotateAngle = 0);
 	void RenderParameterized();
-	void SaveNewMesh(MyMesh& mesh);
+	void SaveNewMesh(MyMesh& mesh, std::string _fileName);
+	void CreateLoadNewMesh(MeshObject& NewMesh );
+	void ClearAllSelectedFace();
 
 private:
 	GLMesh model;

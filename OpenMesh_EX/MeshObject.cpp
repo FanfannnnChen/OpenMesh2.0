@@ -367,7 +367,7 @@ void MeshObject::SelectOneRing_Vertex(int faceID, int time, std::string pickMode
 	
 }
 
-void MeshObject::CreateSubMesh(MyMesh& mesh)
+void MeshObject::CreateNewMesh(MyMesh& mesh)
 {
 	mesh.request_vertex_texcoords2D();
 	mesh.request_vertex_normals();
@@ -427,7 +427,7 @@ void MeshObject::Parameterization(float uvRotateAngle)
 	mesh.add_property(heWeight, "heWeight");
 	mesh.add_property(row, "row");
 
-	CreateSubMesh(mesh);
+	CreateNewMesh(mesh);
 
 	//calculate weight
 	MyMesh::HalfedgeHandle half_edge_h;
@@ -704,8 +704,7 @@ void MeshObject::Parameterization(float uvRotateAngle)
 	}
 	elemCount.swap(std::vector<int>(selectedFace.size(), 3));
 
-	SaveNewMesh(mesh);
-
+	SaveNewMesh(mesh, "newMesh.obj");
 
 	// debug
 	/*OpenMesh::IO::Options wopt;
@@ -728,14 +727,41 @@ void MeshObject::RenderParameterized()
 	}
 }
 
-void MeshObject::SaveNewMesh( MyMesh& mesh )
+void MeshObject::CreateLoadNewMesh(MeshObject& NewMesh)
+{
+	if (selectedFace.size() <= 0)
+	{
+		return;
+	}
+
+	std::sort(selectedFace.begin(), selectedFace.end());
+
+	MyMesh mesh;
+	CreateNewMesh(mesh);
+
+	SaveNewMesh(mesh, "newMesh.obj");
+
+	if (NewMesh.Init("newMesh.obj"))
+	{
+		std::cout << "New Mesh initial" << std::endl;
+	}
+	else 
+		std::cout << "New Mesh initial failed" << std::endl;
+}
+
+void MeshObject::ClearAllSelectedFace()
+{
+	selectedFace.clear();
+}
+
+void MeshObject::SaveNewMesh( MyMesh& mesh, std::string _fileName)
 {
 	// debug
 	OpenMesh::IO::Options wopt;
 	wopt += OpenMesh::IO::Options::VertexTexCoord;
 	wopt += OpenMesh::IO::Options::VertexNormal;
 
-	if (!OpenMesh::IO::write_mesh(mesh, "debug.obj", wopt))
+	if (!OpenMesh::IO::write_mesh(mesh, _fileName, wopt))
 	{
 		printf("Write Mesh Error\n");
 	}

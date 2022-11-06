@@ -86,6 +86,18 @@ namespace OpenMesh_EX {
 	private: System::Windows::Forms::RadioButton^ TextureMode;
 
 	private: System::Windows::Forms::RadioButton^ PickMode;
+	private: System::Windows::Forms::PictureBox^ pictureBox1;
+	private: System::Windows::Forms::PictureBox^ pictureBox2;
+	private: System::Windows::Forms::PictureBox^ pictureBox3;
+	private: System::Windows::Forms::PictureBox^ pictureBox4;
+	private: System::Windows::Forms::RadioButton^ radioButton4;
+	private: System::Windows::Forms::GroupBox^ groupBox3;
+	private: System::Windows::Forms::RadioButton^ radioButton7;
+	private: System::Windows::Forms::RadioButton^ radioButton6;
+	private: System::Windows::Forms::RadioButton^ radioButton5;
+	private: System::Windows::Forms::GroupBox^ OneRingGroupBox;
+
+
 
 	protected:
 
@@ -106,6 +118,7 @@ namespace OpenMesh_EX {
 			HKOGLPanel::HKCOGLPanelPixelFormat^ hkcoglPanelPixelFormat1 = (gcnew HKOGLPanel::HKCOGLPanelPixelFormat());
 			HKOGLPanel::HKCOGLPanelCameraSetting^ hkcoglPanelCameraSetting2 = (gcnew HKOGLPanel::HKCOGLPanelCameraSetting());
 			HKOGLPanel::HKCOGLPanelPixelFormat^ hkcoglPanelPixelFormat2 = (gcnew HKOGLPanel::HKCOGLPanelPixelFormat());
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->fileToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->loadModelToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -125,10 +138,26 @@ namespace OpenMesh_EX {
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->TextureMode = (gcnew System::Windows::Forms::RadioButton());
 			this->PickMode = (gcnew System::Windows::Forms::RadioButton());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox3 = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox4 = (gcnew System::Windows::Forms::PictureBox());
+			this->radioButton4 = (gcnew System::Windows::Forms::RadioButton());
+			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
+			this->radioButton7 = (gcnew System::Windows::Forms::RadioButton());
+			this->radioButton6 = (gcnew System::Windows::Forms::RadioButton());
+			this->radioButton5 = (gcnew System::Windows::Forms::RadioButton());
+			this->OneRingGroupBox = (gcnew System::Windows::Forms::GroupBox());
 			this->menuStrip1->SuspendLayout();
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar1))->BeginInit();
 			this->groupBox2->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->BeginInit();
+			this->groupBox3->SuspendLayout();
+			this->OneRingGroupBox->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// menuStrip1
@@ -248,7 +277,7 @@ namespace OpenMesh_EX {
 			// trackBar1
 			// 
 			this->trackBar1->LargeChange = 1;
-			this->trackBar1->Location = System::Drawing::Point(521, 336);
+			this->trackBar1->Location = System::Drawing::Point(0, 65);
 			this->trackBar1->Minimum = 1;
 			this->trackBar1->Name = L"trackBar1";
 			this->trackBar1->Size = System::Drawing::Size(114, 45);
@@ -260,32 +289,32 @@ namespace OpenMesh_EX {
 			// OneRing_Face_checkBox1
 			// 
 			this->OneRing_Face_checkBox1->AutoSize = true;
-			this->OneRing_Face_checkBox1->Location = System::Drawing::Point(521, 292);
+			this->OneRing_Face_checkBox1->Location = System::Drawing::Point(6, 21);
 			this->OneRing_Face_checkBox1->Name = L"OneRing_Face_checkBox1";
-			this->OneRing_Face_checkBox1->Size = System::Drawing::Size(100, 16);
+			this->OneRing_Face_checkBox1->Size = System::Drawing::Size(45, 16);
 			this->OneRing_Face_checkBox1->TabIndex = 4;
-			this->OneRing_Face_checkBox1->Text = L"One Ring - Face";
+			this->OneRing_Face_checkBox1->Text = L"Face";
 			this->OneRing_Face_checkBox1->UseVisualStyleBackColor = true;
 			this->OneRing_Face_checkBox1->CheckedChanged += gcnew System::EventHandler(this, &MyForm::OneRing_Face_checkBox1_CheckedChanged);
 			// 
 			// OneRing_Vertex_checkBox2
 			// 
 			this->OneRing_Vertex_checkBox2->AutoSize = true;
-			this->OneRing_Vertex_checkBox2->Location = System::Drawing::Point(521, 314);
+			this->OneRing_Vertex_checkBox2->Location = System::Drawing::Point(6, 43);
 			this->OneRing_Vertex_checkBox2->Name = L"OneRing_Vertex_checkBox2";
-			this->OneRing_Vertex_checkBox2->Size = System::Drawing::Size(110, 16);
+			this->OneRing_Vertex_checkBox2->Size = System::Drawing::Size(55, 16);
 			this->OneRing_Vertex_checkBox2->TabIndex = 5;
-			this->OneRing_Vertex_checkBox2->Text = L"One Ring - Vertex";
+			this->OneRing_Vertex_checkBox2->Text = L"Vertex";
 			this->OneRing_Vertex_checkBox2->UseVisualStyleBackColor = true;
 			this->OneRing_Vertex_checkBox2->CheckedChanged += gcnew System::EventHandler(this, &MyForm::OneRing_Vertex_checkBox2_CheckedChanged);
 			// 
 			// NewM_Button
 			// 
-			this->NewM_Button->Location = System::Drawing::Point(527, 410);
+			this->NewM_Button->Location = System::Drawing::Point(673, 36);
 			this->NewM_Button->Name = L"NewM_Button";
 			this->NewM_Button->Size = System::Drawing::Size(75, 23);
 			this->NewM_Button->TabIndex = 6;
-			this->NewM_Button->Text = L"New Mesh";
+			this->NewM_Button->Text = L"Para";
 			this->NewM_Button->UseVisualStyleBackColor = true;
 			this->NewM_Button->Click += gcnew System::EventHandler(this, &MyForm::NewM_Button_Click);
 			// 
@@ -296,13 +325,13 @@ namespace OpenMesh_EX {
 			hkcoglPanelCameraSetting2->Near = -1000;
 			hkcoglPanelCameraSetting2->Type = HKOGLPanel::HKCOGLPanelCameraSetting::CAMERATYPE::ORTHOGRAPHIC;
 			this->hkoglPanelControl2->Camera_Setting = hkcoglPanelCameraSetting2;
-			this->hkoglPanelControl2->Location = System::Drawing::Point(676, 110);
+			this->hkoglPanelControl2->Location = System::Drawing::Point(783, 36);
 			this->hkoglPanelControl2->Name = L"hkoglPanelControl2";
 			hkcoglPanelPixelFormat2->Accumu_Buffer_Bits = HKOGLPanel::HKCOGLPanelPixelFormat::PIXELBITS::BITS_0;
 			hkcoglPanelPixelFormat2->Alpha_Buffer_Bits = HKOGLPanel::HKCOGLPanelPixelFormat::PIXELBITS::BITS_0;
 			hkcoglPanelPixelFormat2->Stencil_Buffer_Bits = HKOGLPanel::HKCOGLPanelPixelFormat::PIXELBITS::BITS_0;
 			this->hkoglPanelControl2->Pixel_Format = hkcoglPanelPixelFormat2;
-			this->hkoglPanelControl2->Size = System::Drawing::Size(220, 220);
+			this->hkoglPanelControl2->Size = System::Drawing::Size(120, 120);
 			this->hkoglPanelControl2->TabIndex = 7;
 			this->hkoglPanelControl2->Load += gcnew System::EventHandler(this, &MyForm::hkoglPanelControl2_Load);
 			this->hkoglPanelControl2->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::hkoglPanelControl2_Paint);
@@ -342,20 +371,135 @@ namespace OpenMesh_EX {
 			this->PickMode->UseVisualStyleBackColor = true;
 			this->PickMode->Click += gcnew System::EventHandler(this, &MyForm::PickMode_Click);
 			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
+			this->pictureBox1->Location = System::Drawing::Point(673, 194);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(100, 100);
+			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox1->TabIndex = 9;
+			this->pictureBox1->TabStop = false;
+			// 
+			// pictureBox2
+			// 
+			this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
+			this->pictureBox2->Location = System::Drawing::Point(803, 194);
+			this->pictureBox2->Name = L"pictureBox2";
+			this->pictureBox2->Size = System::Drawing::Size(100, 100);
+			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox2->TabIndex = 10;
+			this->pictureBox2->TabStop = false;
+			// 
+			// pictureBox3
+			// 
+			this->pictureBox3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox3.Image")));
+			this->pictureBox3->Location = System::Drawing::Point(673, 336);
+			this->pictureBox3->Name = L"pictureBox3";
+			this->pictureBox3->Size = System::Drawing::Size(100, 100);
+			this->pictureBox3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox3->TabIndex = 11;
+			this->pictureBox3->TabStop = false;
+			// 
+			// pictureBox4
+			// 
+			this->pictureBox4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox4.Image")));
+			this->pictureBox4->Location = System::Drawing::Point(803, 336);
+			this->pictureBox4->Name = L"pictureBox4";
+			this->pictureBox4->Size = System::Drawing::Size(100, 100);
+			this->pictureBox4->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox4->TabIndex = 12;
+			this->pictureBox4->TabStop = false;
+			// 
+			// radioButton4
+			// 
+			this->radioButton4->AutoSize = true;
+			this->radioButton4->Checked = true;
+			this->radioButton4->Location = System::Drawing::Point(14, 121);
+			this->radioButton4->Name = L"radioButton4";
+			this->radioButton4->Size = System::Drawing::Size(46, 16);
+			this->radioButton4->TabIndex = 13;
+			this->radioButton4->TabStop = true;
+			this->radioButton4->Text = L"Pic 1";
+			this->radioButton4->UseVisualStyleBackColor = true;
+			this->radioButton4->Click += gcnew System::EventHandler(this, &MyForm::radioButton4_Click);
+			// 
+			// groupBox3
+			// 
+			this->groupBox3->Controls->Add(this->radioButton7);
+			this->groupBox3->Controls->Add(this->radioButton6);
+			this->groupBox3->Controls->Add(this->radioButton5);
+			this->groupBox3->Controls->Add(this->radioButton4);
+			this->groupBox3->Location = System::Drawing::Point(659, 179);
+			this->groupBox3->Name = L"groupBox3";
+			this->groupBox3->Size = System::Drawing::Size(255, 288);
+			this->groupBox3->TabIndex = 14;
+			this->groupBox3->TabStop = false;
+			this->groupBox3->Text = L"Texture";
+			// 
+			// radioButton7
+			// 
+			this->radioButton7->AutoSize = true;
+			this->radioButton7->Location = System::Drawing::Point(144, 263);
+			this->radioButton7->Name = L"radioButton7";
+			this->radioButton7->Size = System::Drawing::Size(46, 16);
+			this->radioButton7->TabIndex = 16;
+			this->radioButton7->Text = L"Pic 4";
+			this->radioButton7->UseVisualStyleBackColor = true;
+			this->radioButton7->Click += gcnew System::EventHandler(this, &MyForm::radioButton7_Click);
+			// 
+			// radioButton6
+			// 
+			this->radioButton6->AutoSize = true;
+			this->radioButton6->Location = System::Drawing::Point(14, 263);
+			this->radioButton6->Name = L"radioButton6";
+			this->radioButton6->Size = System::Drawing::Size(46, 16);
+			this->radioButton6->TabIndex = 15;
+			this->radioButton6->Text = L"Pic 3";
+			this->radioButton6->UseVisualStyleBackColor = true;
+			this->radioButton6->Click += gcnew System::EventHandler(this, &MyForm::radioButton6_Click);
+			// 
+			// radioButton5
+			// 
+			this->radioButton5->AutoSize = true;
+			this->radioButton5->Location = System::Drawing::Point(144, 121);
+			this->radioButton5->Name = L"radioButton5";
+			this->radioButton5->Size = System::Drawing::Size(46, 16);
+			this->radioButton5->TabIndex = 14;
+			this->radioButton5->Text = L"Pic 2";
+			this->radioButton5->UseVisualStyleBackColor = true;
+			this->radioButton5->Click += gcnew System::EventHandler(this, &MyForm::radioButton5_Click);
+			// 
+			// OneRingGroupBox
+			// 
+			this->OneRingGroupBox->Controls->Add(this->OneRing_Face_checkBox1);
+			this->OneRingGroupBox->Controls->Add(this->OneRing_Vertex_checkBox2);
+			this->OneRingGroupBox->Controls->Add(this->trackBar1);
+			this->OneRingGroupBox->Location = System::Drawing::Point(521, 286);
+			this->OneRingGroupBox->Name = L"OneRingGroupBox";
+			this->OneRingGroupBox->Size = System::Drawing::Size(116, 125);
+			this->OneRingGroupBox->TabIndex = 15;
+			this->OneRingGroupBox->TabStop = false;
+			this->OneRingGroupBox->Text = L"OneRing";
+			this->OneRingGroupBox->Visible = false;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 12);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(926, 479);
+			this->Controls->Add(this->OneRingGroupBox);
+			this->Controls->Add(this->pictureBox4);
+			this->Controls->Add(this->pictureBox3);
+			this->Controls->Add(this->pictureBox2);
+			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->hkoglPanelControl2);
-			this->Controls->Add(this->trackBar1);
 			this->Controls->Add(this->NewM_Button);
-			this->Controls->Add(this->OneRing_Vertex_checkBox2);
-			this->Controls->Add(this->OneRing_Face_checkBox1);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->hkoglPanelControl1);
 			this->Controls->Add(this->menuStrip1);
+			this->Controls->Add(this->groupBox3);
 			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"MyForm";
 			this->Text = L"PickMEsh";
@@ -366,6 +510,14 @@ namespace OpenMesh_EX {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar1))->EndInit();
 			this->groupBox2->ResumeLayout(false);
 			this->groupBox2->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->EndInit();
+			this->groupBox3->ResumeLayout(false);
+			this->groupBox3->PerformLayout();
+			this->OneRingGroupBox->ResumeLayout(false);
+			this->OneRingGroupBox->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -617,8 +769,7 @@ private: System::Void trackBar1_Scroll(System::Object^ sender, System::EventArgs
 
 private: System::Void NewM_Button_Click(System::Object^ sender, System::EventArgs^ e) 
 {
-	model.Parameterization();
-	cout << "------Parameterization finished------" << endl;
+	Para();
 	hkoglPanelControl2->Invalidate();
 }
 
@@ -626,6 +777,7 @@ private: System::Void NewM_Button_Click(System::Object^ sender, System::EventArg
 private: System::Void PickMode_Click(System::Object^ sender, System::EventArgs^ e) 
 {
 	groupBox1->Visible = true;
+	OneRingGroupBox->Visible = true;
 	pickMode = PickMode::None;
 	radioButton1->Checked = false;
 	radioButton2->Checked = false;
@@ -637,12 +789,41 @@ private: System::Void PickMode_Click(System::Object^ sender, System::EventArgs^ 
 private: System::Void TextureMode_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	groupBox1->Visible = false;
+	OneRingGroupBox->Visible = false;
 	pickMode = PickMode::None;
 
 	drawTexture = true;
+	
+	model.ClearAllSelectedFace();
+	
 	hkoglPanelControl1->Invalidate();
 }
 #pragma endregion
 
+#pragma Pick Texture
+private: System::Void radioButton4_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	PickTextureNum = 0;
+	hkoglPanelControl1->Invalidate();
+}
+
+private: System::Void radioButton5_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+	PickTextureNum = 1;
+	hkoglPanelControl1->Invalidate();
+}
+
+private: System::Void radioButton6_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	PickTextureNum = 2;
+	hkoglPanelControl1->Invalidate();
+}
+
+private: System::Void radioButton7_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+	PickTextureNum = 3;
+	hkoglPanelControl1->Invalidate();
+}
+#pragma endregion
 };
 }
