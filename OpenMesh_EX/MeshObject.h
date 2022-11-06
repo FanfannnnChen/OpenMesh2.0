@@ -54,9 +54,11 @@ public:
 
 	void SelectOneRing_Face(int faceID, int time, std::string pickMode);
 	void SelectOneRing_Vertex(int faceID, int time, std::string pickMode);
+
 	void CreateSubMesh(MyMesh& mesh);
 	void Parameterization(float uvRotateAngle = 0);
 	void RenderParameterized();
+	void SaveNewMesh(MyMesh& mesh);
 
 private:
 	GLMesh model;

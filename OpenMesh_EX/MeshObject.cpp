@@ -369,6 +369,7 @@ void MeshObject::SelectOneRing_Vertex(int faceID, int time, std::string pickMode
 
 void MeshObject::CreateSubMesh(MyMesh& mesh)
 {
+	mesh.request_vertex_texcoords2D();
 	mesh.request_vertex_normals();
 	mesh.request_face_normals();
 
@@ -425,8 +426,6 @@ void MeshObject::Parameterization(float uvRotateAngle)
 	MyMesh mesh;
 	mesh.add_property(heWeight, "heWeight");
 	mesh.add_property(row, "row");
-
-	mesh.request_vertex_texcoords2D();
 
 	CreateSubMesh(mesh);
 
@@ -705,16 +704,18 @@ void MeshObject::Parameterization(float uvRotateAngle)
 	}
 	elemCount.swap(std::vector<int>(selectedFace.size(), 3));
 
+	SaveNewMesh(mesh);
+
 
 	// debug
-	OpenMesh::IO::Options wopt;
+	/*OpenMesh::IO::Options wopt;
 	wopt += OpenMesh::IO::Options::VertexTexCoord;
 	wopt += OpenMesh::IO::Options::VertexNormal;
 
-	if (!OpenMesh::IO::write_mesh(model.mesh, "debug.obj", wopt))
+	if (!OpenMesh::IO::write_mesh(mesh, "debug.obj", wopt))
 	{
 		printf("Write Mesh Error\n");
-	}
+	}*/
 }
 
 void MeshObject::RenderParameterized()
@@ -727,4 +728,15 @@ void MeshObject::RenderParameterized()
 	}
 }
 
+void MeshObject::SaveNewMesh( MyMesh& mesh )
+{
+	// debug
+	OpenMesh::IO::Options wopt;
+	wopt += OpenMesh::IO::Options::VertexTexCoord;
+	wopt += OpenMesh::IO::Options::VertexNormal;
 
+	if (!OpenMesh::IO::write_mesh(mesh, "debug.obj", wopt))
+	{
+		printf("Write Mesh Error\n");
+	}
+}
