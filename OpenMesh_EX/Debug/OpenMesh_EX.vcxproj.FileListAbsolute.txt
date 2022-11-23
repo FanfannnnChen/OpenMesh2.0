@@ -6,3 +6,7 @@ C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Debug\OpenMesh_EX.vcxproj.Assembly
 C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Debug\OpenMesh_EX.MyForm.resources
 C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Debug\OpenMesh_EX.vcxproj.GenerateResource.cache
 C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Debug\OpenMesh_EX.vcxproj.CopyComplete
+D:\fan\新手作業 -已完成\OpenMesh\OpenMesh_EX\OpenMesh_EX\Debug\OpenMesh_EX.vcxproj.AssemblyReference.cache
+D:\fan\新手作業 -已完成\OpenMesh\OpenMesh_EX\OpenMesh_EX\Debug\OpenMesh_EX.MyForm.resources
+D:\fan\新手作業 -已完成\OpenMesh\OpenMesh_EX\OpenMesh_EX\Debug\OpenMesh_EX.vcxproj.GenerateResource.cache
+D:\fan\新手作業 -已完成\OpenMesh\OpenMesh_EX\OpenMesh_EX\Debug\OpenMesh_EX.vcxproj.CopyComplete
