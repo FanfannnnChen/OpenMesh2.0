@@ -25,7 +25,7 @@ public:
 
 	bool Init(std::string fileName);
 	void Render();
-	void LoadTexCoordToShader();
+	void LoadTexCoordToShader(int Scale);
 
 	MyMesh mesh;
 	MyMesh subMesh;
@@ -58,12 +58,13 @@ public:
 	void CreateNewMesh(MyMesh& mesh);
 	void Parameterization(float uvRotateAngle = 0);
 	void RenderParameterized();
-	void SaveNewMesh(MyMesh& mesh, std::string _fileName);
+	void SaveNewMesh(MyMesh& mesh);
 	void CreateLoadNewMesh(MeshObject& NewMesh );
 	void ClearAllSelectedFace();
+	void UpdateScale( int Scale );
+	GLMesh model;
 
 private:
-	GLMesh model;
 	std::vector<unsigned int> selectedFace;
 	std::vector<unsigned int*> fvIDsPtr;
 	std::vector<int> elemCount;

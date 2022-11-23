@@ -2,3 +2,7 @@ D:\OpenMesh_EX\OpenMesh_EX\Release\OpenMesh_EX.vcxproj.AssemblyReference.cache
 D:\OpenMesh_EX\OpenMesh_EX\Release\OpenMesh_EX.MyForm.resources
 D:\OpenMesh_EX\OpenMesh_EX\Release\OpenMesh_EX.vcxproj.GenerateResource.cache
 D:\OpenMesh_EX\OpenMesh_EX\Release\OpenMesh_EX.vcxproj.CopyComplete
+C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Release\OpenMesh_EX.vcxproj.AssemblyReference.cache
+C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Release\OpenMesh_EX.MyForm.resources
+C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Release\OpenMesh_EX.vcxproj.GenerateResource.cache
+C:\Users\PC14\Desktop\OpenMesh_EX\OpenMesh_EX\Release\OpenMesh_EX.vcxproj.CopyComplete

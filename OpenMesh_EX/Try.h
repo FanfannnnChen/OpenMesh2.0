@@ -50,13 +50,13 @@ bool OneRingCheckVertex = false;
 
 // model panel
 float deltaTime = 0.015;
-float windowWidth = 509.0;
-float windowHeight = 454.0;
+float windowWidth = 582.0;
+float windowHeight = 522.0;
 float aspect = windowWidth * 1.0f / windowHeight;	// aspect = windowWidth * 1.0f / windowHeight;
 
 // para panel
-float windowWidth2			 = 120.0;
-float windowHeight2			 = 120.0;
+float windowWidth2			 = 35.0;
+float windowHeight2			 = 35.0;
 float aspect2				 = windowWidth2 * 1.0f / windowHeight2;
 float uvRotateAngle			 = 0.0;
 float prevUVRotateAngle		 = 0.0;
@@ -67,8 +67,10 @@ vector<int>	ObjTexture;
 int PickTextureNum;
 
 // texture
-vector<GLuint> textureID(4, -1);
+vector<GLuint> textureID(8);
 bool drawTexture = false;
+bool isMiddleButtonPress = false;	// tuexture moving
+vector <string> texture_path;
 
 // ****** SHADER ******
 DrawModelShader			drawModelShader;
@@ -77,6 +79,172 @@ PickingShader			pickingShader;
 DrawPointShader			drawPointShader;
 PickingTexture			pickingTexture;
 
+bool Save_File()
+{
+	int count_ver = 0, count_nor = 0;
+	int last_vertex = 0;
+	int count = 0, sum = 0;
+	vector<int> counting;
+
+	std::ofstream ofs;
+	ofs.open("output.obj");
+	if (!ofs.is_open()) \
+	{
+		cout << "Failed to open file.\n";
+		return false;						// EXIT_FAILURE
+	}
+	ofs << "# New OBJ File: ''\nmtllib output.mtl\no originMesh\n";
+
+	//// 算點
+	for (int i = 0; i < ObjTemp.size(); i++)
+	{
+		for (MyMesh::VertexIter v_it = ObjTemp[i].model.mesh.vertices_begin(); v_it != ObjTemp[i].model.mesh.vertices_end(); ++v_it)
+		{
+			count_ver++;
+		}
+	}
+	// 算normal
+	for (int i = 0; i < ObjTemp.size(); i++)
+	{
+		for (MyMesh::FaceIter f_it = ObjTemp[i].model.mesh.faces_begin(); f_it != ObjTemp[i].model.mesh.faces_end(); ++f_it)
+		{
+			count_nor++;
+		}
+	}
+
+	// 原model 塞點資料
+	std::vector<MyMesh::Point> vertices;
+	vertices.reserve(model.model.mesh.n_vertices() + count_ver);
+	for (MyMesh::VertexIter v_it = model.model.mesh.vertices_begin(); v_it != model.model.mesh.vertices_end(); ++v_it)
+	{
+		vertices.push_back(model.model.mesh.point(*v_it));
+		sum++;
+		MyMesh::Point p = model.model.mesh.point(*v_it);
+	}
+	counting.push_back(sum);
+
+	// newMesh 塞點資料
+	for (int i = 0; i < ObjTemp.size(); i++)
+	{
+		for (MyMesh::VertexIter v_it = ObjTemp[i].model.mesh.vertices_begin(); v_it != ObjTemp[i].model.mesh.vertices_end(); ++v_it)
+		{
+			vertices.push_back(ObjTemp[i].model.mesh.point(*v_it));
+			sum++;
+			MyMesh::Point p = ObjTemp[i].model.mesh.point(*v_it);
+		}
+		counting.push_back(sum);
+	}
+
+	 //原model 塞點的法向量
+	std::vector<MyMesh::Normal> normals;
+	normals.reserve(model.model.mesh.n_faces() + count_nor);
+	for (MyMesh::FaceIter f_it = model.model.mesh.faces_begin(); f_it != model.model.mesh.faces_end(); ++f_it)
+	{
+		normals.push_back(model.model.mesh.normal(*f_it));
+	}
+	//// newMesh 塞點的法向量
+	for (int i = 0; i < ObjTemp.size(); i++)
+	{
+		for (MyMesh::FaceIter f_it = ObjTemp[i].model.mesh.faces_begin(); f_it != ObjTemp[i].model.mesh.faces_end(); ++f_it)
+		{
+			normals.push_back(ObjTemp[i].model.mesh.normal(*f_it));
+		}
+	}
+
+	// 寫檔！三個vector進去！
+	for (int i = 0; i < vertices.size(); i++)
+	{
+		ofs << "v " << vertices[i] << endl;
+	}
+
+	for (int i = 0; i < ObjTemp.size(); i++)
+	{
+		// 各個newMesh Obj的vertex textureCoord
+		for (MyMesh::VertexIter v_it = ObjTemp[i].model.mesh.vertices_begin(); v_it != ObjTemp[i].model.mesh.vertices_end(); ++v_it)
+		{
+			ofs << "vt " << ObjTemp[i].model.mesh.texcoord2D(*v_it) << endl;
+		}
+	}
+
+	for (int i = 0; i < normals.size(); i++)
+	{
+		ofs << "vn " << normals[i] << endl;
+	}
+
+	// 原model faceData
+	ofs << "usemtl Default_OBJ.origin\ns off\n";
+	for (MyMesh::FaceIter f_it = model.model.mesh.faces_begin(); f_it != model.model.mesh.faces_end(); ++f_it)
+	{
+		count++;
+		ofs << "f ";
+		for (MyMesh::FaceVertexIter fv_it = model.model.mesh.fv_iter(*f_it); fv_it.is_valid(); ++fv_it)
+		{
+
+			ofs << fv_it->idx() + 1 << "//" << count << " ";
+		}
+		ofs << endl;
+	}
+
+	// newMesh faceData
+	for (int i = 0; i < ObjTemp.size(); i++)
+	{
+		ofs << "usemtl Default_OBJ.0" << i << endl << "s off\n";
+		for (MyMesh::FaceIter f_it = ObjTemp[i].model.mesh.faces_begin(); f_it != ObjTemp[i].model.mesh.faces_end(); ++f_it)
+		{
+			count++;
+			ofs << "f ";
+			for (MyMesh::FaceVertexIter fv_it = ObjTemp[i].model.mesh.fv_iter(*f_it); fv_it.is_valid(); ++fv_it)
+			{
+
+				ofs << fv_it->idx() + 1 + counting[i] << "/" << fv_it->idx() + 1 + (counting[i] - counting[0]) << "/" << count << " ";
+			}
+			ofs << endl;
+		}
+	}
+	ofs.close();
+	return true;
+}
+
+bool Save_material()
+{
+	std::ofstream ofs;
+	ofs.open("output.mtl");
+	if (!ofs.is_open()) \
+	{
+		cout << "Failed to open file.\n";
+		return false; // EXIT_FAILURE
+	}
+	ofs << "# New OBJ File: ''\n# Material Count: " << ObjTemp.size() << endl << endl;
+
+	for (int i = 0; i < ObjTemp.size(); i++)
+	{
+		int textnum;
+		int tempID = 0;
+		tempID = ObjTexture[i] + 2;
+		for (int j = 0; j < 8; j++)
+		{
+			cout << "ObjTexture:   " << ObjTexture[i] << endl;
+			cout << "OUTtextureID:   " << textureID[j] << endl;
+			// 存tempObj 
+			if (tempID == textureID[j])
+			{
+				cout << "textureID:   " << textureID[j] << endl;
+				textnum = j;
+			}
+				
+		}
+		ofs << "newmtl Default_OBJ.0" << i << endl;
+		ofs << "Ns 225.000000" << endl
+			<< "Ka 1.000000 1.000000 1.000000" << endl
+			<< "Kd 1.000000 1.000000 1.000000" << endl
+			<< "Ks 0.000000 0.000000 0.000000" << endl
+			<< "Ke 0.000000 0.000000 0.000000" << endl
+			<< "Ni 1.450000" << endl
+			<< "d 1.000000" << endl
+			<< "illum 1" << endl
+			<< "map_Kd " << texture_path[textnum] << endl << endl;
+	}
+}
 
 void InitCamera2()
 {
@@ -86,24 +254,35 @@ void InitCamera2()
 	//camera2.SetEyeLookPos(0.0f, 0.0f, -0.1f);
 }
 
-void Para()
+void UpdateScale_from_Panel( int Scale )
 {
-	model.Parameterization();
+	cout << Scale << endl;
+	ObjTemp.back().UpdateScale(Scale);
+}
+
+void Para(float uvRotateAngle = 0 )
+{
+	prevUVRotateAngle = uvRotateAngle;
+	model.Parameterization(uvRotateAngle);
 	cout << "------Parameterization finished------" << endl;
 
 	MeshObject tempMesh;
 	ObjTemp.push_back(tempMesh);
 	ObjTemp.back().Init("newMesh.obj");
-	// tempMesh.CreateLoadNewMesh(tempMesh);
 
 	int id = 0;
 	while (ObjTemp.back().AddSelectedFace(id))
 	{
 		id++;
 	}
-	ObjTemp.back().Parameterization();
+	ObjTemp.back().Parameterization(uvRotateAngle);
 
 	ObjTexture.push_back(PickTextureNum);
+
+	for (int i = 0; i < ObjTemp.size(); i++)
+	{
+		cout << "i: " << i << "  tid: " << ObjTexture[i] << endl;
+	}
 }
 
 void My_LoadModel()
@@ -124,13 +303,27 @@ void My_LoadTextures()
 	///////////////////////////	
 	//Load texture data from file
 	vector<TextureData> texture_data;
-	texture_data.push_back(Common::Load_png((ResourcePath::imagePath + "checkerboard4.jpg").c_str()));
-	texture_data.push_back(Common::Load_png((ResourcePath::imagePath + "cloud.jpg").c_str()));
+	texture_data.push_back(Common::Load_png((ResourcePath::imagePath + "grass.jpg").c_str()));
+	texture_data.push_back(Common::Load_png((ResourcePath::imagePath + "skin.jpg").c_str()));
 	texture_data.push_back(Common::Load_png((ResourcePath::imagePath + "pattern.jpg").c_str()));
-	texture_data.push_back(Common::Load_png((ResourcePath::imagePath + "wood.jpg").c_str()));
+	texture_data.push_back(Common::Load_png((ResourcePath::imagePath + "eye.jpg").c_str()));
+	texture_data.push_back(Common::Load_png((ResourcePath::imagePath + "camouflage.jpg").c_str()));
+	texture_data.push_back(Common::Load_png((ResourcePath::imagePath + "green.jpg").c_str()));
+	texture_data.push_back(Common::Load_png((ResourcePath::imagePath + "tree.jpg").c_str()));
+	texture_data.push_back(Common::Load_png((ResourcePath::imagePath + "flower.jpg").c_str()));
 
-	for (int i = 0; i < 4; i++)
+	texture_path.push_back("grass.jpg");
+	texture_path.push_back("skin.jpg");
+	texture_path.push_back("pattern.jpg");
+	texture_path.push_back("eye.jpg");
+	texture_path.push_back("camouflage.jpg");
+	texture_path.push_back("green.jpg");
+	texture_path.push_back("tree.jpg");
+	texture_path.push_back("flower.jpg");
+	
+	for (int i = 0; i < 8; i++)
 	{
+		cout << "*-*-*-*-*-*-*-*-" << textureID[i] << endl;
 		//Generate empty texture
 		glGenTextures(1, &textureID[i]);
 		glBindTexture(GL_TEXTURE_2D, textureID[i]);
@@ -391,35 +584,39 @@ void SelectionHandler(unsigned int x, unsigned int y)
 	GLuint faceID = pickingTexture.ReadTexture(x, windowHeight - y - 1);
 	if (faceID != 0)
 	{
-		currentFaceID = faceID;
+		if ( faceID > 0 && faceID < 10201 )
+			currentFaceID = faceID;		
 	}
 
 	if (pickMode == ADD_FACE)
 	{
-		if (faceID != 0)
+		if (currentFaceID != 0)
 		{
-			model.AddSelectedFace(faceID - 1);
+			model.AddSelectedFace(currentFaceID - 1);
 
 			if (OneRingCheckFace)
 			{
-				model.SelectOneRing_Face(faceID - 1, OneRingTime, "ADD_FACE");
+				model.SelectOneRing_Face(currentFaceID - 1, OneRingTime, "ADD_FACE");
 			}
 			else if (OneRingCheckVertex)
-				model.SelectOneRing_Vertex(faceID - 1, OneRingTime, "ADD_FACE");
+			{
+				model.SelectOneRing_Vertex(currentFaceID - 1, OneRingTime, "ADD_FACE");
+			}
+				
 		}
 	}
 	else if (pickMode == DEL_FACE)
 	{
-		if (faceID != 0)
+		if (currentFaceID != 0)
 		{
-			model.DeleteSelectedFace(faceID - 1);
+			model.DeleteSelectedFace(currentFaceID - 1);
 
 			if (OneRingCheckFace)
 			{
-				model.SelectOneRing_Face(faceID - 1, OneRingTime, "DEL_FACE");
+				model.SelectOneRing_Face(currentFaceID - 1, OneRingTime, "DEL_FACE");
 			}
 			else if (OneRingCheckVertex)
-				model.SelectOneRing_Vertex(faceID - 1, OneRingTime, "DEL_FACE");
+				model.SelectOneRing_Vertex(currentFaceID - 1, OneRingTime, "DEL_FACE");
 		}
 	}
 	else if (pickMode == SELECT_POINT)
@@ -428,8 +625,28 @@ void SelectionHandler(unsigned int x, unsigned int y)
 		currentMouseY = y;
 		updateFlag = true;
 	}
+
+	if ( isMiddleButtonPress )
+	{
+		model.ClearAllSelectedFace();
+		model.SelectOneRing_Vertex(currentFaceID - 1, OneRingTime, "ADD_FACE");
+		model.Parameterization();
+		
+		ObjTemp.pop_back();
+		MeshObject temp;
+		ObjTemp.push_back( temp );
+		ObjTemp.back().Init("newMesh.obj");
+		int id = 0;
+		while (ObjTemp.back().AddSelectedFace(id))
+		{
+			id++;
+		}
+		ObjTemp.back().Parameterization();
+		ObjTexture.push_back(PickTextureNum);
+	}
 }
 
+// 滑鼠按下
 void Mouse_Press(int button, int x, int y)
 {
 	camera1.mousePressEvent(button, x, y);
@@ -439,6 +656,10 @@ void Mouse_Press(int button, int x, int y)
 	{
 		isRightButtonPress = true;
 		SelectionHandler(x, y);
+	}
+	else if (button == MIDDLE_BUTTON)
+	{
+		isMiddleButtonPress = true;
 	}
 }
 
@@ -451,14 +672,23 @@ void Mouse_Release(int button, int x, int y)
 	{
 		isRightButtonPress = false;
 	}
+	else if (button == MIDDLE_BUTTON)
+	{
+		isMiddleButtonPress = false;
+	}
 }
 
+// 滑鼠移動
 void Mouse_Moving(int x, int y)
 {
 	camera1.mouseMoveEvent(x, y);
 
 	// Right Button Actived ==> Selecting
 	if (isRightButtonPress)
+	{
+		SelectionHandler(x, y);
+	}
+	else if (isMiddleButtonPress)
 	{
 		SelectionHandler(x, y);
 	}

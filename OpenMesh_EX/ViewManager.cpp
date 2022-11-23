@@ -12,7 +12,7 @@ ViewManager::ViewManager()
 	moveSpeed = 5.0f;
 	lmbDown = false;
 	midDown = false;
-	eyePosition = vec3(0.0f, 0.0f, 10.0f);
+	eyePosition = vec3(0.0f, 0.0f, 100.0f);
 	eyeLookPosition = vec3(0.0f, 0.0f, 0.0f);
 	vec3 up = vec3(0, 1, 0);
 	viewMatrix = lookAt(eyePosition, eyeLookPosition, up);
@@ -238,20 +238,20 @@ void ViewManager::mouseMoveEvent(int x, int y)
 		rotationMatrix = rotate(rotationMatrix, diff.y * factor, rotateXAxis);
 		lmbDownCoord = coord;
 	}
-	else if (midDown)
-	{
-		vec2 coord = vec2(x, y);
-		vec2 diff = coord - midDownCoord;
+	//else if (midDown)
+	//{
+	//	/*vec2 coord = vec2(x, y);
+	//	vec2 diff = coord - midDownCoord;
 
-		vec4 up = vec4(0, 1, 0, 0);
-		vec4 right = vec4(1, 0, 0, 0);
+	//	vec4 up = vec4(0, 1, 0, 0);
+	//	vec4 right = vec4(1, 0, 0, 0);
 
-		vec3 diffUp = up.xyz() * diff.y / (float)w_height;
-		vec3 diffRight = right.xyz() * diff.x / (float)w_width;
+	//	vec3 diffUp = up.xyz() * diff.y / (float)w_height;
+	//	vec3 diffRight = right.xyz() * diff.x / (float)w_width;
 
-		translationMatrix = translate(translationMatrix, (-diffUp + diffRight) * zoom * 3.0f);
-		midDownCoord = coord;
-	}
+	//	translationMatrix = translate(translationMatrix, (-diffUp + diffRight) * zoom * 3.0f);
+	//	midDownCoord = coord;*/
+	//}
 }
 
 void ViewManager::ProcessKeyboard(Camera_Movement direction, float deltaTime)

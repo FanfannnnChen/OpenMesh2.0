@@ -21,7 +21,7 @@ Tri_Mesh *mesh;
 xform xf;
 GLCamera camera;
 float fov = 0.7f;
-std::string filename = "./resource/3DModel/Simpson.obj";	// load model
+std::string filename = "./resource/3DModel/test.obj";	// load model
 
 static const Mouse::button physical_to_logical_map[] = {
 	Mouse::NONE, Mouse::ROTATE, Mouse::MOVEXY, Mouse::MOVEZ,
@@ -96,6 +96,21 @@ namespace OpenMesh_EX {
 	private: System::Windows::Forms::RadioButton^ radioButton6;
 	private: System::Windows::Forms::RadioButton^ radioButton5;
 	private: System::Windows::Forms::GroupBox^ OneRingGroupBox;
+	private: System::Windows::Forms::HScrollBar^ RotateScrollBar1;
+	private: System::Windows::Forms::GroupBox^ RotateBox;
+	private: System::Windows::Forms::HScrollBar^ ScaleScrollBar1;
+	private: System::Windows::Forms::Label^ Scael_label;
+	private: System::Windows::Forms::Label^ Rotate_label;
+	private: System::Windows::Forms::RadioButton^ radioButton9;
+	private: System::Windows::Forms::RadioButton^ radioButton8;
+	private: System::Windows::Forms::PictureBox^ pictureBox6;
+	private: System::Windows::Forms::PictureBox^ pictureBox5;
+	private: System::Windows::Forms::Button^ Save_button;
+	private: System::Windows::Forms::RadioButton^ radioButton11;
+	private: System::Windows::Forms::RadioButton^ radioButton10;
+	private: System::Windows::Forms::PictureBox^ pictureBox8;
+	private: System::Windows::Forms::PictureBox^ pictureBox7;
+
 
 
 
@@ -114,10 +129,10 @@ namespace OpenMesh_EX {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			HKOGLPanel::HKCOGLPanelCameraSetting^ hkcoglPanelCameraSetting1 = (gcnew HKOGLPanel::HKCOGLPanelCameraSetting());
-			HKOGLPanel::HKCOGLPanelPixelFormat^ hkcoglPanelPixelFormat1 = (gcnew HKOGLPanel::HKCOGLPanelPixelFormat());
-			HKOGLPanel::HKCOGLPanelCameraSetting^ hkcoglPanelCameraSetting2 = (gcnew HKOGLPanel::HKCOGLPanelCameraSetting());
-			HKOGLPanel::HKCOGLPanelPixelFormat^ hkcoglPanelPixelFormat2 = (gcnew HKOGLPanel::HKCOGLPanelPixelFormat());
+			HKOGLPanel::HKCOGLPanelCameraSetting^ hkcoglPanelCameraSetting5 = (gcnew HKOGLPanel::HKCOGLPanelCameraSetting());
+			HKOGLPanel::HKCOGLPanelPixelFormat^ hkcoglPanelPixelFormat5 = (gcnew HKOGLPanel::HKCOGLPanelPixelFormat());
+			HKOGLPanel::HKCOGLPanelCameraSetting^ hkcoglPanelCameraSetting6 = (gcnew HKOGLPanel::HKCOGLPanelCameraSetting());
+			HKOGLPanel::HKCOGLPanelPixelFormat^ hkcoglPanelPixelFormat6 = (gcnew HKOGLPanel::HKCOGLPanelPixelFormat());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->fileToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -144,10 +159,24 @@ namespace OpenMesh_EX {
 			this->pictureBox4 = (gcnew System::Windows::Forms::PictureBox());
 			this->radioButton4 = (gcnew System::Windows::Forms::RadioButton());
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
+			this->radioButton9 = (gcnew System::Windows::Forms::RadioButton());
+			this->radioButton8 = (gcnew System::Windows::Forms::RadioButton());
+			this->pictureBox6 = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox5 = (gcnew System::Windows::Forms::PictureBox());
 			this->radioButton7 = (gcnew System::Windows::Forms::RadioButton());
 			this->radioButton6 = (gcnew System::Windows::Forms::RadioButton());
 			this->radioButton5 = (gcnew System::Windows::Forms::RadioButton());
 			this->OneRingGroupBox = (gcnew System::Windows::Forms::GroupBox());
+			this->RotateScrollBar1 = (gcnew System::Windows::Forms::HScrollBar());
+			this->RotateBox = (gcnew System::Windows::Forms::GroupBox());
+			this->Scael_label = (gcnew System::Windows::Forms::Label());
+			this->Rotate_label = (gcnew System::Windows::Forms::Label());
+			this->ScaleScrollBar1 = (gcnew System::Windows::Forms::HScrollBar());
+			this->Save_button = (gcnew System::Windows::Forms::Button());
+			this->pictureBox7 = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox8 = (gcnew System::Windows::Forms::PictureBox());
+			this->radioButton10 = (gcnew System::Windows::Forms::RadioButton());
+			this->radioButton11 = (gcnew System::Windows::Forms::RadioButton());
 			this->menuStrip1->SuspendLayout();
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar1))->BeginInit();
@@ -157,7 +186,12 @@ namespace OpenMesh_EX {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->BeginInit();
 			this->groupBox3->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox6))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->BeginInit();
 			this->OneRingGroupBox->SuspendLayout();
+			this->RotateBox->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox7))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox8))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// menuStrip1
@@ -165,7 +199,7 @@ namespace OpenMesh_EX {
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->fileToolStripMenuItem });
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(926, 24);
+			this->menuStrip1->Size = System::Drawing::Size(1076, 24);
 			this->menuStrip1->TabIndex = 1;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -204,18 +238,18 @@ namespace OpenMesh_EX {
 			// 
 			// hkoglPanelControl1
 			// 
-			hkcoglPanelCameraSetting1->Far = 1000;
-			hkcoglPanelCameraSetting1->Fov = 45;
-			hkcoglPanelCameraSetting1->Near = -1000;
-			hkcoglPanelCameraSetting1->Type = HKOGLPanel::HKCOGLPanelCameraSetting::CAMERATYPE::ORTHOGRAPHIC;
-			this->hkoglPanelControl1->Camera_Setting = hkcoglPanelCameraSetting1;
+			hkcoglPanelCameraSetting5->Far = 1000;
+			hkcoglPanelCameraSetting5->Fov = 45;
+			hkcoglPanelCameraSetting5->Near = -1000;
+			hkcoglPanelCameraSetting5->Type = HKOGLPanel::HKCOGLPanelCameraSetting::CAMERATYPE::ORTHOGRAPHIC;
+			this->hkoglPanelControl1->Camera_Setting = hkcoglPanelCameraSetting5;
 			this->hkoglPanelControl1->Location = System::Drawing::Point(0, 24);
 			this->hkoglPanelControl1->Name = L"hkoglPanelControl1";
-			hkcoglPanelPixelFormat1->Accumu_Buffer_Bits = HKOGLPanel::HKCOGLPanelPixelFormat::PIXELBITS::BITS_0;
-			hkcoglPanelPixelFormat1->Alpha_Buffer_Bits = HKOGLPanel::HKCOGLPanelPixelFormat::PIXELBITS::BITS_0;
-			hkcoglPanelPixelFormat1->Stencil_Buffer_Bits = HKOGLPanel::HKCOGLPanelPixelFormat::PIXELBITS::BITS_0;
-			this->hkoglPanelControl1->Pixel_Format = hkcoglPanelPixelFormat1;
-			this->hkoglPanelControl1->Size = System::Drawing::Size(509, 454);
+			hkcoglPanelPixelFormat5->Accumu_Buffer_Bits = HKOGLPanel::HKCOGLPanelPixelFormat::PIXELBITS::BITS_0;
+			hkcoglPanelPixelFormat5->Alpha_Buffer_Bits = HKOGLPanel::HKCOGLPanelPixelFormat::PIXELBITS::BITS_0;
+			hkcoglPanelPixelFormat5->Stencil_Buffer_Bits = HKOGLPanel::HKCOGLPanelPixelFormat::PIXELBITS::BITS_0;
+			this->hkoglPanelControl1->Pixel_Format = hkcoglPanelPixelFormat5;
+			this->hkoglPanelControl1->Size = System::Drawing::Size(582, 522);
 			this->hkoglPanelControl1->TabIndex = 2;
 			this->hkoglPanelControl1->Load += gcnew System::EventHandler(this, &MyForm::hkoglPanelControl1_Load);
 			this->hkoglPanelControl1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::hkoglPanelControl1_Paint);
@@ -230,7 +264,7 @@ namespace OpenMesh_EX {
 			this->groupBox1->Controls->Add(this->radioButton3);
 			this->groupBox1->Controls->Add(this->radioButton2);
 			this->groupBox1->Controls->Add(this->radioButton1);
-			this->groupBox1->Location = System::Drawing::Point(521, 136);
+			this->groupBox1->Location = System::Drawing::Point(594, 125);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Size = System::Drawing::Size(114, 133);
 			this->groupBox1->TabIndex = 3;
@@ -310,7 +344,7 @@ namespace OpenMesh_EX {
 			// 
 			// NewM_Button
 			// 
-			this->NewM_Button->Location = System::Drawing::Point(673, 36);
+			this->NewM_Button->Location = System::Drawing::Point(623, 535);
 			this->NewM_Button->Name = L"NewM_Button";
 			this->NewM_Button->Size = System::Drawing::Size(75, 23);
 			this->NewM_Button->TabIndex = 6;
@@ -320,19 +354,20 @@ namespace OpenMesh_EX {
 			// 
 			// hkoglPanelControl2
 			// 
-			hkcoglPanelCameraSetting2->Far = 1000;
-			hkcoglPanelCameraSetting2->Fov = 45;
-			hkcoglPanelCameraSetting2->Near = -1000;
-			hkcoglPanelCameraSetting2->Type = HKOGLPanel::HKCOGLPanelCameraSetting::CAMERATYPE::ORTHOGRAPHIC;
-			this->hkoglPanelControl2->Camera_Setting = hkcoglPanelCameraSetting2;
-			this->hkoglPanelControl2->Location = System::Drawing::Point(783, 36);
+			hkcoglPanelCameraSetting6->Far = 1000;
+			hkcoglPanelCameraSetting6->Fov = 45;
+			hkcoglPanelCameraSetting6->Near = -1000;
+			hkcoglPanelCameraSetting6->Type = HKOGLPanel::HKCOGLPanelCameraSetting::CAMERATYPE::ORTHOGRAPHIC;
+			this->hkoglPanelControl2->Camera_Setting = hkcoglPanelCameraSetting6;
+			this->hkoglPanelControl2->Location = System::Drawing::Point(495, 572);
 			this->hkoglPanelControl2->Name = L"hkoglPanelControl2";
-			hkcoglPanelPixelFormat2->Accumu_Buffer_Bits = HKOGLPanel::HKCOGLPanelPixelFormat::PIXELBITS::BITS_0;
-			hkcoglPanelPixelFormat2->Alpha_Buffer_Bits = HKOGLPanel::HKCOGLPanelPixelFormat::PIXELBITS::BITS_0;
-			hkcoglPanelPixelFormat2->Stencil_Buffer_Bits = HKOGLPanel::HKCOGLPanelPixelFormat::PIXELBITS::BITS_0;
-			this->hkoglPanelControl2->Pixel_Format = hkcoglPanelPixelFormat2;
-			this->hkoglPanelControl2->Size = System::Drawing::Size(120, 120);
+			hkcoglPanelPixelFormat6->Accumu_Buffer_Bits = HKOGLPanel::HKCOGLPanelPixelFormat::PIXELBITS::BITS_0;
+			hkcoglPanelPixelFormat6->Alpha_Buffer_Bits = HKOGLPanel::HKCOGLPanelPixelFormat::PIXELBITS::BITS_0;
+			hkcoglPanelPixelFormat6->Stencil_Buffer_Bits = HKOGLPanel::HKCOGLPanelPixelFormat::PIXELBITS::BITS_0;
+			this->hkoglPanelControl2->Pixel_Format = hkcoglPanelPixelFormat6;
+			this->hkoglPanelControl2->Size = System::Drawing::Size(35, 35);
 			this->hkoglPanelControl2->TabIndex = 7;
+			this->hkoglPanelControl2->Visible = false;
 			this->hkoglPanelControl2->Load += gcnew System::EventHandler(this, &MyForm::hkoglPanelControl2_Load);
 			this->hkoglPanelControl2->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::hkoglPanelControl2_Paint);
 			// 
@@ -340,7 +375,7 @@ namespace OpenMesh_EX {
 			// 
 			this->groupBox2->Controls->Add(this->TextureMode);
 			this->groupBox2->Controls->Add(this->PickMode);
-			this->groupBox2->Location = System::Drawing::Point(521, 36);
+			this->groupBox2->Location = System::Drawing::Point(594, 25);
 			this->groupBox2->Name = L"groupBox2";
 			this->groupBox2->Size = System::Drawing::Size(114, 89);
 			this->groupBox2->TabIndex = 8;
@@ -374,7 +409,7 @@ namespace OpenMesh_EX {
 			// pictureBox1
 			// 
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(673, 194);
+			this->pictureBox1->Location = System::Drawing::Point(28, 15);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(100, 100);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -384,7 +419,7 @@ namespace OpenMesh_EX {
 			// pictureBox2
 			// 
 			this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
-			this->pictureBox2->Location = System::Drawing::Point(803, 194);
+			this->pictureBox2->Location = System::Drawing::Point(180, 15);
 			this->pictureBox2->Name = L"pictureBox2";
 			this->pictureBox2->Size = System::Drawing::Size(100, 100);
 			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -394,7 +429,7 @@ namespace OpenMesh_EX {
 			// pictureBox3
 			// 
 			this->pictureBox3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox3.Image")));
-			this->pictureBox3->Location = System::Drawing::Point(673, 336);
+			this->pictureBox3->Location = System::Drawing::Point(28, 157);
 			this->pictureBox3->Name = L"pictureBox3";
 			this->pictureBox3->Size = System::Drawing::Size(100, 100);
 			this->pictureBox3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -404,7 +439,7 @@ namespace OpenMesh_EX {
 			// pictureBox4
 			// 
 			this->pictureBox4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox4.Image")));
-			this->pictureBox4->Location = System::Drawing::Point(803, 336);
+			this->pictureBox4->Location = System::Drawing::Point(180, 157);
 			this->pictureBox4->Name = L"pictureBox4";
 			this->pictureBox4->Size = System::Drawing::Size(100, 100);
 			this->pictureBox4->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -415,7 +450,7 @@ namespace OpenMesh_EX {
 			// 
 			this->radioButton4->AutoSize = true;
 			this->radioButton4->Checked = true;
-			this->radioButton4->Location = System::Drawing::Point(14, 121);
+			this->radioButton4->Location = System::Drawing::Point(43, 121);
 			this->radioButton4->Name = L"radioButton4";
 			this->radioButton4->Size = System::Drawing::Size(46, 16);
 			this->radioButton4->TabIndex = 13;
@@ -426,21 +461,75 @@ namespace OpenMesh_EX {
 			// 
 			// groupBox3
 			// 
+			this->groupBox3->Controls->Add(this->radioButton11);
+			this->groupBox3->Controls->Add(this->radioButton10);
+			this->groupBox3->Controls->Add(this->pictureBox8);
+			this->groupBox3->Controls->Add(this->pictureBox7);
+			this->groupBox3->Controls->Add(this->radioButton9);
+			this->groupBox3->Controls->Add(this->radioButton8);
+			this->groupBox3->Controls->Add(this->pictureBox6);
+			this->groupBox3->Controls->Add(this->pictureBox5);
 			this->groupBox3->Controls->Add(this->radioButton7);
 			this->groupBox3->Controls->Add(this->radioButton6);
+			this->groupBox3->Controls->Add(this->pictureBox4);
 			this->groupBox3->Controls->Add(this->radioButton5);
+			this->groupBox3->Controls->Add(this->pictureBox3);
 			this->groupBox3->Controls->Add(this->radioButton4);
-			this->groupBox3->Location = System::Drawing::Point(659, 179);
+			this->groupBox3->Controls->Add(this->pictureBox1);
+			this->groupBox3->Controls->Add(this->pictureBox2);
+			this->groupBox3->Location = System::Drawing::Point(755, 27);
 			this->groupBox3->Name = L"groupBox3";
-			this->groupBox3->Size = System::Drawing::Size(255, 288);
+			this->groupBox3->Size = System::Drawing::Size(309, 580);
 			this->groupBox3->TabIndex = 14;
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"Texture";
 			// 
+			// radioButton9
+			// 
+			this->radioButton9->AutoSize = true;
+			this->radioButton9->Location = System::Drawing::Point(195, 403);
+			this->radioButton9->Name = L"radioButton9";
+			this->radioButton9->Size = System::Drawing::Size(46, 16);
+			this->radioButton9->TabIndex = 20;
+			this->radioButton9->Text = L"Pic 6";
+			this->radioButton9->UseVisualStyleBackColor = true;
+			this->radioButton9->Click += gcnew System::EventHandler(this, &MyForm::radioButton9_Click);
+			// 
+			// radioButton8
+			// 
+			this->radioButton8->AutoSize = true;
+			this->radioButton8->Location = System::Drawing::Point(43, 403);
+			this->radioButton8->Name = L"radioButton8";
+			this->radioButton8->Size = System::Drawing::Size(46, 16);
+			this->radioButton8->TabIndex = 19;
+			this->radioButton8->Text = L"Pic 5";
+			this->radioButton8->UseVisualStyleBackColor = true;
+			this->radioButton8->Click += gcnew System::EventHandler(this, &MyForm::radioButton8_Click);
+			// 
+			// pictureBox6
+			// 
+			this->pictureBox6->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox6.Image")));
+			this->pictureBox6->Location = System::Drawing::Point(180, 297);
+			this->pictureBox6->Name = L"pictureBox6";
+			this->pictureBox6->Size = System::Drawing::Size(100, 100);
+			this->pictureBox6->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox6->TabIndex = 18;
+			this->pictureBox6->TabStop = false;
+			// 
+			// pictureBox5
+			// 
+			this->pictureBox5->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox5.Image")));
+			this->pictureBox5->Location = System::Drawing::Point(28, 297);
+			this->pictureBox5->Name = L"pictureBox5";
+			this->pictureBox5->Size = System::Drawing::Size(100, 100);
+			this->pictureBox5->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox5->TabIndex = 17;
+			this->pictureBox5->TabStop = false;
+			// 
 			// radioButton7
 			// 
 			this->radioButton7->AutoSize = true;
-			this->radioButton7->Location = System::Drawing::Point(144, 263);
+			this->radioButton7->Location = System::Drawing::Point(195, 263);
 			this->radioButton7->Name = L"radioButton7";
 			this->radioButton7->Size = System::Drawing::Size(46, 16);
 			this->radioButton7->TabIndex = 16;
@@ -451,7 +540,7 @@ namespace OpenMesh_EX {
 			// radioButton6
 			// 
 			this->radioButton6->AutoSize = true;
-			this->radioButton6->Location = System::Drawing::Point(14, 263);
+			this->radioButton6->Location = System::Drawing::Point(43, 263);
 			this->radioButton6->Name = L"radioButton6";
 			this->radioButton6->Size = System::Drawing::Size(46, 16);
 			this->radioButton6->TabIndex = 15;
@@ -462,7 +551,7 @@ namespace OpenMesh_EX {
 			// radioButton5
 			// 
 			this->radioButton5->AutoSize = true;
-			this->radioButton5->Location = System::Drawing::Point(144, 121);
+			this->radioButton5->Location = System::Drawing::Point(195, 121);
 			this->radioButton5->Name = L"radioButton5";
 			this->radioButton5->Size = System::Drawing::Size(46, 16);
 			this->radioButton5->TabIndex = 14;
@@ -475,7 +564,7 @@ namespace OpenMesh_EX {
 			this->OneRingGroupBox->Controls->Add(this->OneRing_Face_checkBox1);
 			this->OneRingGroupBox->Controls->Add(this->OneRing_Vertex_checkBox2);
 			this->OneRingGroupBox->Controls->Add(this->trackBar1);
-			this->OneRingGroupBox->Location = System::Drawing::Point(521, 286);
+			this->OneRingGroupBox->Location = System::Drawing::Point(594, 275);
 			this->OneRingGroupBox->Name = L"OneRingGroupBox";
 			this->OneRingGroupBox->Size = System::Drawing::Size(116, 125);
 			this->OneRingGroupBox->TabIndex = 15;
@@ -483,16 +572,119 @@ namespace OpenMesh_EX {
 			this->OneRingGroupBox->Text = L"OneRing";
 			this->OneRingGroupBox->Visible = false;
 			// 
+			// RotateScrollBar1
+			// 
+			this->RotateScrollBar1->Location = System::Drawing::Point(12, 31);
+			this->RotateScrollBar1->Maximum = 360;
+			this->RotateScrollBar1->Name = L"RotateScrollBar1";
+			this->RotateScrollBar1->Size = System::Drawing::Size(116, 17);
+			this->RotateScrollBar1->TabIndex = 16;
+			this->RotateScrollBar1->Scroll += gcnew System::Windows::Forms::ScrollEventHandler(this, &MyForm::RotateScrollBar1_Scroll);
+			// 
+			// RotateBox
+			// 
+			this->RotateBox->Controls->Add(this->Scael_label);
+			this->RotateBox->Controls->Add(this->Rotate_label);
+			this->RotateBox->Controls->Add(this->ScaleScrollBar1);
+			this->RotateBox->Controls->Add(this->RotateScrollBar1);
+			this->RotateBox->Location = System::Drawing::Point(594, 406);
+			this->RotateBox->Name = L"RotateBox";
+			this->RotateBox->Size = System::Drawing::Size(141, 108);
+			this->RotateBox->TabIndex = 17;
+			this->RotateBox->TabStop = false;
+			// 
+			// Scael_label
+			// 
+			this->Scael_label->AutoSize = true;
+			this->Scael_label->Font = (gcnew System::Drawing::Font(L"新細明體", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(136)));
+			this->Scael_label->Location = System::Drawing::Point(10, 60);
+			this->Scael_label->Name = L"Scael_label";
+			this->Scael_label->Size = System::Drawing::Size(29, 12);
+			this->Scael_label->TabIndex = 18;
+			this->Scael_label->Text = L"Scale";
+			// 
+			// Rotate_label
+			// 
+			this->Rotate_label->AutoSize = true;
+			this->Rotate_label->Font = (gcnew System::Drawing::Font(L"新細明體", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(136)));
+			this->Rotate_label->Location = System::Drawing::Point(10, 17);
+			this->Rotate_label->Name = L"Rotate_label";
+			this->Rotate_label->Size = System::Drawing::Size(35, 12);
+			this->Rotate_label->TabIndex = 19;
+			this->Rotate_label->Text = L"Rotate";
+			// 
+			// ScaleScrollBar1
+			// 
+			this->ScaleScrollBar1->Location = System::Drawing::Point(12, 74);
+			this->ScaleScrollBar1->Minimum = 1;
+			this->ScaleScrollBar1->Name = L"ScaleScrollBar1";
+			this->ScaleScrollBar1->Size = System::Drawing::Size(116, 17);
+			this->ScaleScrollBar1->TabIndex = 17;
+			this->ScaleScrollBar1->Value = 1;
+			this->ScaleScrollBar1->ValueChanged += gcnew System::EventHandler(this, &MyForm::ScaleScrollBar1_ValueChanged);
+			// 
+			// Save_button
+			// 
+			this->Save_button->Location = System::Drawing::Point(623, 584);
+			this->Save_button->Name = L"Save_button";
+			this->Save_button->Size = System::Drawing::Size(75, 23);
+			this->Save_button->TabIndex = 18;
+			this->Save_button->Text = L"Save";
+			this->Save_button->UseVisualStyleBackColor = true;
+			this->Save_button->Click += gcnew System::EventHandler(this, &MyForm::Save_button_Click);
+			// 
+			// pictureBox7
+			// 
+			this->pictureBox7->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox7.Image")));
+			this->pictureBox7->Location = System::Drawing::Point(28, 439);
+			this->pictureBox7->Name = L"pictureBox7";
+			this->pictureBox7->Size = System::Drawing::Size(100, 100);
+			this->pictureBox7->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox7->TabIndex = 21;
+			this->pictureBox7->TabStop = false;
+			// 
+			// pictureBox8
+			// 
+			this->pictureBox8->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox8.Image")));
+			this->pictureBox8->Location = System::Drawing::Point(180, 439);
+			this->pictureBox8->Name = L"pictureBox8";
+			this->pictureBox8->Size = System::Drawing::Size(100, 100);
+			this->pictureBox8->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox8->TabIndex = 22;
+			this->pictureBox8->TabStop = false;
+			// 
+			// radioButton10
+			// 
+			this->radioButton10->AutoSize = true;
+			this->radioButton10->Location = System::Drawing::Point(43, 545);
+			this->radioButton10->Name = L"radioButton10";
+			this->radioButton10->Size = System::Drawing::Size(46, 16);
+			this->radioButton10->TabIndex = 23;
+			this->radioButton10->Text = L"Pic 7";
+			this->radioButton10->UseVisualStyleBackColor = true;
+			this->radioButton10->Click += gcnew System::EventHandler(this, &MyForm::radioButton10_Click);
+			// 
+			// radioButton11
+			// 
+			this->radioButton11->AutoSize = true;
+			this->radioButton11->Location = System::Drawing::Point(195, 545);
+			this->radioButton11->Name = L"radioButton11";
+			this->radioButton11->Size = System::Drawing::Size(46, 16);
+			this->radioButton11->TabIndex = 24;
+			this->radioButton11->Text = L"Pic 8";
+			this->radioButton11->UseVisualStyleBackColor = true;
+			this->radioButton11->Click += gcnew System::EventHandler(this, &MyForm::radioButton11_Click);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 12);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(926, 479);
+			this->ClientSize = System::Drawing::Size(1076, 638);
+			this->Controls->Add(this->Save_button);
+			this->Controls->Add(this->RotateBox);
 			this->Controls->Add(this->OneRingGroupBox);
-			this->Controls->Add(this->pictureBox4);
-			this->Controls->Add(this->pictureBox3);
-			this->Controls->Add(this->pictureBox2);
-			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->hkoglPanelControl2);
 			this->Controls->Add(this->NewM_Button);
@@ -516,8 +708,14 @@ namespace OpenMesh_EX {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->EndInit();
 			this->groupBox3->ResumeLayout(false);
 			this->groupBox3->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox6))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->EndInit();
 			this->OneRingGroupBox->ResumeLayout(false);
 			this->OneRingGroupBox->PerformLayout();
+			this->RotateBox->ResumeLayout(false);
+			this->RotateBox->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox7))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox8))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -824,6 +1022,49 @@ private: System::Void radioButton7_Click(System::Object^ sender, System::EventAr
 	PickTextureNum = 3;
 	hkoglPanelControl1->Invalidate();
 }
+private: System::Void radioButton8_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+	PickTextureNum = 4;
+	hkoglPanelControl1->Invalidate();
+}
+
+private: System::Void radioButton9_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+	PickTextureNum = 5;
+	hkoglPanelControl1->Invalidate();
+}
+private: System::Void radioButton10_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+	PickTextureNum = 6;
+	hkoglPanelControl1->Invalidate();
+}
+private: System::Void radioButton11_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+	PickTextureNum = 7;
+	hkoglPanelControl1->Invalidate();
+}
 #pragma endregion
+
+
+private: System::Void RotateScrollBar1_Scroll(System::Object^ sender, System::Windows::Forms::ScrollEventArgs^ e) 
+{
+	// Para(RotateScrollBar1->Value);
+	ObjTemp.back().Parameterization(RotateScrollBar1->Value);
+	prevUVRotateAngle = RotateScrollBar1->Value;
+	hkoglPanelControl1->Invalidate();
+	hkoglPanelControl2->Invalidate();
+}
+
+private: System::Void ScaleScrollBar1_ValueChanged(System::Object^ sender, System::EventArgs^ e) 
+{
+	UpdateScale_from_Panel(ScaleScrollBar1->Value);
+	hkoglPanelControl1->Invalidate();
+}
+private: System::Void Save_button_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+	Save_File();
+	 Save_material();
+}
+
 };
 }

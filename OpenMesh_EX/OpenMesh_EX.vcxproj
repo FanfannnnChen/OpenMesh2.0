@@ -51,8 +51,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>D:\OpenMesh_EX\Include;..\OpenMesh-5.2\src;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\OpenMesh_EX\Libs\VC;D:\OpenMesh_EX\Libs;..\OpenMesh-5.2\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)Include;..\OpenMesh-5.2\src;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Libs\VC;$(SolutionDir)\Libs;..\OpenMesh-5.2\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

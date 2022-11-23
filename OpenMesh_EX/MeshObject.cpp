@@ -93,7 +93,7 @@ bool GLMesh::LoadModel(std::string fileName)
 		{
 			mesh.request_face_normals();
 			mesh.update_normals();
-			mesh.release_face_normals();
+			//mesh.release_face_normals();
 		}
 
 		return true;
@@ -124,6 +124,7 @@ void GLMesh::LoadToShader()
 	indices.reserve(mesh.n_faces() * 3);
 	for (MyMesh::FaceIter f_it = mesh.faces_begin(); f_it != mesh.faces_end(); ++f_it)
 	{
+		std::cout << f_it->idx() << std::endl;
 		for (MyMesh::FaceVertexIter fv_it = mesh.fv_iter(*f_it); fv_it.is_valid(); ++fv_it)
 		{
 			indices.push_back(fv_it->idx());
@@ -153,7 +154,7 @@ void GLMesh::LoadToShader()
 	glBindVertexArray(0);
 }
 
-void GLMesh::LoadTexCoordToShader()
+void GLMesh::LoadTexCoordToShader(int Scale)
 {
 	if (mesh.has_vertex_texcoords2D())
 	{
@@ -161,8 +162,12 @@ void GLMesh::LoadTexCoordToShader()
 		for (MyMesh::VertexIter v_it = mesh.vertices_begin(); v_it != mesh.vertices_end(); ++v_it)
 		{
 			MyMesh::TexCoord2D texCoord = mesh.texcoord2D(*v_it);
+			texCoord[0] = (texCoord[0] - 0.5) / Scale + 0.5;
+			texCoord[1] = (texCoord[1] - 0.5) / Scale + 0.5;
 			texCoords.push_back(texCoord);
 		}
+
+
 
 		glBindVertexArray(vao);
 
@@ -439,8 +444,8 @@ void MeshObject::Parameterization(float uvRotateAngle)
 			MyMesh::HalfedgeHandle _heh = mesh.halfedge_handle(*e_it, 0);	// 默認這個
 			MyMesh::Point pFrom = mesh.point(mesh.from_vertex_handle(_heh));
 			MyMesh::Point pTo = mesh.point(mesh.to_vertex_handle(_heh));
-			MyMesh::Point p1 = mesh.point(mesh.opposite_vh(_heh));
-			MyMesh::Point p2 = mesh.point(mesh.opposite_he_opposite_vh(_heh));
+			MyMesh::Point p1 = mesh.point(mesh.opposite_vh(_heh));					// vi-1
+			MyMesh::Point p2 = mesh.point(mesh.opposite_he_opposite_vh(_heh));		// vi+1
 
 
 			double edgeLen = (pFrom - pTo).length();
@@ -452,7 +457,7 @@ void MeshObject::Parameterization(float uvRotateAngle)
 			OpenMesh::Vec3d v2 = (OpenMesh::Vec3d)(p1 - pFrom);
 			v2.normalize();
 
-			angle1 = std::acos(OpenMesh::dot(v1, v2));
+			angle1 = std::acos(OpenMesh::dot(v1, v2));		// 內積後得到cos值，再反cos取得角度
 
 			v2 = (OpenMesh::Vec3d)(p2 - pFrom);
 			v2.normalize();
@@ -521,7 +526,8 @@ void MeshObject::Parameterization(float uvRotateAngle)
 		half_edge_h_Next = mesh.next_halfedge_handle(half_edge_h_Next);
 	} while (half_edge_h != half_edge_h_Next);
 
-
+	//////////
+	// Rotate
 	float rd = (225 + uvRotateAngle) * M_PI / 180.0;
 	float initDist = 0;
 	MyMesh::TexCoord2D st(0, 0);
@@ -529,13 +535,13 @@ void MeshObject::Parameterization(float uvRotateAngle)
 	st[0] = R * cos(rd) + 0.5;
 	st[1] = R * sin(rd) + 0.5;
 
-	if (st[0] > 1)
+	if (st[0] > 1)			// 右半邊超出圓形的部分
 	{
 		st[0] = 1;
 		st[1] = tan(rd) / 2 + 0.5;
 	}
 
-	if (st[0] < 0)
+	if (st[0] < 0)			
 	{
 		st[0] = 0;
 		st[1] = 0.5 - tan(rd) / 2;
@@ -695,7 +701,7 @@ void MeshObject::Parameterization(float uvRotateAngle)
 		}
 	}
 
-	model.LoadTexCoordToShader();
+	model.LoadTexCoordToShader(1);
 
 	fvIDsPtr.swap(std::vector<unsigned int*>(selectedFace.size()));
 	for (int i = 0; i < fvIDsPtr.size(); ++i)
@@ -704,7 +710,7 @@ void MeshObject::Parameterization(float uvRotateAngle)
 	}
 	elemCount.swap(std::vector<int>(selectedFace.size(), 3));
 
-	SaveNewMesh(mesh, "newMesh.obj");
+	SaveNewMesh(mesh);
 
 	// debug
 	/*OpenMesh::IO::Options wopt;
@@ -727,35 +733,37 @@ void MeshObject::RenderParameterized()
 	}
 }
 
-void MeshObject::CreateLoadNewMesh(MeshObject& NewMesh)
-{
-	if (selectedFace.size() <= 0)
-	{
-		return;
-	}
-
-	std::sort(selectedFace.begin(), selectedFace.end());
-
-	MyMesh mesh;
-	CreateNewMesh(mesh);
-
-	SaveNewMesh(mesh, "newMesh.obj");
-
-	if (NewMesh.Init("newMesh.obj"))
-	{
-		std::cout << "New Mesh initial" << std::endl;
-	}
-	else 
-		std::cout << "New Mesh initial failed" << std::endl;
-}
+// Unused
+//void MeshObject::CreateLoadNewMesh(MeshObject& NewMesh)
+//{
+//	if (selectedFace.size() <= 0)
+//	{
+//		return;
+//	}
+//
+//	std::sort(selectedFace.begin(), selectedFace.end());
+//
+//	MyMesh mesh;
+//	CreateNewMesh(mesh);
+//
+//	SaveNewMesh(mesh, "newMesh.obj");
+//
+//	if (NewMesh.Init("newMesh.obj"))
+//	{
+//		std::cout << "New Mesh initial" << std::endl;
+//	}
+//	else 
+//		std::cout << "New Mesh initial failed" << std::endl;
+//}
 
 void MeshObject::ClearAllSelectedFace()
 {
 	selectedFace.clear();
 }
 
-void MeshObject::SaveNewMesh( MyMesh& mesh, std::string _fileName)
+void MeshObject::SaveNewMesh( MyMesh& mesh )
 {
+	std::string _fileName = "newMesh.obj";
 	// debug
 	OpenMesh::IO::Options wopt;
 	wopt += OpenMesh::IO::Options::VertexTexCoord;
@@ -765,4 +773,9 @@ void MeshObject::SaveNewMesh( MyMesh& mesh, std::string _fileName)
 	{
 		printf("Write Mesh Error\n");
 	}
+}
+
+void MeshObject::UpdateScale(int Scale)
+{
+	model.LoadTexCoordToShader(Scale);
 }
